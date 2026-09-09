@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-forest-base: #1A3826;
+  --color-forest-deep: #0F2618;
+  --color-herbal-jade: #2D5A3F;
+  --color-antique-gold: #C5A869;
+  --color-terracotta: #C86446;
+  --color-charcoal-ink: #1B241E;
+  --color-ivory-canvas: #FAF7F2;
+  --color-ivory-surface: #F4EFE6;
+  --color-earth-sand: #E8DEC8;
+
+  --color-surface: #fcf9f4;
+  --color-surface-container: #f0ede9;
+  --color-surface-container-low: #f6f3ee;
+  --color-surface-container-high: #ebe8e3;
+  --color-surface-container-highest: #e5e2dd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #e5e2dd;
+  --color-surface-dim: #dcdad5;
+
+  --color-on-surface: #1c1c19;
+  --color-on-surface-variant: #424843;
+  --color-on-primary: #ffffff;
+
+  --color-outline: #727972;
+  --color-outline-variant: #c2c8c1;
+
+  --color-primary: #1A3826;
+  --color-primary-container: #1a3826;
+  --color-secondary: #725b24;
+  --color-tertiary: #3d0b00;
+  --color-error: #ba1a1a;
+  --color-success: #2D5A3F;
+
+  /* Inter for everything. `--font-inter` is provided by next/font in layout.jsx. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv11", "ss01", "ss03";
 }
+
+::selection {
+  background: var(--color-antique-gold);
+  color: var(--color-forest-deep);
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headline stays Inter but tighter + heavier for a modern editorial feel. */
+.font-headline {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+}
+.font-body  { font-family: var(--font-sans); }
+.font-label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.italic { font-style: italic; font-weight: 500; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.animate-slow-zoom { animation: slow-zoom 12s ease-in-out infinite alternate; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }

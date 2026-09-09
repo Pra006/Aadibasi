@@ -1,0 +1,1232 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>Aadibasi &amp; HakkiVeda Marketplace - Super Admin Console</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-variant": "#e5e2dd",
+          "ivory-canvas": "#FAF7F2",
+          "on-tertiary-fixed-variant": "#7d2c13",
+          "tertiary-fixed": "#ffdbd1",
+          "on-primary-fixed-variant": "#2f4d3a",
+          "surface": "#fcf9f4",
+          "forest-base": "#1A3826",
+          "on-tertiary": "#ffffff",
+          "earth-sand": "#E8DEC8",
+          "surface-tint": "#466550",
+          "forest-deep": "#0F2618",
+          "on-primary-container": "#81a28a",
+          "surface-bright": "#fcf9f4",
+          "outline-variant": "#c2c8c1",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed-variant": "#59440e",
+          "ivory-surface": "#F4EFE6",
+          "antique-gold": "#C5A869",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-fixed": "#251a00",
+          "surface-container": "#f0ede9",
+          "herbal-jade": "#2D5A3F",
+          "tertiary-fixed-dim": "#ffb59f",
+          "outline": "#727972",
+          "secondary-fixed": "#ffdf9b",
+          "primary-fixed": "#c8ebd1",
+          "surface-container-low": "#f6f3ee",
+          "terracotta": "#C86446",
+          "secondary-fixed-dim": "#e2c381",
+          "primary-container": "#1a3826",
+          "inverse-primary": "#adcfb5",
+          "error-container": "#ffdad6",
+          "tertiary-container": "#611802",
+          "on-primary": "#ffffff",
+          "tertiary": "#3d0b00",
+          "error": "#ba1a1a",
+          "surface-container-high": "#ebe8e3",
+          "on-surface": "#1c1c19",
+          "on-error": "#ffffff",
+          "charcoal-ink": "#1B241E",
+          "inverse-surface": "#31302d",
+          "on-tertiary-fixed": "#3a0a00",
+          "background": "#fcf9f4",
+          "surface-container-highest": "#e5e2dd",
+          "on-secondary": "#ffffff",
+          "on-tertiary-container": "#e87c5d",
+          "secondary": "#725b24",
+          "primary-fixed-dim": "#adcfb5",
+          "on-primary-fixed": "#022111",
+          "secondary-container": "#fcdc98",
+          "on-surface-variant": "#424843",
+          "on-background": "#1c1c19",
+          "inverse-on-surface": "#f3f0eb",
+          "on-secondary-container": "#775f28",
+          "primary": "#032212",
+          "surface-dim": "#dcdad5"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "gutter-mobile": "1rem",
+          "space-2xl": "3rem",
+          "space-2xs": "0.25rem",
+          "space-xl": "2rem",
+          "space-3xl": "4.5rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.75rem",
+          "space-md": "1rem",
+          "space-xs": "0.5rem",
+          "container-max": "1280px",
+          "space-4xl": "6rem",
+          "gutter-desktop": "2rem"
+        },
+        "fontFamily": {
+          "headline-sm": [
+            "Playfair Display"
+          ],
+          "headline-lg-mobile": [
+            "Playfair Display"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Playfair Display"
+          ],
+          "title-md": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg-mobile": [
+            "Playfair Display"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg": [
+            "Playfair Display"
+          ],
+          "headline-md": [
+            "Playfair Display"
+          ]
+        },
+        "fontSize": {
+          "headline-sm": [
+            "22px",
+            {
+              "lineHeight": "30px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "0em",
+              "fontWeight": "500"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "title-md": [
+            "18px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.1em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "56px",
+            {
+              "lineHeight": "64px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "0em",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="p-space-lg flex flex-col gap-space-xs bg-surface-container-low"><div class="flex items-center gap-space-sm"><img alt="Aadibasi Ayurvedic luxury brand logo with refined sacred leaf and botanical drop emblem in deep forest green and warm gold, elegant typography reading 'Aadibasi'." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UAcztrvgZo-P8Y3gxVqqXns1erA66OY9PenfLL1ACftya2kOuFKfd_ZVljkOm1pJafXRRXGX9D6X4T2Y6MmRzpt_3tRIxnB2PsQ25zHIPsohBmnwshMyPSV_sIlZV7zvY2P2hMiajgALEVEj9-PT7L-UFZrPHGrpMNPo0pTWPHr__W6SI7qj54evVgpaOwwag8yUIy3TwjGXO_Hkm1LOAADVjCurypkkcpNWHophSuxJZRJtkxreBhUuo"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">Aadibasi</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Aadibasi</span></div></div><div class="mt-space-xs flex items-center justify-between px-space-xs py-space-2xs bg-surface-container rounded-lg"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold tracking-wide">Super Admin • Master Console</span><span class="flex h-2 w-2 rounded-full bg-herbal-jade"></span></div></div><nav class="flex-1 overflow-y-auto px-space-sm py-space-xs space-y-space-md" data-active-classes="bg-primary-container text-on-primary font-title-md font-semibold"><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Overview</div><a aria-current="page" class="flex items-center justify-between px-space-sm py-space-xs rounded-lg transition-all bg-primary-container text-on-primary font-title-md font-semibold" data-path="overview-dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span class="font-body-sm text-body-sm">Dashboard</span></div></a></div><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Marketplace</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-vendors" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">storefront</span><span class="font-body-sm text-body-sm">Vendors</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-medium">18 Pending</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-products" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-sm text-body-sm">Products</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-surface-container-highest text-on-surface font-medium">42 Review</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-categories" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">category</span><span class="font-body-sm text-body-sm">Categories</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-brands" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">verified</span><span class="font-body-sm text-body-sm">Brands</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-inventory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">warehouse</span><span class="font-body-sm text-body-sm">Inventory</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-body-sm text-body-sm">Orders</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-medium">126 New</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-customers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-sm text-body-sm">Customers</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketplace-reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">reviews</span><span class="font-body-sm text-body-sm">Reviews</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-medium">6 Flagged</span></a></div><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Finance</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="finance-transactions" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-body-sm text-body-sm">Transactions</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="finance-commissions" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">percent</span><span class="font-body-sm text-body-sm">Commissions</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">10% Std</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="finance-payouts" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">payments</span><span class="font-body-sm text-body-sm">Vendor Payouts</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-medium">14 Due</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="finance-refunds" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">assignment_return</span><span class="font-body-sm text-body-sm">Refunds</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-medium">12 Req</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="finance-taxes" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">account_balance</span><span class="font-body-sm text-body-sm">Taxes (Nepal VAT/PAN)</span></div></a></div><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Marketing</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketing-coupons" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">confirmation_number</span><span class="font-body-sm text-body-sm">Coupons</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketing-campaigns" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">festival</span><span class="font-body-sm text-body-sm">Campaigns &amp; Festivals</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="marketing-banners" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">featured_play_list</span><span class="font-body-sm text-body-sm">Banners</span></div></a></div><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Content (CMS)</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="content-pages" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">web</span><span class="font-body-sm text-body-sm">Storefront Pages</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="content-journal" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">auto_stories</span><span class="font-body-sm text-body-sm">Blog / Journal</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="content-monograph" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">spa</span><span class="font-body-sm text-body-sm">Ingredients Monograph</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="content-faqs" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">quiz</span><span class="font-body-sm text-body-sm">FAQs</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="content-navigation" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">menu_open</span><span class="font-body-sm text-body-sm">Navigation Menus</span></div></a></div><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Operations</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="operations-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-body-sm text-body-sm">Shipping &amp; Logistics</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="operations-fleet" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">two_wheeler</span><span class="font-body-sm text-body-sm">Delivery Fleet</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="operations-tickets" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">support_agent</span><span class="font-body-sm text-body-sm">Support Tickets</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-medium">9 Open</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="operations-notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">broadcast_on_personal</span><span class="font-body-sm text-body-sm">System Notifications</span></div></a></div><div class="space-y-space-2xs"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Analytics</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="analytics-sales" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">query_stats</span><span class="font-body-sm text-body-sm">Sales &amp; Margin</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="analytics-retention" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">conversion_path</span><span class="font-body-sm text-body-sm">Customer Retention</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="analytics-vendor-performance" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">monitoring</span><span class="font-body-sm text-body-sm">Vendor Performance</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="analytics-yield" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-body-sm text-body-sm">Product Yield</span></div></a></div><div class="space-y-space-2xs pb-space-lg"><div class="px-space-xs py-space-2xs font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">System</div><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-users" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">manage_accounts</span><span class="font-body-sm text-body-sm">Admin Users</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-roles" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">shield_person</span><span class="font-body-sm text-body-sm">Roles &amp; Permissions</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-sm text-body-sm">Platform Settings</span></div></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-audit-logs" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">history</span><span class="font-body-sm text-body-sm">Audit Logs</span></div></a></div></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-outline">search</span><input class="w-full pl-9 pr-4 py-2 bg-ivory-canvas text-body-sm font-body-sm text-on-surface placeholder:text-outline rounded-lg outline-none border border-earth-sand focus:border-forest-base transition-colors" placeholder="Search marketplace (Order ID, SKU, Vendor, Customer, PAN, Txn)..." type="text"></div><span class="hidden lg:inline-flex items-center gap-1 px-space-xs py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold tracking-wider whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-forest-base animate-pulse"></span>LIVE PRODUCTION</span><span class="hidden xl:inline-flex items-center px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium whitespace-nowrap">NPR (रु)</span></div><div class="flex items-center gap-space-md"><button class="hidden sm:inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-forest-deep transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span class="">Create Campaign</span></button><div class="relative flex items-center gap-space-xs"><button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors flex items-center gap-1 font-label-sm text-label-sm" type="button"><span class="material-symbols-outlined text-[20px] text-terracotta">warning</span><span class="hidden md:inline font-medium text-terracotta">Tasks (3)</span></button><button class="relative p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-terracotta"></span></button></div><div class="flex items-center gap-space-sm pl-space-xs border-l border-earth-sand/40"><div class="flex flex-col text-right hidden md:flex"><div class="flex items-center gap-1 justify-end"><span class="font-label-md text-label-md text-on-surface font-semibold">Rajan Shrestha</span><span class="material-symbols-outlined text-[14px] text-herbal-jade" title="MFA Secure Verified Session">lock</span></div><span class="font-label-sm text-label-sm text-outline">Chief Marketplace Admin</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-gutter-desktop py-space-xl"><div class="flex flex-col w-full space-y-space-xl">
+<!-- Top Breadcrumb & Control Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="space-y-space-2xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:text-primary cursor-pointer transition-colors">Admin</span>
+<span class="material-symbols-outlined text-[13px] text-outline">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Overview</span>
+<span class="material-symbols-outlined text-[13px] text-outline">chevron_right</span>
+<span class="text-primary font-semibold">Marketplace Master Executive Overview</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-forest-deep tracking-tight">
+        Marketplace Master Executive Overview
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+        Unified control plane for 184 certified herbal harvesters, 3,420 Ayurvedic formulations, and multi-channel fulfillment operations across Nepal.
+      </p>
+</div>
+<!-- Quick Operational Controls -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<!-- Date Filter Pill Group -->
+<div class="inline-flex p-1 bg-surface-container rounded-lg shadow-sm">
+<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded transition-all" type="button">Today</button>
+<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded transition-all" type="button">7D</button>
+<button class="px-space-sm py-1 bg-forest-base text-ivory-canvas font-label-sm text-label-sm font-semibold rounded shadow-sm" type="button">30 Days</button>
+<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded transition-all" type="button">3M</button>
+<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded transition-all" type="button">1Y</button>
+<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded flex items-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+<span class="">Custom</span>
+</button>
+</div>
+<!-- Action Buttons -->
+<button class="inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md tracking-wider uppercase transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="">Audit Ledger</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-lg py-2.5 rounded-lg bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-md text-label-md tracking-wider uppercase transition-all shadow-md" type="button">
+<span class="material-symbols-outlined text-[18px] text-antique-gold">nature_people</span>
+<span class="">+ Onboard Harvester</span>
+</button>
+</div>
+</div>
+<!-- Critical Triage Callout Banner -->
+<div class="bg-forest-deep text-ivory-canvas p-space-lg rounded-xl shadow-lg relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-72 h-72 rounded-full bg-herbal-jade/20 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-terracotta/20 flex items-center justify-center text-terracotta shrink-0">
+<span class="material-symbols-outlined text-[28px]">notification_important</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm tracking-tight text-ivory-canvas">Operational Action Center</span>
+<span class="px-2 py-0.5 rounded-full bg-terracotta text-ivory-canvas font-label-sm text-label-sm uppercase font-semibold">Priority Triage</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-container-high">
+            Urgent actions requiring Super Admin sanction prior to Nepal IRD end-of-day billing batch.
+          </p>
+</div>
+</div>
+<!-- 4 Quick Triage Counters -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm w-full xl:w-auto">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/10 backdrop-blur-md flex flex-col">
+<div class="flex items-center justify-between text-secondary-fixed">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Harvesters</span>
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-ivory-canvas mt-1">18 Pending</span>
+<span class="font-body-sm text-body-sm text-surface-container-high opacity-80">PAN/AYUSH review</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/10 backdrop-blur-md flex flex-col">
+<div class="flex items-center justify-between text-tertiary-fixed-dim">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Formulations</span>
+<span class="material-symbols-outlined text-[16px]">science</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-ivory-canvas mt-1">42 Queued</span>
+<span class="font-body-sm text-body-sm text-surface-container-high opacity-80">Claims moderation</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/10 backdrop-blur-md flex flex-col">
+<div class="flex items-center justify-between text-primary-fixed">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Fulfillment</span>
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-ivory-canvas mt-1">126 Dispatches</span>
+<span class="font-body-sm text-body-sm text-surface-container-high opacity-80">Awaiting artisan handoff</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/10 backdrop-blur-md flex flex-col">
+<div class="flex items-center justify-between text-error-container">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Escalations</span>
+<span class="material-symbols-outlined text-[16px]">currency_exchange</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-ivory-canvas mt-1">12 Refunds</span>
+<span class="font-body-sm text-body-sm text-surface-container-high opacity-80">रु 34,200 total value</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Core Marketplace KPI Suite (8 Dense Executive Metrics) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1: Gross Revenue -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Total Gross GMV</span>
+<span class="p-2 rounded-lg bg-primary-container/10 text-forest-base">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">रु 4,850,000</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +18.4%
+        </span>
+<span class="font-body-sm text-body-sm text-outline">Target 102%</span>
+</div>
+<!-- Mini Progress Spar -->
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-herbal-jade h-full rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- Card 2: Platform Take-Rate Commission -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Platform Commission (10%)</span>
+<span class="p-2 rounded-lg bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">percent</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">रु 485,000</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +21.2%
+        </span>
+<span class="font-body-sm text-body-sm text-outline">NPR 41.2k today</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 76%"></div>
+</div>
+</div>
+<!-- Card 3: Marketplace Orders -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Marketplace Orders</span>
+<span class="p-2 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">2,845</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">orders</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12.8%
+        </span>
+<span class="font-body-sm text-body-sm text-outline">94.2% completion</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-forest-base h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<!-- Card 4: Ritualist Customers -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Active Customers</span>
+<span class="p-2 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-[20px]">group</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">8,420</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">patrons</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">add</span> 640 new buyers
+        </span>
+<span class="font-body-sm text-body-sm text-outline">68% repurchase</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-herbal-jade h-full rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<!-- Card 5: Certified Harvesters -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Verified Harvesters</span>
+<span class="p-2 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-[20px]">psychiatry</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">184</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">licensed</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">add</span> 14 this cycle
+        </span>
+<span class="font-body-sm text-body-sm text-outline">98.2% compliance</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-forest-base h-full rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<!-- Card 6: Active Formulations (SKUs) -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Catalog Formulations</span>
+<span class="p-2 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-[20px]">liquor</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">3,420</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">active SKUs</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-on-surface font-label-md text-label-md font-medium">
+          Oils, Shampoos, Tonics
+        </span>
+<span class="font-body-sm text-body-sm text-outline">42 in testing</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-antique-gold h-full rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<!-- Card 7: Average Order Value (AOV) -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Average Order Value</span>
+<span class="p-2 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-[20px]">stacked_line_chart</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">रु 1,705</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +रु 120
+        </span>
+<span class="font-body-sm text-body-sm text-outline">Bundles driving growth</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-herbal-jade h-full rounded-full" style="width: 71%"></div>
+</div>
+</div>
+<!-- Card 8: Return/Refund Ratio -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant font-semibold">Return &amp; Dispute Rate</span>
+<span class="p-2 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-[20px]">safety_check</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-semibold text-forest-deep tracking-tight">0.7%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">of volume</span>
+</div>
+<div class="mt-space-2xs flex items-center justify-between">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Industry Low
+        </span>
+<span class="font-body-sm text-body-sm text-outline">Bench &lt; 2.5%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-herbal-jade h-full rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+<!-- Financial & Revenue Trajectory Analytics (Split View) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Chart Main Panel (8 Cols) -->
+<div class="lg:col-span-8 bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-forest-deep">Revenue &amp; Margin Trajectory</h2>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold tracking-wider uppercase">NPR Currency</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Real-time Gross Settlement vs. 10.0% Standard Net Commission Yield
+          </p>
+</div>
+<!-- Metric Selection Toggles -->
+<div class="flex items-center gap-space-xs">
+<button class="px-2.5 py-1 rounded bg-forest-base text-ivory-canvas font-label-sm text-label-sm font-semibold" type="button">Gross Sales</button>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm" type="button">Net Comm (10%)</button>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm" type="button">Payouts</button>
+</div>
+</div>
+<!-- High-End Inline SVG Visualization -->
+<div class="relative w-full h-72 my-space-sm bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-inner">
+<!-- SVG Canvas -->
+<svg class="w-full h-52 overflow-visible" fill="none" preserveAspectRatio="none" viewBox="0 0 700 200">
+<defs>
+<linearGradient id="forestGlow" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1A3826" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#1A3826" stop-opacity="0.0"></stop>
+</linearGradient>
+<linearGradient id="goldGlow" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#C5A869" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#C5A869" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Horizontal Grid Guides -->
+<line opacity="0.6" stroke="#E8DEC8" stroke-dasharray="3 3" x1="0" x2="700" y1="20" y2="20"></line>
+<line opacity="0.6" stroke="#E8DEC8" stroke-dasharray="3 3" x1="0" x2="700" y1="70" y2="70"></line>
+<line opacity="0.6" stroke="#E8DEC8" stroke-dasharray="3 3" x1="0" x2="700" y1="120" y2="120"></line>
+<line opacity="0.8" stroke="#E8DEC8" x1="0" x2="700" y1="170" y2="170"></line>
+<!-- Gross Revenue Area & Line -->
+<path d="M 30 150 Q 150 120 250 95 T 470 50 T 670 25 L 670 170 L 30 170 Z" fill="url(#forestGlow)"></path>
+<path d="M 30 150 Q 150 120 250 95 T 470 50 T 670 25" fill="none" stroke="#1A3826" stroke-linecap="round" stroke-width="3"></path>
+<!-- Commission Line (10% Tier) -->
+<path d="M 30 168 Q 150 162 250 158 T 470 150 T 670 142 L 670 170 L 30 170 Z" fill="url(#goldGlow)"></path>
+<path d="M 30 168 Q 150 162 250 158 T 470 150 T 670 142" fill="none" stroke="#C5A869" stroke-dasharray="4 2" stroke-width="2.5"></path>
+<!-- Node Points & Interactive Markers -->
+<circle cx="30" cy="150" fill="#1A3826" r="4"></circle>
+<circle cx="250" cy="95" fill="#1A3826" r="4"></circle>
+<circle cx="470" cy="50" fill="#1A3826" r="4"></circle>
+<!-- Active Highlight Node Week 4 -->
+<circle cx="670" cy="25" fill="#FAF7F2" r="6" stroke="#1A3826" stroke-width="3"></circle>
+<circle cx="670" cy="142" fill="#FAF7F2" r="5" stroke="#C5A869" stroke-width="2.5"></circle>
+</svg>
+<!-- Tooltip Snapshot overlay -->
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm px-space-xs pt-1">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Week 1 (Oct 1-7)</span>
+<span class="">रु 980,000 GMV</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Week 2 (Oct 8-14)</span>
+<span class="">रु 1,150,000 GMV</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Week 3 (Oct 15-21)</span>
+<span class="">रु 1,340,000 GMV</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-semibold text-forest-base">Week 4 (Current)</span>
+<span class="text-forest-base font-semibold">रु 1,380,000 GMV</span>
+</div>
+</div>
+</div>
+<!-- Chart Sub-Row Metrics -->
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="p-space-xs rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">30-Day Velocity</span>
+<span class="font-title-md text-title-md font-semibold text-primary mt-0.5">रु 161,666 / day</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">E-Commerce Conversion</span>
+<span class="font-title-md text-title-md font-semibold text-herbal-jade mt-0.5">3.94% (+0.4%)</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Disbursement Health</span>
+<span class="font-title-md text-title-md font-semibold text-forest-deep mt-0.5">99.4% On Time</span>
+</div>
+</div>
+</div>
+<!-- Payout Breakdown & Commission Ledger (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-forest-deep">Fiscal Ledger</h3>
+<span class="material-symbols-outlined text-[18px] text-antique-gold">account_balance</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Breakdown of Gross NPR 4,850,000 processed through eSewa, Khalti, &amp; ConnectIPS.
+        </p>
+</div>
+<!-- Financial Split Stack -->
+<div class="space-y-space-sm my-space-md">
+<!-- Harvester Share -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Harvester Net Remittance</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">रु 4,115,200</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-forest-base h-full rounded-full" style="width: 85%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline pt-0.5">
+<span class="">85.0% Payout Share</span>
+<span class="">170 Disbursed</span>
+</div>
+</div>
+<!-- Super Admin Take -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Super Admin Take-Rate (10%)</span>
+<span class="font-title-md text-title-md font-semibold text-herbal-jade">रु 485,000</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-herbal-jade h-full rounded-full" style="width: 10%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline pt-0.5">
+<span class="">10.0% Retained Yield</span>
+<span class="">Gross Commission</span>
+</div>
+</div>
+<!-- Nepal VAT & Taxes -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Nepal IRD VAT &amp; Gateway Fees</span>
+<span class="font-title-md text-title-md font-semibold text-secondary">रु 249,800</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-antique-gold h-full rounded-full" style="width: 5%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline pt-0.5">
+<span class="">13% VAT On Commissions</span>
+<span class="">Auto-synced</span>
+</div>
+</div>
+</div>
+<!-- Quick Fast Settlement Trigger -->
+<div class="pt-space-xs">
+<button class="w-full py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 font-semibold" type="button">
+<span class="material-symbols-outlined text-[18px] text-terracotta">payments</span>
+<span class="">Review 14 Due Vendor Payouts</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Operational Moderation & Approval Queues (Side-by-side priority panels) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Panel A: Urgent Harvester/Vendor Approvals -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-forest-deep">Harvester Verification Queue</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">18 Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Wildcrafter KYC, Nepal IRD PAN/VAT verification &amp; botanical origin licenses.
+          </p>
+</div>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<!-- Verification Items List -->
+<div class="space-y-space-xs">
+<!-- Harvester 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 font-semibold text-body-md">
+              VK
+            </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Vaidya Keshya Botanicals</span>
+<span class="px-1.5 py-0.2 rounded bg-herbal-jade/10 text-herbal-jade font-label-sm text-label-sm font-semibold">Tier 1 Wildcrafter</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pokhara Valley • Reg #NP-88392 • VAT &amp; AYUSH Certified</p>
+<div class="flex items-center gap-space-xs mt-1 text-outline font-label-sm text-label-sm">
+<span class="inline-flex items-center gap-0.5 text-herbal-jade"><span class="material-symbols-outlined text-[13px]">check_circle</span> IRD Verified</span>
+<span class="">•</span>
+<span class="">Audit Dossier Ready</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-all" type="button">Dossier</button>
+<button class="px-3 py-1.5 rounded bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-sm text-label-sm font-semibold transition-all shadow-sm" type="button">Approve</button>
+</div>
+</div>
+<!-- Harvester 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0 font-semibold text-body-md">
+              HS
+            </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Himalayan Shilajit &amp; Herb Co.</span>
+<span class="px-1.5 py-0.2 rounded bg-antique-gold/20 text-secondary font-label-sm text-label-sm font-semibold">High Altitude Forager</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Jumla District • Reg #NP-49102 • High Altitude Shilajit</p>
+<div class="flex items-center gap-space-xs mt-1 text-terracotta font-label-sm text-label-sm">
+<span class="inline-flex items-center gap-0.5"><span class="material-symbols-outlined text-[13px]">warning</span> Pending VAT Document</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-all" type="button">Request Doc</button>
+<button class="px-3 py-1.5 rounded bg-surface-container-high text-outline cursor-not-allowed font-label-sm text-label-sm font-semibold" type="button">Hold</button>
+</div>
+</div>
+<!-- Harvester 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-on-surface shrink-0 font-semibold text-body-md">
+              TV
+            </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Terai Vedic Extracts</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Cold Press Artisan</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chitwan • Reg #NP-11029 • Bhringraj &amp; Castor Press</p>
+<div class="flex items-center gap-space-xs mt-1 text-outline font-label-sm text-label-sm">
+<span class="">Submitted 3h ago</span>
+<span class="">•</span>
+<span class="">Awaiting Lab Analysis Report</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+<button class="px-3 py-1.5 rounded bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-sm text-label-sm font-semibold transition-all" type="button">Audit Docs</button>
+</div>
+</div>
+</div>
+<button class="text-forest-base hover:text-forest-deep font-label-sm text-label-sm uppercase tracking-wider font-semibold flex items-center justify-center gap-1 pt-1" type="button">
+<span class="">View All 18 Harvester Submissions</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Panel B: Product Claims Moderation Queue -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-forest-deep">Formulation Claims Moderation</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">42 Queued</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Strict scrutiny against medical claims, synthetic additives, and botanical authenticity.
+          </p>
+</div>
+<span class="material-symbols-outlined text-[20px] text-herbal-jade">fact_check</span>
+</div>
+<!-- Moderation Items List -->
+<div class="space-y-space-xs">
+<!-- Item 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-space-sm">
+<img class="w-12 h-12 object-cover rounded shrink-0" data-alt="Glass amber apothecary dropper bottle containing dark botanical hair decoction with raw herbs and sacred seeds in a luxury Ayurvedic presentation against warm ivory background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYbcg-8gw4AglO6qay9xH3__ayHH8xpc3IzUX2j93bxRNNCfuFK9l8pup2P-13JnhR2N2pBoRvmY0sWSbrz5WbAerGhCcvjt_J4ugxf_NuQHxDN57MJnQTLQHkpnFmH78AcW9YZEkFHvXOWWeV3HgJDqlpAkNPXqJ1QpALGEbgo6B6Ei9cj9cao5-5Kk2PodudkuohoFVchd64L3-JiQ74VdGW-0HlFwjU2k_fAI_jkExNJtfZWG4c">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Maha Kesh Intensive Decoction 500ml</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vaidya Keshya Botanicals • Ayurvedic Hair Oil</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.2 rounded bg-herbal-jade/10 text-herbal-jade font-label-sm text-label-sm font-semibold">100% Wild Amla + Brahmi</span>
+<span class="text-outline font-label-sm text-label-sm">Passed Botanical DNA Check</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-all" type="button">Inspect</button>
+<button class="px-3 py-1.5 rounded bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-sm text-label-sm font-semibold transition-all shadow-sm" type="button">Publish</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-space-sm">
+<img class="w-12 h-12 object-cover rounded shrink-0" data-alt="Refined frosted apothecary jar containing rich herbal sesame nectar balm infused with Himalayan botanicals and gold leaf flakes on warm textured linen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtSodWFHq8PJv_rJR6NfHnpOrJ0y9kjihqX0_NFFD6Ltiobzq7u1dG1SeDsiPztybsdAD42-ij134ChJZ3379vMJ_uOJ29qjXOajVQpiuhgrLx9aJvN_oeZY10BLF2Mkqm3-WtI7rYrzyjvFV9YB3tf-j1Y90u2QQ9RtSHccb2vaAbcowUrcSgB4ICZDR8qUcdctz0iG5zME3mgWK5Efy74wB2-QLzD5oVZE5P4pwE4iyUXJPFoPeX">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Sacred Black Sesame Follicle Nectar</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mustang Himalayan Foragers • Scalp Elixir</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.2 rounded bg-terracotta/20 text-terracotta font-label-sm text-label-sm font-semibold">Flagged: Unverified Regrowth Claim</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+<button class="px-3 py-1.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold transition-all" type="button">Request Proof</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:shadow transition-shadow">
+<div class="flex items-start gap-space-sm">
+<img class="w-12 h-12 object-cover rounded shrink-0" data-alt="Minimalist dark green glass container of herbal clarifying shampoo bar with raw soapnuts and dried shikakai pods beside fresh mint leaves." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXiJJUjdL0DvupIc3ZNQ671GfIqJffREyWAq60GrAa9cLx84G_mEET1qcQM4VSmYRICR-gIkVpeL9wtOYHeax0dQt0fmlQwOy8QFh7nROlR7JeRdoOz0z23lBiIf08X7_KU2r-4coUyKMOvmWGHVFIsSCSoa0MRrh2eXNjuwC8RQuLj1w3apB-V7CwYkDVOPpEM0lyf94KarjdpRqmUcOi-kF5IV8eCCw-Wu0h0T9P8q0-P1G3-7RZ">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Shikakai &amp; Reetha Cold-Fermented Cleanser</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Karnali Wildcrafted Oils • Clarifying Shampoo</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.2 rounded bg-herbal-jade/10 text-herbal-jade font-label-sm text-label-sm font-semibold">Sulfate-Free Certified</span>
+<span class="text-outline font-label-sm text-label-sm">Batch #KV-902</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-all" type="button">Inspect</button>
+<button class="px-3 py-1.5 rounded bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-sm text-label-sm font-semibold transition-all shadow-sm" type="button">Publish</button>
+</div>
+</div>
+</div>
+<button class="text-forest-base hover:text-forest-deep font-label-sm text-label-sm uppercase tracking-wider font-semibold flex items-center justify-center gap-1 pt-1" type="button">
+<span class="">Review All 42 Formulation Submissions</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Top Performing Harvesters (Vendors Performance Matrix) -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-forest-deep">Top Performing Herbal Harvesters</h3>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Tier 1 Partners</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Leaderboard ranked by monthly gross settlement, fulfillment adherence, and AYUSH audit score.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span> Filter Regions
+        </button>
+<button class="px-space-sm py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span> Payout Sheet
+        </button>
+</div>
+</div>
+<!-- Responsive Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-space-sm">Rank</th>
+<th class="py-3 px-space-sm">Harvester / Brand</th>
+<th class="py-3 px-space-sm">Geographic Origin</th>
+<th class="py-3 px-space-sm text-center">Active SKUs</th>
+<th class="py-3 px-space-sm text-right">30D Gross (NPR)</th>
+<th class="py-3 px-space-sm text-right">Net Commission (10%)</th>
+<th class="py-3 px-space-sm text-center">Fulfillment SLA</th>
+<th class="py-3 px-space-sm text-center">Rating</th>
+<th class="py-3 px-space-sm text-center">Status</th>
+<th class="py-3 px-space-sm text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm">
+<!-- Harvester 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-sm px-space-sm font-label-md text-label-md font-semibold text-antique-gold">#01</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-forest-base text-ivory-canvas flex items-center justify-center font-label-sm text-label-sm font-bold">VK</div>
+<div>
+<span class="font-title-md text-title-md font-semibold text-on-surface block">Vaidya Keshya Herbals</span>
+<span class="text-outline font-label-sm text-label-sm">NP-VAT-9920194 • Wildcrafted Oils</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface-variant">
+              Kathmandu &amp; Pokhara
+            </td>
+<td class="py-space-sm px-space-sm text-center font-medium text-on-surface">48 Formulations</td>
+<td class="py-space-sm px-space-sm text-right font-title-md text-title-md font-semibold text-primary">रु 410,400</td>
+<td class="py-space-sm px-space-sm text-right font-semibold text-herbal-jade">रु 41,040</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">98.6% &lt;24h</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<div class="inline-flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.95
+              </div>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-herbal-jade/15 text-herbal-jade font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-herbal-jade"></span> Active
+              </span>
+</td>
+<td class="py-space-sm px-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Audit Harvester" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Harvester Payout Ledger" type="button">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Harvester 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-sm px-space-sm font-label-md text-label-md font-semibold text-on-surface-variant">#02</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-ivory-canvas flex items-center justify-center font-label-sm text-label-sm font-bold">MH</div>
+<div>
+<span class="font-title-md text-title-md font-semibold text-on-surface block">Mustang Himalayan Foragers</span>
+<span class="text-outline font-label-sm text-label-sm">NP-VAT-6102831 • Shilajit &amp; Nectar</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface-variant">
+              Jomsom, Mustang
+            </td>
+<td class="py-space-sm px-space-sm text-center font-medium text-on-surface">32 Formulations</td>
+<td class="py-space-sm px-space-sm text-right font-title-md text-title-md font-semibold text-primary">रु 368,200</td>
+<td class="py-space-sm px-space-sm text-right font-semibold text-herbal-jade">रु 36,820</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">96.8%</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<div class="inline-flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.88
+              </div>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-herbal-jade/15 text-herbal-jade font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-herbal-jade"></span> Active
+              </span>
+</td>
+<td class="py-space-sm px-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Audit Harvester" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Harvester Payout Ledger" type="button">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Harvester 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-sm px-space-sm font-label-md text-label-md font-semibold text-on-surface-variant">#03</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-forest-deep text-ivory-canvas flex items-center justify-center font-label-sm text-label-sm font-bold">KW</div>
+<div>
+<span class="font-title-md text-title-md font-semibold text-on-surface block">Karnali Wildcrafted Oils</span>
+<span class="text-outline font-label-sm text-label-sm">NP-VAT-4482092 • Cold Pressed Botanicals</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface-variant">
+              Surkhet &amp; Jumla
+            </td>
+<td class="py-space-sm px-space-sm text-center font-medium text-on-surface">54 Formulations</td>
+<td class="py-space-sm px-space-sm text-right font-title-md text-title-md font-semibold text-primary">रु 294,000</td>
+<td class="py-space-sm px-space-sm text-right font-semibold text-herbal-jade">रु 29,400</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">92.4%</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<div class="inline-flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.79
+              </div>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-herbal-jade/15 text-herbal-jade font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-herbal-jade"></span> Active
+              </span>
+</td>
+<td class="py-space-sm px-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Audit Harvester" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Harvester Payout Ledger" type="button">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Harvester 4 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-sm px-space-sm font-label-md text-label-md font-semibold text-on-surface-variant">#04</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm font-bold">MV</div>
+<div>
+<span class="font-title-md text-title-md font-semibold text-on-surface block">Mithila Vedic Botanicals</span>
+<span class="text-outline font-label-sm text-label-sm">NP-VAT-1102948 • Traditional Decoctions</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface-variant">
+              Janakpur Dham
+            </td>
+<td class="py-space-sm px-space-sm text-center font-medium text-on-surface">26 Formulations</td>
+<td class="py-space-sm px-space-sm text-right font-title-md text-title-md font-semibold text-primary">रु 215,800</td>
+<td class="py-space-sm px-space-sm text-right font-semibold text-herbal-jade">रु 21,580</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">97.1%</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<div class="inline-flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.82
+              </div>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-herbal-jade/15 text-herbal-jade font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-herbal-jade"></span> Active
+              </span>
+</td>
+<td class="py-space-sm px-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Audit Harvester" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Harvester Payout Ledger" type="button">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- High-Velocity Dispatch Pipeline & Live Order Stream -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm space-y-space-md">
+<!-- Pipeline Visual Flow -->
+<div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-forest-deep">Live Marketplace Order Fulfillment Funnel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            2,845 total active orders in circulation across Nepal postal routes &amp; private courier fleets.
+          </p>
+</div>
+<span class="inline-flex items-center gap-1 text-herbal-jade font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-herbal-jade animate-ping"></span> Live Courier Polling
+        </span>
+</div>
+<!-- Segmented Multi-stage Pipeline Indicator -->
+<div class="grid grid-cols-2 md:grid-cols-6 gap-space-xs mt-space-md">
+<div class="p-space-xs rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="">Stage 1</span>
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface block mt-1">126</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pending Verify</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="">Stage 2</span>
+<span class="material-symbols-outlined text-[14px]">biotech</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface block mt-1">412</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lab Decocting</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="">Stage 3</span>
+<span class="material-symbols-outlined text-[14px]">inventory</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface block mt-1">380</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bottled &amp; Waxed</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between text-secondary font-label-sm text-label-sm">
+<span class="">Stage 4</span>
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-forest-base block mt-1">890</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Courier In-Transit</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between text-herbal-jade font-label-sm text-label-sm">
+<span class="">Stage 5</span>
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-herbal-jade block mt-1">985</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Delivered Patron</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between text-error font-label-sm text-label-sm">
+<span class="">Disputed</span>
+<span class="material-symbols-outlined text-[14px]">sync_problem</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-error block mt-1">52</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Returned / Lost</span>
+</div>
+</div>
+</div>
+<!-- Live Order Ledger -->
+<div class="space-y-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Latest Dispatched Formulations</span>
+<button class="text-forest-base hover:text-forest-deep font-label-sm text-label-sm font-semibold" type="button">View All 126 New Orders →</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-space-sm">Order ID</th>
+<th class="py-2.5 px-space-sm">Patron</th>
+<th class="py-2.5 px-space-sm">Fulfilling Harvester</th>
+<th class="py-2.5 px-space-sm">Formulation Spec</th>
+<th class="py-2.5 px-space-sm text-right">Amount (NPR)</th>
+<th class="py-2.5 px-space-sm text-center">Payment Gateway</th>
+<th class="py-2.5 px-space-sm text-center">Fulfillment Status</th>
+<th class="py-2.5 px-space-sm text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm">
+<!-- Order 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-xs px-space-sm font-semibold text-primary">#AB-98214</td>
+<td class="py-space-xs px-space-sm">
+<span class="font-medium text-on-surface block">Aayush Shrestha</span>
+<span class="font-label-sm text-label-sm text-outline">Baluwatar, Kathmandu</span>
+</td>
+<td class="py-space-xs px-space-sm text-on-surface-variant">Vaidya Keshya Herbals</td>
+<td class="py-space-xs px-space-sm">
+<span class="text-on-surface font-medium block">Maha Kesh Taila 500ml x 2</span>
+<span class="font-label-sm text-label-sm text-outline">Lot #A77-09</span>
+</td>
+<td class="py-space-xs px-space-sm text-right font-semibold text-on-surface">रु 3,400</td>
+<td class="py-space-xs px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-herbal-jade/15 text-herbal-jade font-label-sm text-label-sm font-semibold">eSewa Pay</span>
+</td>
+<td class="py-space-xs px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">
+                  In Courier (Pathao)
+                </span>
+</td>
+<td class="py-space-xs px-space-sm text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high font-label-sm text-label-sm text-on-surface font-semibold transition-all" type="button">Track</button>
+</td>
+</tr>
+<!-- Order 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-xs px-space-sm font-semibold text-primary">#AB-98213</td>
+<td class="py-space-xs px-space-sm">
+<span class="font-medium text-on-surface block">Pooja Basnet</span>
+<span class="font-label-sm text-label-sm text-outline">Lalitpur, Ward 3</span>
+</td>
+<td class="py-space-xs px-space-sm text-on-surface-variant">Mustang Himalayan Foragers</td>
+<td class="py-space-xs px-space-sm">
+<span class="text-on-surface font-medium block">Sacred Black Sesame Elixir</span>
+<span class="font-label-sm text-label-sm text-outline">Lot #MS-204</span>
+</td>
+<td class="py-space-xs px-space-sm text-right font-semibold text-on-surface">रु 2,150</td>
+<td class="py-space-xs px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">Khalti QR</span>
+</td>
+<td class="py-space-xs px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-medium">
+                  Bottled &amp; Dispatched
+                </span>
+</td>
+<td class="py-space-xs px-space-sm text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high font-label-sm text-label-sm text-on-surface font-semibold transition-all" type="button">Track</button>
+</td>
+</tr>
+<!-- Order 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-space-xs px-space-sm font-semibold text-primary">#AB-98212</td>
+<td class="py-space-xs px-space-sm">
+<span class="font-medium text-on-surface block">Sunil Thapa</span>
+<span class="font-label-sm text-label-sm text-outline">Biratnagar, Morang</span>
+</td>
+<td class="py-space-xs px-space-sm text-on-surface-variant">Karnali Wildcrafted Oils</td>
+<td class="py-space-xs px-space-sm">
+<span class="text-on-surface font-medium block">Shikakai Clarifying Kit (3-Pack)</span>
+<span class="font-label-sm text-label-sm text-outline">Lot #KN-118</span>
+</td>
+<td class="py-space-xs px-space-sm text-right font-semibold text-on-surface">रु 4,890</td>
+<td class="py-space-xs px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">ConnectIPS</span>
+</td>
+<td class="py-space-xs px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-herbal-jade/15 text-herbal-jade font-label-sm text-label-sm font-medium">
+                  Delivered
+                </span>
+</td>
+<td class="py-space-xs px-space-sm text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high font-label-sm text-label-sm text-on-surface font-semibold transition-all" type="button">Receipt</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- System Health & Nepal Statutory Compliance Bar -->
+<div class="bg-surface-container p-space-md rounded-xl shadow-sm flex flex-col lg:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="flex h-2.5 w-2.5 rounded-full bg-herbal-jade"></span>
+<span class="font-semibold text-on-surface">Infrastructure Uptime: 99.98%</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-herbal-jade">speed</span>
+<span class="">Gateway Latency: eSewa (180ms) • Khalti (210ms)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-antique-gold">sync_saved_locally</span>
+<span class="">Nepal IRD VAT Realtime Sync: <strong class="text-forest-base">Active &amp; Compliant</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-semibold uppercase tracking-wider">
+        AYUSH Nepal Standard Certified
+      </span>
+<span class="text-outline">Last audit synced 14 mins ago</span>
+</div>
+</div>
+</div></main></div>
+
+</body></html>

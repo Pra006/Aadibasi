@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "inverse-primary": "#adcfb5",
+        "on-tertiary-fixed-variant": "#7d2c13",
+        "surface": "#fcf9f4",
+        "forest-base": "#1A3826",
+        "on-surface": "#1c1c19",
+        "surface-tint": "#466550",
+        "surface-dim": "#dcdad5",
+        "surface-container-highest": "#e5e2dd",
+        "on-surface-variant": "#424843",
+        "secondary-container": "#fcdc98",
+        "on-background": "#1c1c19",
+        "error-container": "#ffdad6",
+        "on-tertiary-container": "#e87c5d",
+        "primary-fixed-dim": "#adcfb5",
+        "on-primary-container": "#81a28a",
+        "on-primary-fixed-variant": "#2f4d3a",
+        "surface-container-lowest": "#ffffff",
+        "on-secondary-fixed": "#251a00",
+        "earth-sand": "#E8DEC8",
+        "primary": "#1A3826",
+        "error": "#ba1a1a",
+        "ivory-surface": "#F4EFE6",
+        "terracotta": "#C86446",
+        "on-primary-fixed": "#022111",
+        "on-secondary-fixed-variant": "#59440e",
+        "primary-container": "#1a3826",
+        "tertiary-fixed": "#ffdbd1",
+        "tertiary": "#3d0b00",
+        "inverse-on-surface": "#f3f0eb",
+        "surface-container-low": "#f6f3ee",
+        "forest-deep": "#0F2618",
+        "inverse-surface": "#31302d",
+        "tertiary-container": "#611802",
+        "ivory-canvas": "#FAF7F2",
+        "outline-variant": "#c2c8c1",
+        "antique-gold": "#C5A869",
+        "on-error": "#ffffff",
+        "secondary-fixed-dim": "#e2c381",
+        "surface-variant": "#e5e2dd",
+        "on-secondary-container": "#775f28",
+        "on-error-container": "#93000a",
+        "on-tertiary": "#ffffff",
+        "charcoal-ink": "#1B241E",
+        "surface-container": "#f0ede9",
+        "background": "#fcf9f4",
+        "secondary-fixed": "#ffdf9b",
+        "surface-container-high": "#ebe8e3",
+        "outline": "#727972",
+        "on-primary": "#ffffff",
+        "surface-bright": "#fcf9f4",
+        "on-secondary": "#ffffff",
+        "secondary": "#725b24",
+        "herbal-jade": "#2D5A3F",
+        "tertiary-fixed-dim": "#ffb59f",
+        "primary-fixed": "#c8ebd1",
+        "on-tertiary-fixed": "#3a0a00"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-xl": "2rem",
+        "space-xs": "0.5rem",
+        "space-2xs": "0.25rem",
+        "gutter-desktop": "2rem",
+        "space-lg": "1.5rem",
+        "gutter-mobile": "1rem",
+        "space-3xl": "4.5rem",
+        "space-4xl": "6rem",
+        "space-sm": "0.75rem",
+        "container-max": "1280px",
+        "space-md": "1rem",
+        "space-2xl": "3rem"
+      },
+      "fontFamily": {
+        "title-md": ["Plus Jakarta Sans"],
+        "headline-md": ["Playfair Display", "serif"],
+        "label-md": ["Plus Jakarta Sans"],
+        "body-md": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"],
+        "headline-lg": ["Playfair Display", "serif"],
+        "display-lg-mobile": ["Playfair Display", "serif"],
+        "headline-lg-mobile": ["Playfair Display", "serif"],
+        "headline-sm": ["Playfair Display", "serif"],
+        "body-sm": ["Plus Jakarta Sans"],
+        "display-lg": ["Playfair Display", "serif"],
+        "body-lg": ["Plus Jakarta Sans"]
+      }
+    }
+  }
+}</script></head><body class="bg-surface text-on-surface antialiased selection:bg-antique-gold selection:text-forest-deep"><div class="relative w-full bg-forest-base text-ivory-canvas px-4 py-2.5 text-center text-[12px] font-label-md tracking-wider uppercase z-50 transition-all duration-300 shadow-sm" id="top-announcement-bar"><div class="max-w-7xl mx-auto flex items-center justify-between"><div class="w-6 hidden md:block"></div><div class="flex-1 flex flex-wrap items-center justify-center gap-2"><span class="material-symbols-outlined text-[15px] text-antique-gold">eco</span><span>Rooted in Tradition • Crafted with Nature</span><span class="text-antique-gold/70 mx-1.5 hidden sm:inline">|</span><span class="text-earth-sand">Free Express Delivery across India on orders above ₹799</span><span class="text-antique-gold/70 mx-1.5 hidden md:inline">|</span><span class="hidden md:inline-flex items-center gap-1 text-antique-gold"><span class="material-symbols-outlined text-[14px]">verified</span> AYUSH Certified</span></div><button aria-label="Dismiss announcement" class="text-ivory-canvas/70 hover:text-ivory-canvas p-1 rounded transition-colors focus:outline-none" onclick="document.getElementById('top-announcement-bar').style.display='none'; document.getElementById('site-header').classList.remove('top-[38px]'); document.getElementById('site-header').classList.add('top-0'); document.getElementById('main-content-wrapper').classList.remove('pt-[118px]'); document.getElementById('main-content-wrapper').classList.add('pt-20');"><span class="material-symbols-outlined text-[16px]">close</span></button></div></div><header class="fixed top-[38px] left-0 right-0 w-full z-40 bg-surface/95 backdrop-blur-md transition-all duration-200 border-b border-forest-base/5 shadow-[0_2px_12px_rgba(15,38,24,0.04)]" id="site-header"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-3.5 shrink-0"><a class="flex items-center gap-3 group" href="#"><img alt="HakkiVeda Emblem Logo" class="h-10 w-10 object-contain rounded-md shadow-sm border border-antique-gold/30" src="https://lh3.googleusercontent.com/aida/AEtjO1XeJ_FVX9UdL0FKGRazwqH2HyDQitb0tk327cOTuYfRSAltWENI4zci--LiBjl1QJOQew5DB1g72SgOId5iRHWIHfe8teNttRjSYgjfUraGbLaZ0od7fKBC2XFmx-O7aiNvoCfVGUJr2IBpdh68Utg_qrUWQuCGlY4lFFYnZs7eHF9MdGPlFoC8EX_LiXw27dk4pexfDsk_mr8zmmVLK96VZ75XOjabMvw35J_zR61X0dAAcHo_kUwfSA"/><div class="flex flex-col"><span class="font-headline-sm text-[22px] font-semibold text-forest-deep leading-none tracking-tight group-hover:text-forest-base transition-colors">HakkiVeda</span><span class="font-label-sm text-[10px] text-antique-gold tracking-widest uppercase mt-1 font-bold">Ayurvedic Wellness</span></div></a></div><nav class="hidden lg:flex items-center gap-7"><a aria-current="page" class="font-title-md text-[14px] text-forest-deep font-semibold border-b-2 border-antique-gold py-1" href="#">Home</a><a class="font-body-md text-[14px] text-on-surface-variant hover:text-forest-deep transition-colors py-1" href="#featured-products">Shop All</a><a class="font-body-md text-[14px] text-on-surface-variant hover:text-forest-deep transition-colors py-1" href="#concerns">Collections</a><a class="font-body-md text-[14px] text-on-surface-variant hover:text-forest-deep transition-colors py-1" href="#our-story">Our Story</a><a class="font-body-md text-[14px] text-on-surface-variant hover:text-forest-deep transition-colors py-1" href="#ingredients">Ingredients Library</a><a class="font-body-md text-[14px] text-on-surface-variant hover:text-forest-deep transition-colors py-1" href="#journal">Journal</a></nav><div class="flex items-center gap-3 sm:gap-4 shrink-0"><button aria-label="Search Ayurvedic remedies" class="p-2 text-forest-deep hover:text-antique-gold transition-colors focus:outline-none" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Customer Account" class="p-2 text-forest-deep hover:text-antique-gold transition-colors hidden sm:inline-flex" href="#"><span class="material-symbols-outlined text-[22px]">manage_accounts</span></a><a aria-label="Wishlist" class="relative p-2 text-forest-deep hover:text-antique-gold transition-colors hidden sm:inline-flex" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-1 right-1 bg-terracotta text-on-tertiary font-label-sm text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span></a><button aria-label="Shopping Cart" class="flex items-center gap-2.5 bg-forest-base text-ivory-canvas px-3.5 py-2 rounded-lg shadow-sm hover:bg-forest-deep transition-all duration-200 focus:outline-none" onclick="toggleCartDrawer()" type="button"><span class="material-symbols-outlined text-[20px] text-antique-gold">shopping_bag</span><span class="hidden md:flex flex-col text-left"><span class="font-label-sm text-[10px] uppercase text-earth-sand tracking-wider leading-tight">Bag (3)</span><span class="font-title-md text-xs font-semibold leading-tight text-ivory-canvas">₹1,849</span></span></button></div></div></header><main class="w-full pt-[118px] bg-surface" id="main-content-wrapper"><div class="flex flex-col w-full">
+<!-- 1. CINEMATIC HERO SECTION -->
+<section class="relative w-full overflow-hidden bg-ivory-surface py-12 lg:py-20 border-b border-forest-base/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+<div class="lg:col-span-6 flex flex-col items-start z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-forest-base/10 border border-forest-base/15 text-forest-deep mb-5">
+<span class="material-symbols-outlined text-[16px] text-antique-gold">spa</span>
+<span class="font-label-md text-xs uppercase tracking-widest font-semibold">Classical Vedic Formulation</span>
+</div>
+<h1 class="font-headline-lg text-4xl sm:text-5xl lg:text-[54px] text-forest-deep leading-[1.12] tracking-tight font-serif mb-6">
+          Ancient Wisdom.<br/><span class="italic text-antique-gold font-normal">Rooted in Nature.</span>
+</h1>
+<p class="font-body-md text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-xl mb-8">
+          Discover ancestral herbal formulations crafted from 28 hand-foraged botanicals and cold-pressed alchemy. 100% wildcrafted for dense follicular vitality.
+        </p>
+<div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+<a class="inline-flex items-center justify-center gap-2 bg-forest-base text-ivory-canvas px-8 py-4 rounded font-title-md text-sm sm:text-base tracking-wide shadow-md hover:bg-forest-deep border border-antique-gold/40 transition-all" href="#featured-products">
+<span>Shop the Collection</span>
+<span class="material-symbols-outlined text-[18px] text-antique-gold">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 bg-transparent text-forest-deep px-7 py-4 rounded font-title-md text-sm sm:text-base tracking-wide border border-forest-base/30 hover:bg-forest-base/5 transition-all" href="#our-story">
+<span>Discover Our Story</span>
+</a>
+</div>
+<!-- Heritage Trust Points in Hero -->
+<div class="mt-10 pt-8 border-t border-forest-base/15 w-full flex flex-wrap items-center gap-6 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-antique-gold text-[20px]">hourglass_top</span>
+<span class="font-label-md text-xs uppercase tracking-wider text-forest-deep font-semibold">21-Day Slow Decoction</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-antique-gold text-[20px]">verified_user</span>
+<span class="font-label-md text-xs uppercase tracking-wider text-forest-deep font-semibold">AYUSH Certified Pharmacopoeia</span>
+</div>
+</div>
+</div>
+<!-- Hero Imagery with Overlaid Apothecary Badges -->
+<div class="lg:col-span-6 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-antique-gold/30 group">
+<img alt="HakkiVeda Maha Bhringraj botanical hair oils and wildcrafted forest herbs" class="w-full h-[440px] sm:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-forest-deep/60 via-transparent to-transparent"></div>
+<!-- Floating Pill Badge 1 -->
+<div class="absolute top-5 left-5 bg-surface/95 backdrop-blur-md px-4 py-2 rounded-lg shadow-md border border-antique-gold/40 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-herbal-jade text-[20px]">psychiatry</span>
+<div>
+<p class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Western Ghats Foraged</p>
+<p class="font-title-md text-xs font-bold text-forest-deep">28 Sacred Botanicals</p>
+</div>
+</div>
+<!-- Floating Pill Badge 2 -->
+<div class="absolute bottom-5 right-5 bg-forest-deep/90 backdrop-blur-md px-4 py-2.5 rounded-lg shadow-lg border border-antique-gold/50 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-antique-gold/20 flex items-center justify-center text-antique-gold">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="text-left">
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-earth-sand font-bold block">Vedic Authenticity</span>
+<span class="font-title-md text-xs font-semibold text-ivory-canvas">100% Ahimsa &amp; Wood-Pressed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. TRUST / VALUE STRIP -->
+<section class="w-full bg-surface-container-low text-charcoal-ink py-7 border-b border-forest-base/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface flex items-center justify-center shrink-0 text-herbal-jade shadow-sm border border-forest-base/10">
+<span class="material-symbols-outlined text-[22px]">history_edu</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep leading-tight">Ancient Wisdom</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Kansa cauldron decoction</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface flex items-center justify-center shrink-0 text-herbal-jade shadow-sm border border-forest-base/10">
+<span class="material-symbols-outlined text-[22px]">nature</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep leading-tight">Wildcrafted</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Tribal hand-harvested</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface flex items-center justify-center shrink-0 text-herbal-jade shadow-sm border border-forest-base/10">
+<span class="material-symbols-outlined text-[22px]">sanitizer</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep leading-tight">Carefully Crafted</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Zero mineral oils or toxins</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface flex items-center justify-center shrink-0 text-herbal-jade shadow-sm border border-forest-base/10">
+<span class="material-symbols-outlined text-[22px]">cruelty_free</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep leading-tight">Cruelty Free &amp; Ahimsa</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">PETA ethical practice</p>
+</div>
+</div>
+<div class="flex items-center gap-3 col-span-2 md:col-span-1">
+<div class="w-11 h-11 rounded-full bg-surface flex items-center justify-center shrink-0 text-herbal-jade shadow-sm border border-forest-base/10">
+<span class="material-symbols-outlined text-[22px]">auto_stories</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep leading-tight">Authentic Care</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Charaka Samhita guidance</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. FEATURED PRODUCTS SECTION -->
+<section class="w-full py-20 bg-surface" id="featured-products">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="max-w-xl">
+<div class="inline-flex items-center gap-2 text-antique-gold mb-2 font-label-md text-xs uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[16px]">local_florist</span>
+<span>Ancestral Decoctions</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-4xl text-forest-deep font-serif tracking-tight">Nature's Finest Formulations</h2>
+<p class="font-body-md text-sm sm:text-base text-on-surface-variant mt-2">
+          Slow-steeped in traditional bronze vessels for 21 days under warm solar alchemy to retain peak small-batch bioavailability.
+        </p>
+</div>
+<!-- Filter Category Pills -->
+<div class="flex flex-wrap items-center gap-2 p-1 bg-surface-container rounded-lg border border-forest-base/10" id="product-category-tabs">
+<button class="px-4 py-2 rounded text-xs font-label-md uppercase tracking-wider bg-forest-base text-ivory-canvas shadow-sm tab-btn" onclick="switchTab(this, 'all')" type="button">All Formulations</button>
+<button class="px-4 py-2 rounded text-xs font-label-md uppercase tracking-wider text-on-surface-variant hover:text-forest-deep transition-all tab-btn" onclick="switchTab(this, 'hair-growth')" type="button">Hair Fall Defense</button>
+<button class="px-4 py-2 rounded text-xs font-label-md uppercase tracking-wider text-on-surface-variant hover:text-forest-deep transition-all tab-btn" onclick="switchTab(this, 'scalp')" type="button">Scalp Purification</button>
+<button class="px-4 py-2 rounded text-xs font-label-md uppercase tracking-wider text-on-surface-variant hover:text-forest-deep transition-all tab-btn" onclick="switchTab(this, 'nourish')" type="button">Nourishment &amp; Shine</button>
+</div>
+</div>
+<!-- Product Cards Grid (4 items) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+<!-- Product 1: Maha Bhringraj -->
+<div class="group flex flex-col bg-ivory-surface rounded-xl overflow-hidden border border-forest-base/10 shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="HakkiVeda Maha Bhringraj Botanical Herbal Hair Oil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5">
+<span class="bg-forest-base text-ivory-canvas text-[10px] font-label-sm uppercase tracking-wider px-2.5 py-1 rounded font-semibold">Best Seller</span>
+<span class="bg-antique-gold text-forest-deep text-[10px] font-label-sm uppercase tracking-wider px-2.5 py-1 rounded font-semibold">Ancestral Formula</span>
+</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-forest-base hover:text-terracotta hover:bg-surface transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<button class="absolute inset-x-4 bottom-4 bg-surface/95 backdrop-blur-md text-forest-deep py-2.5 rounded text-xs font-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 hover:bg-forest-base hover:text-ivory-canvas shadow-md" onclick="openQuickView('Maha Bhringraj Botanical Herbal Hair Oil', '₹699', '₹899', 'Slow-cooked with 28 forest herbs', 'https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q', 'An ancient formulation boiled down over copper and clay ovens with hand-plucked wild Bhringraj, Brahmi, and fresh cold-pressed sesame oil. Penetrates deeply to arrest follicular shrinkage.')" type="button">
+<span class="material-symbols-outlined text-[17px]">visibility</span> Quick View
+          </button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3.5">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">4.9 (1,842)</span>
+</div>
+<h3 class="font-headline-sm text-base font-semibold text-forest-deep leading-snug">HakkiVeda Maha Bhringraj Herbal Hair Oil</h3>
+<p class="text-xs text-on-surface-variant mt-1">Slow-cooked with 28 forest herbs • 100ml / 200ml</p>
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-title-md text-lg text-forest-deep font-bold">₹699</span>
+<span class="text-xs text-on-surface-variant line-through">₹899</span>
+<span class="text-xs text-terracotta font-semibold font-label-sm">22% OFF</span>
+</div>
+<button class="w-full bg-forest-base hover:bg-forest-deep text-ivory-canvas py-2.5 rounded text-xs font-label-md uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm" onclick="addToCart('Maha Bhringraj Botanical Herbal Hair Oil', 699)" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span> Quick Add +
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 2: Wild Shikakai & Amla Shampoo -->
+<div class="group flex flex-col bg-ivory-surface rounded-xl border border-forest-base/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="Wild Shikakai &amp; Amla Restorative Shampoo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmRCNPtYzmBQDPf5fLcQxnymBDLDshE37QJ3os8W5aT2pvdINN51oML1pv9DCfa8N19u1s1eMOvYE0UbCu3RvgZHkM6OdBq7FuOsLFYUArPxFrBlEjwDx2fg74N8YACulzkOnBQEnLzZoeF_PrXGl_vII1etYRXA_hWAZ6tZMCZOIdjrlheFE6ePdzFn2MTfzu38hEQIlogGwl-ctbUCJq_5HgJhifO7R0iBbZY6-UHjXfIaz7z52M"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5">
+<span class="bg-herbal-jade text-ivory-canvas text-[10px] font-label-sm uppercase tracking-wider px-2.5 py-1 rounded font-semibold">New Harvest</span>
+</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-forest-base hover:text-terracotta hover:bg-surface transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<button class="absolute inset-x-4 bottom-4 bg-surface/95 backdrop-blur-md text-forest-deep py-2.5 rounded text-xs font-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 hover:bg-forest-base hover:text-ivory-canvas shadow-md" onclick="openQuickView('Wild Shikakai &amp; Amla Restorative Shampoo', '₹549', '₹649', 'Natural saponin cleanse without sulfates', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCmRCNPtYzmBQDPf5fLcQxnymBDLDshE37QJ3os8W5aT2pvdINN51oML1pv9DCfa8N19u1s1eMOvYE0UbCu3RvgZHkM6OdBq7FuOsLFYUArPxFrBlEjwDx2fg74N8YACulzkOnBQEnLzZoeF_PrXGl_vII1etYRXA_hWAZ6tZMCZOIdjrlheFE6ePdzFn2MTfzu38hEQIlogGwl-ctbUCJq_5HgJhifO7R0iBbZY6-UHjXfIaz7z52M', 'High concentration of natural saponins from wood-crushed soapnuts and amla pods that cleanse thoroughly without upsetting scalp pH.')" type="button">
+<span class="material-symbols-outlined text-[17px]">visibility</span> Quick View
+          </button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3.5">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">4.8 (520)</span>
+</div>
+<h3 class="font-headline-sm text-base font-semibold text-forest-deep leading-snug">Wild Shikakai &amp; Amla Restorative Shampoo</h3>
+<p class="text-xs text-on-surface-variant mt-1">Natural saponin cleanse without sulfates • 250ml</p>
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-title-md text-lg text-forest-deep font-bold">₹549</span>
+<span class="text-xs text-on-surface-variant line-through">₹649</span>
+<span class="text-xs text-terracotta font-semibold font-label-sm">15% OFF</span>
+</div>
+<button class="w-full bg-forest-base hover:bg-forest-deep text-ivory-canvas py-2.5 rounded text-xs font-label-md uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm" onclick="addToCart('Wild Shikakai &amp; Amla Restorative Shampoo', 549)" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span> Quick Add +
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 3: Neem & Methi Elixir -->
+<div class="group flex flex-col bg-ivory-surface rounded-xl border border-forest-base/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="Neem &amp; Methi Scalp Clarifying Elixir" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFmj-y5c8WJCGaQ0tbda7kyP4PbzsMHvfrM9E7kncnIWKIkZAQjy60kkN4bbHe0sYNCxZO1v57hOMXHV934gEnpbEQiNsz4lYbo417r6g91QWVBukGpMhiKyiKDAVpJ_L1zb640pR3pG-WiUYp4gCS291SzmYVkSRjOfWCliGlsH3m3t8WxaveB6xzHAG_lEzBhgtzk0zDbaiYIWhs28PWE2SXSPBTblaT_KqhDSeilS2Dn_GLLSAD"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5">
+<span class="bg-secondary text-surface text-[10px] font-label-sm uppercase tracking-wider px-2.5 py-1 rounded font-semibold">Award Winner</span>
+</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-forest-base hover:text-terracotta hover:bg-surface transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<button class="absolute inset-x-4 bottom-4 bg-surface/95 backdrop-blur-md text-forest-deep py-2.5 rounded text-xs font-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 hover:bg-forest-base hover:text-ivory-canvas shadow-md" onclick="openQuickView('Neem &amp; Methi Scalp Clarifying Elixir', '₹599', '', 'Roots relief &amp; anti-dandruff infusion', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFmj-y5c8WJCGaQ0tbda7kyP4PbzsMHvfrM9E7kncnIWKIkZAQjy60kkN4bbHe0sYNCxZO1v57hOMXHV934gEnpbEQiNsz4lYbo417r6g91QWVBukGpMhiKyiKDAVpJ_L1zb640pR3pG-WiUYp4gCS291SzmYVkSRjOfWCliGlsH3m3t8WxaveB6xzHAG_lEzBhgtzk0zDbaiYIWhs28PWE2SXSPBTblaT_KqhDSeilS2Dn_GLLSAD', 'Infused with bitter neem leaves and sprouted fenugreek mucilage to rebalance irritated scalp biomes and arrest flaky flaking.')" type="button">
+<span class="material-symbols-outlined text-[17px]">visibility</span> Quick View
+          </button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3.5">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">4.9 (610)</span>
+</div>
+<h3 class="font-headline-sm text-base font-semibold text-forest-deep leading-snug">Neem &amp; Methi Scalp Clarifying Elixir</h3>
+<p class="text-xs text-on-surface-variant mt-1">Roots relief &amp; anti-dandruff infusion • 100ml</p>
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-title-md text-lg text-forest-deep font-bold">₹599</span>
+<span class="text-[11px] text-herbal-jade font-semibold font-label-sm">High Bio-Potency</span>
+</div>
+<button class="w-full bg-forest-base hover:bg-forest-deep text-ivory-canvas py-2.5 rounded text-xs font-label-md uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm" onclick="addToCart('Neem &amp; Methi Scalp Clarifying Elixir', 599)" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span> Quick Add +
+            </button>
+</div>
+</div>
+</div>
+<!-- Product 4: Tribal Herb 21-Day Intensive -->
+<div class="group flex flex-col bg-ivory-surface rounded-xl border border-forest-base/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="Tribal Herb 21-Day Intensive Growth Oil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcYb70ZTzaYUBa9mDA0zuaKaCqG8BmOmGjcPh46bfAFHzN_5BBVqM0q8ulbf4Hk5mx2hYKpRcUl46tL_2UcgR99_2dNaiqLVGA4In869LTwMBoqxRgOjVgfxBKWSK99N0DGfN8PPgYAteEoaqFuFs7fzzWIOxPpAedKC9b6vW4nv17GczIt2yjnYvkJuIdvKeD9seknCArxm1oFeOAyxJO0rTaU15XXfdkjjvxjjzdemoXUfJYf5VH"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5">
+<span class="bg-terracotta text-ivory-canvas text-[10px] font-label-sm uppercase tracking-wider px-2.5 py-1 rounded font-semibold">Limited Batch</span>
+</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-forest-base hover:text-terracotta hover:bg-surface transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<button class="absolute inset-x-4 bottom-4 bg-surface/95 backdrop-blur-md text-forest-deep py-2.5 rounded text-xs font-label-md uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 hover:bg-forest-base hover:text-ivory-canvas shadow-md" onclick="openQuickView('Tribal 21-Day Intensive Growth Oil', '₹1,199', '₹1,499', 'Potent cold infusion for dense vitality', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCcYb70ZTzaYUBa9mDA0zuaKaCqG8BmOmGjcPh46bfAFHzN_5BBVqM0q8ulbf4Hk5mx2hYKpRcUl46tL_2UcgR99_2dNaiqLVGA4In869LTwMBoqxRgOjVgfxBKWSK99N0DGfN8PPgYAteEoaqFuFs7fzzWIOxPpAedKC9b6vW4nv17GczIt2yjnYvkJuIdvKeD9seknCArxm1oFeOAyxJO0rTaU15XXfdkjjvxjjzdemoXUfJYf5VH', 'Rare seasonal edition formulated strictly by lunar cycles with 34 Western Ghats wild herbs slow-simmered over low tamarind-wood fires.')" type="button">
+<span class="material-symbols-outlined text-[17px]">visibility</span> Quick View
+          </button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3.5">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">5.0 (2.4k)</span>
+</div>
+<h3 class="font-headline-sm text-base font-semibold text-forest-deep leading-snug">Tribal 21-Day Intensive Growth Oil</h3>
+<p class="text-xs text-on-surface-variant mt-1">Potent cold infusion for dense vitality • 200ml</p>
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-title-md text-lg text-forest-deep font-bold">₹1,199</span>
+<span class="text-xs text-on-surface-variant line-through">₹1,499</span>
+<span class="text-xs text-terracotta font-semibold font-label-sm">20% OFF</span>
+</div>
+<button class="w-full bg-forest-base hover:bg-forest-deep text-ivory-canvas py-2.5 rounded text-xs font-label-md uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm" onclick="addToCart('Tribal 21-Day Intensive Growth Oil', 1199)" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span> Quick Add +
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. SHOP BY CONCERN -->
+<section class="w-full py-16 bg-ivory-canvas border-y border-forest-base/10" id="concerns">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">Targeted Botanical Solutions</span>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif mt-1.5">Shop by Scalp &amp; Hair Concern</h2>
+<p class="font-body-md text-sm text-on-surface-variant mt-2">Every crown possesses its unique doshic balance. Choose restorative formulas personalized to your elemental state.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<a class="group relative flex flex-col p-5 rounded-xl bg-surface border border-forest-base/10 hover:bg-forest-base transition-all duration-300 text-center items-center justify-between min-h-[180px] shadow-sm hover:shadow-md" href="#featured-products">
+<div class="w-12 h-12 rounded-full bg-ivory-surface group-hover:bg-forest-deep flex items-center justify-center text-forest-base group-hover:text-antique-gold transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep group-hover:text-ivory-canvas leading-tight transition-colors">Hair Fall Defense</h4>
+<span class="font-body-sm text-[11px] text-on-surface-variant group-hover:text-earth-sand transition-colors mt-1 block">8 Remedies</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-antique-gold opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+<a class="group relative flex flex-col p-5 rounded-xl bg-surface border border-forest-base/10 hover:bg-forest-base transition-all duration-300 text-center items-center justify-between min-h-[180px] shadow-sm hover:shadow-md" href="#featured-products">
+<div class="w-12 h-12 rounded-full bg-ivory-surface group-hover:bg-forest-deep flex items-center justify-center text-forest-base group-hover:text-antique-gold transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">potted_plant</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep group-hover:text-ivory-canvas leading-tight transition-colors">Dense Regrowth &amp; Volume</h4>
+<span class="font-body-sm text-[11px] text-on-surface-variant group-hover:text-earth-sand transition-colors mt-1 block">11 Remedies</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-antique-gold opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+<a class="group relative flex flex-col p-5 rounded-xl bg-surface border border-forest-base/10 hover:bg-forest-base transition-all duration-300 text-center items-center justify-between min-h-[180px] shadow-sm hover:shadow-md" href="#featured-products">
+<div class="w-12 h-12 rounded-full bg-ivory-surface group-hover:bg-forest-deep flex items-center justify-center text-forest-base group-hover:text-antique-gold transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">water_drop</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep group-hover:text-ivory-canvas leading-tight transition-colors">Scalp Care &amp; Anti-Dandruff</h4>
+<span class="font-body-sm text-[11px] text-on-surface-variant group-hover:text-earth-sand transition-colors mt-1 block">6 Remedies</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-antique-gold opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+<a class="group relative flex flex-col p-5 rounded-xl bg-surface border border-forest-base/10 hover:bg-forest-base transition-all duration-300 text-center items-center justify-between min-h-[180px] shadow-sm hover:shadow-md" href="#featured-products">
+<div class="w-12 h-12 rounded-full bg-ivory-surface group-hover:bg-forest-deep flex items-center justify-center text-forest-base group-hover:text-antique-gold transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">waves</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep group-hover:text-ivory-canvas leading-tight transition-colors">Dry &amp; Frizzy Strands</h4>
+<span class="font-body-sm text-[11px] text-on-surface-variant group-hover:text-earth-sand transition-colors mt-1 block">9 Remedies</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-antique-gold opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+<a class="group relative flex flex-col p-5 rounded-xl bg-surface border border-forest-base/10 hover:bg-forest-base transition-all duration-300 text-center items-center justify-between min-h-[180px] shadow-sm hover:shadow-md" href="#featured-products">
+<div class="w-12 h-12 rounded-full bg-ivory-surface group-hover:bg-forest-deep flex items-center justify-center text-forest-base group-hover:text-antique-gold transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">nest_clock_farsight_analog</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep group-hover:text-ivory-canvas leading-tight transition-colors">Premature Greying Defense</h4>
+<span class="font-body-sm text-[11px] text-on-surface-variant group-hover:text-earth-sand transition-colors mt-1 block">5 Remedies</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-antique-gold opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+<a class="group relative flex flex-col p-5 rounded-xl bg-surface border border-forest-base/10 hover:bg-forest-base transition-all duration-300 text-center items-center justify-between min-h-[180px] shadow-sm hover:shadow-md" href="#featured-products">
+<div class="w-12 h-12 rounded-full bg-ivory-surface group-hover:bg-forest-deep flex items-center justify-center text-forest-base group-hover:text-antique-gold transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">redeem</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-bold text-forest-deep group-hover:text-ivory-canvas leading-tight transition-colors">Complete Ritual Ensembles</h4>
+<span class="font-body-sm text-[11px] text-on-surface-variant group-hover:text-earth-sand transition-colors mt-1 block">4 Ensembles</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-antique-gold opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 5. HERITAGE & BRAND STORY SECTION (Born from Ancestral Wisdom) -->
+<section class="w-full py-20 bg-forest-deep text-ivory-canvas relative overflow-hidden" id="our-story">
+<div class="absolute -right-40 -top-40 w-96 h-96 rounded-full bg-herbal-jade/20 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- LEFT: Traditional Champi Image -->
+<div class="lg:col-span-6 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-antique-gold/30 group">
+<img alt="Traditional Indian Ayurvedic Champi ritual" class="w-full h-[480px] object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1Ub301W2K1mmY5_CIBe4m2O8EMquLGXQ2Tc9GehiPP3Qedb87Mn8h4mpNZJfs-96XpE5tNfCb5kC4W0iNU8G8UqyDZtmWd4EWo-vIDw4XfBmpbtQqCHEH2IlK0eiQ6vTdWwYx9BDY_vcdI2nEAC9jtkqOfANlcsoJtdnT1k_wc4-k1AqjY1XBpNIE9wze-a9uPcqUTnOIiiehFfGwZCwXVxFcw9IN-o9XvtkQQ-llUHvKEkCMTcGD--N_s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-5 left-5 right-5 p-4 bg-forest-base/90 backdrop-blur-md rounded-xl border border-antique-gold/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-antique-gold text-[24px]">nature</span>
+<div>
+<span class="font-label-sm text-xs uppercase tracking-wider text-antique-gold font-bold">Wildcrafted In Western Ghats</span>
+<p class="font-body-sm text-xs text-earth-sand mt-0.5">Sustainably hand-gathered during Sharad Ritu under the harvest moon.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT: Editorial Story Copy -->
+<div class="lg:col-span-6 flex flex-col items-start">
+<div class="inline-flex items-center gap-2 text-antique-gold mb-3 font-label-md text-xs uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[16px]">eco</span>
+<span>The HakkiVeda Lineage</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-4xl text-ivory-canvas font-serif tracking-tight leading-tight mb-5">
+          Born from Ancestral Wisdom,<br/><span class="text-antique-gold italic font-normal">Perfected by Nature.</span>
+</h2>
+<p class="font-body-md text-sm sm:text-base text-earth-sand/90 leading-relaxed mb-4">
+          In the remote forest frontiers of South India, indigenous herbalists have safeguarded secret decoction recipes for over four hundred years. Rather than industrial flash-steaming, our grandmother remedies demand 21 consecutive days of slow earthen boiling inside sanctified bronze katoris.
+        </p>
+<p class="font-body-md text-sm sm:text-base text-earth-sand/90 leading-relaxed mb-6">
+          Each batch captures raw phytonutrients in unadulterated cold-pressed sesame and virgin botanicals—delivering pure, uninterrupted prana directly to your crown.
+        </p>
+<div class="w-full bg-surface/5 backdrop-blur-md p-5 rounded-xl border border-antique-gold/20 mb-6">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-antique-gold text-[28px] shrink-0">format_quote</span>
+<div>
+<p class="font-body-md text-sm italic text-earth-sand">
+                "We do not synthesize life in stainless steel laboratories. We simply gather the botanical prana of the forest and deliver it uninterrupted to your scalp."
+              </p>
+<div class="mt-2 flex items-center justify-between">
+<span class="font-title-md text-xs text-antique-gold font-semibold">Vaidya Anandamurthy Shastry</span>
+<span class="font-label-sm text-[10px] text-earth-sand/70 uppercase tracking-widest">Chief Herbal Alchemist</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-2 bg-antique-gold text-forest-deep px-6 py-3.5 rounded font-title-md text-sm font-semibold hover:bg-earth-sand transition-all shadow-md" href="#">
+<span>Explore Our Story</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex items-center gap-2 text-earth-sand font-label-md text-xs">
+<span class="material-symbols-outlined text-antique-gold text-[18px]">verified</span>
+<span>AYUSH Certified Sourcing</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. INGREDIENTS FROM NATURE (Botanical Herbarium Monograph) -->
+<section class="w-full py-20 bg-surface" id="ingredients">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">Ayurvedic Herbarium</span>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif mt-1.5">Pristine Botanical Monograph</h2>
+<p class="font-body-md text-sm text-on-surface-variant mt-2 max-w-xl">Every HakkiVeda drop is rich in potent wildcrafted actives. Explore classical pharmacological attributes.</p>
+</div>
+<a class="inline-flex items-center gap-2 font-title-md text-sm text-forest-base hover:text-antique-gold transition-colors font-semibold" href="#">
+<span>Explore All 34 Forest Herbs</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Herb 1 -->
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 hover:border-antique-gold/40 transition-all duration-300 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-label-sm uppercase tracking-widest px-2.5 py-0.5 rounded bg-forest-base text-ivory-canvas">Eclipta Alba</span>
+<span class="material-symbols-outlined text-antique-gold text-[22px]">local_florist</span>
+</div>
+<h3 class="font-headline-sm text-xl font-serif text-forest-deep">Bhringraj</h3>
+<span class="text-xs italic text-on-surface-variant block mb-2 font-serif">Sanskrit: Kesharaja ("King of Hair")</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-4">
+            Activates dormant hair follicles by increasing cutaneous microcirculation. Proven to extend anagen growth cycles with wedelolactone alkaloids.
+          </p>
+</div>
+<a class="pt-3 border-t border-forest-base/10 flex items-center justify-between text-forest-base hover:text-antique-gold text-xs font-label-md uppercase tracking-wider" href="#">
+<span>Learn More &amp; Formulations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Herb 2 -->
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 hover:border-antique-gold/40 transition-all duration-300 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-label-sm uppercase tracking-widest px-2.5 py-0.5 rounded bg-forest-base text-ivory-canvas">Phyllanthus Emblica</span>
+<span class="material-symbols-outlined text-antique-gold text-[22px]">spa</span>
+</div>
+<h3 class="font-headline-sm text-xl font-serif text-forest-deep">Wild Amla</h3>
+<span class="text-xs italic text-on-surface-variant block mb-2 font-serif">Sanskrit: Dhatri ("The Divine Nurse")</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-4">
+            Dense reservoir of heat-stable bioflavonoids and bioactive Vitamin C. Protects delicate hair keratin against solar oxidation and arrests early chromophore melanin loss.
+          </p>
+</div>
+<a class="pt-3 border-t border-forest-base/10 flex items-center justify-between text-forest-base hover:text-antique-gold text-xs font-label-md uppercase tracking-wider" href="#">
+<span>Learn More &amp; Formulations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Herb 3 -->
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 hover:border-antique-gold/40 transition-all duration-300 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-label-sm uppercase tracking-widest px-2.5 py-0.5 rounded bg-forest-base text-ivory-canvas">Acacia Concinna</span>
+<span class="material-symbols-outlined text-antique-gold text-[22px]">energy_savings_leaf</span>
+</div>
+<h3 class="font-headline-sm text-xl font-serif text-forest-deep">Shikakai</h3>
+<span class="text-xs italic text-on-surface-variant block mb-2 font-serif">Sanskrit: "Fruit for the Hair"</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-4">
+            Naturally low-pH fruit bark that dissolves dirt without stripping lipid membranes. Imparts radiant gloss and natural slip.
+          </p>
+</div>
+<a class="pt-3 border-t border-forest-base/10 flex items-center justify-between text-forest-base hover:text-antique-gold text-xs font-label-md uppercase tracking-wider" href="#">
+<span>Learn More &amp; Formulations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Herb 4 -->
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 hover:border-antique-gold/40 transition-all duration-300 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-label-sm uppercase tracking-widest px-2.5 py-0.5 rounded bg-forest-base text-ivory-canvas">Azadirachta Indica</span>
+<span class="material-symbols-outlined text-antique-gold text-[22px]">cleaning_services</span>
+</div>
+<h3 class="font-headline-sm text-xl font-serif text-forest-deep">Organic Neem</h3>
+<span class="text-xs italic text-on-surface-variant block mb-2 font-serif">Sanskrit: Arishta ("Curer of Sickness")</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-4">
+            Potent nimbin and nimbidin triterpenoids subdue Malassezia yeast colonization, eliminating flaking and clarifying follicular pores.
+          </p>
+</div>
+<a class="pt-3 border-t border-forest-base/10 flex items-center justify-between text-forest-base hover:text-antique-gold text-xs font-label-md uppercase tracking-wider" href="#">
+<span>Learn More &amp; Formulations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Herb 5 -->
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 hover:border-antique-gold/40 transition-all duration-300 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-label-sm uppercase tracking-widest px-2.5 py-0.5 rounded bg-forest-base text-ivory-canvas">Trigonella Foenum-Graecum</span>
+<span class="material-symbols-outlined text-antique-gold text-[22px]">grain</span>
+</div>
+<h3 class="font-headline-sm text-xl font-serif text-forest-deep">Methi / Fenugreek</h3>
+<span class="text-xs italic text-on-surface-variant block mb-2 font-serif">Sanskrit: Medhika</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-4">
+            High-protein seed mucilage and plant lecithins that repair micro-tears in thinning strands, preventing breakage and restoring elasticity.
+          </p>
+</div>
+<a class="pt-3 border-t border-forest-base/10 flex items-center justify-between text-forest-base hover:text-antique-gold text-xs font-label-md uppercase tracking-wider" href="#">
+<span>Learn More &amp; Formulations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Herb 6 -->
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 hover:border-antique-gold/40 transition-all duration-300 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-label-sm uppercase tracking-widest px-2.5 py-0.5 rounded bg-forest-base text-ivory-canvas">Sesamum Indicum</span>
+<span class="material-symbols-outlined text-antique-gold text-[22px]">water</span>
+</div>
+<h3 class="font-headline-sm text-xl font-serif text-forest-deep">Virgin Black Sesame</h3>
+<span class="text-xs italic text-on-surface-variant block mb-2 font-serif">Sanskrit: Kala Tila</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-4">
+            Revered classical carrier oil for its ultra-fine molecular weight (Sukshma). Cold-pressed to deliver active botanicals directly into root papillae.
+          </p>
+</div>
+<a class="pt-3 border-t border-forest-base/10 flex items-center justify-between text-forest-base hover:text-antique-gold text-xs font-label-md uppercase tracking-wider" href="#">
+<span>Learn More &amp; Formulations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. HOW IT'S MADE (The Alchemy of 21 Days) -->
+<section class="w-full py-20 bg-forest-base text-ivory-canvas">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">Vedic Snehapaka Method</span>
+<h2 class="font-headline-lg text-3xl sm:text-4xl text-ivory-canvas font-serif mt-1.5">The Alchemy of 21 Days</h2>
+<p class="font-body-md text-sm sm:text-base text-earth-sand/80 mt-2">
+        Purity cannot be hurried. Our labor-intensive slow infusion preserves delicate botanical phytochemicals without high-heat degradation.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col p-6 rounded-xl bg-forest-deep/80 border border-antique-gold/25 shadow-md">
+<div class="flex items-center justify-between mb-5">
+<span class="font-headline-md text-2xl text-antique-gold font-bold font-serif">01</span>
+<span class="material-symbols-outlined text-earth-sand text-[26px]">forest</span>
+</div>
+<h3 class="font-title-md text-base text-ivory-canvas font-bold mb-2">Wild Herb Sourcing</h3>
+<p class="font-body-sm text-xs text-earth-sand/80 leading-relaxed">
+          Tribal elders hand-forage 28 wild botanical varieties at specific solar quadrants for peak bioactive sap concentration.
+        </p>
+</div>
+<div class="flex flex-col p-6 rounded-xl bg-forest-deep/80 border border-antique-gold/25 shadow-md">
+<div class="flex items-center justify-between mb-5">
+<span class="font-headline-md text-2xl text-antique-gold font-bold font-serif">02</span>
+<span class="material-symbols-outlined text-earth-sand text-[26px]">scatter_plot</span>
+</div>
+<h3 class="font-title-md text-base text-ivory-canvas font-bold mb-2">Mortar Grinding</h3>
+<p class="font-body-sm text-xs text-earth-sand/80 leading-relaxed">
+          Herbs are stone-crushed in granite mortars (Kharal) to release volatile phytochemicals, then sun-ripened on woven bamboo trays.
+        </p>
+</div>
+<div class="flex flex-col p-6 rounded-xl bg-forest-deep/80 border border-antique-gold/25 shadow-md">
+<div class="flex items-center justify-between mb-5">
+<span class="font-headline-md text-2xl text-antique-gold font-bold font-serif">03</span>
+<span class="material-symbols-outlined text-earth-sand text-[26px]">soup_kitchen</span>
+</div>
+<h3 class="font-title-md text-base text-ivory-canvas font-bold mb-2">Slow Bronze Simmer</h3>
+<p class="font-body-sm text-xs text-earth-sand/80 leading-relaxed">
+          Simmered for 21 consecutive days in hand-beaten Kansa bronze vats over mild flame to achieve pure waterless medicinal potency.
+        </p>
+</div>
+<div class="flex flex-col p-6 rounded-xl bg-forest-deep/80 border border-antique-gold/25 shadow-md">
+<div class="flex items-center justify-between mb-5">
+<span class="font-headline-md text-2xl text-antique-gold font-bold font-serif">04</span>
+<span class="material-symbols-outlined text-earth-sand text-[26px]">science</span>
+</div>
+<h3 class="font-title-md text-base text-ivory-canvas font-bold mb-2">Amber Bottling</h3>
+<p class="font-body-sm text-xs text-earth-sand/80 leading-relaxed">
+          Gravity-filtered through organic unbleached muslin and sealed into apothecary dark amber UV glass bottles.
+        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. BEST SELLERS SHOWCASE -->
+<section class="w-full py-20 bg-ivory-surface">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+<div>
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">Community Favorites</span>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif mt-1">Our Iconic Best Sellers</h2>
+</div>
+<a class="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-label-md font-bold text-forest-deep hover:text-antique-gold" href="#featured-products">
+<span>View All Best Sellers</span>
+<span class="material-symbols-outlined text-[16px]">east</span>
+</a>
+</div>
+<!-- Bestseller Carousel/Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface rounded-xl p-5 border border-forest-base/10 shadow-sm flex flex-col justify-between">
+<div class="relative aspect-video rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img alt="Maha Bhringraj Botanical Herbal Hair Oil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q"/>
+<span class="absolute top-2 left-2 bg-antique-gold text-forest-deep text-[10px] font-bold uppercase px-2 py-0.5 rounded">#1 Bestseller</span>
+</div>
+<div>
+<div class="flex items-center gap-1 text-antique-gold text-xs mb-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-forest-deep text-xs">4.9</span>
+<span class="text-on-surface-variant text-[11px]">(1,842 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-base font-bold text-forest-deep">Maha Bhringraj Herbal Hair Oil</h3>
+<p class="text-xs text-on-surface-variant mt-1">Concentrated 28-herb cold infusion for root anchoring.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-forest-base/10 flex items-center justify-between">
+<span class="font-title-md text-base font-bold text-forest-deep">₹699 <span class="text-xs font-normal line-through text-on-surface-variant">₹899</span></span>
+<button class="bg-forest-base hover:bg-forest-deep text-ivory-canvas px-4 py-2 rounded text-xs uppercase tracking-wider font-label-md" onclick="addToCart('Maha Bhringraj Herbal Hair Oil', 699)" type="button">Add to Sacred Bag</button>
+</div>
+</div>
+<div class="bg-surface rounded-xl p-5 border border-forest-base/10 shadow-sm flex flex-col justify-between">
+<div class="relative aspect-video rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img alt="Tribal Herb 21-Day Intensive Growth Oil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcYb70ZTzaYUBa9mDA0zuaKaCqG8BmOmGjcPh46bfAFHzN_5BBVqM0q8ulbf4Hk5mx2hYKpRcUl46tL_2UcgR99_2dNaiqLVGA4In869LTwMBoqxRgOjVgfxBKWSK99N0DGfN8PPgYAteEoaqFuFs7fzzWIOxPpAedKC9b6vW4nv17GczIt2yjnYvkJuIdvKeD9seknCArxm1oFeOAyxJO0rTaU15XXfdkjjvxjjzdemoXUfJYf5VH"/>
+<span class="absolute top-2 left-2 bg-terracotta text-ivory-canvas text-[10px] font-bold uppercase px-2 py-0.5 rounded">High Demand</span>
+</div>
+<div>
+<div class="flex items-center gap-1 text-antique-gold text-xs mb-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-forest-deep text-xs">5.0</span>
+<span class="text-on-surface-variant text-[11px]">(2,450 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-base font-bold text-forest-deep">Tribal 21-Day Intensive Growth Oil</h3>
+<p class="text-xs text-on-surface-variant mt-1">Rare lunar-harvested elixir formulated for sparse crowns.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-forest-base/10 flex items-center justify-between">
+<span class="font-title-md text-base font-bold text-forest-deep">₹1,199 <span class="text-xs font-normal line-through text-on-surface-variant">₹1,499</span></span>
+<button class="bg-forest-base hover:bg-forest-deep text-ivory-canvas px-4 py-2 rounded text-xs uppercase tracking-wider font-label-md" onclick="addToCart('Tribal 21-Day Intensive Growth Oil', 1199)" type="button">Add to Sacred Bag</button>
+</div>
+</div>
+<div class="bg-surface rounded-xl p-5 border border-forest-base/10 shadow-sm flex flex-col justify-between">
+<div class="relative aspect-video rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img alt="Wild Shikakai &amp; Amla Restorative Shampoo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmRCNPtYzmBQDPf5fLcQxnymBDLDshE37QJ3os8W5aT2pvdINN51oML1pv9DCfa8N19u1s1eMOvYE0UbCu3RvgZHkM6OdBq7FuOsLFYUArPxFrBlEjwDx2fg74N8YACulzkOnBQEnLzZoeF_PrXGl_vII1etYRXA_hWAZ6tZMCZOIdjrlheFE6ePdzFn2MTfzu38hEQIlogGwl-ctbUCJq_5HgJhifO7R0iBbZY6-UHjXfIaz7z52M"/>
+<span class="absolute top-2 left-2 bg-herbal-jade text-ivory-canvas text-[10px] font-bold uppercase px-2 py-0.5 rounded">Gentle Cleanser</span>
+</div>
+<div>
+<div class="flex items-center gap-1 text-antique-gold text-xs mb-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-forest-deep text-xs">4.8</span>
+<span class="text-on-surface-variant text-[11px]">(520 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-base font-bold text-forest-deep">Wild Shikakai &amp; Amla Shampoo</h3>
+<p class="text-xs text-on-surface-variant mt-1">Saponin-rich herbal cleanser preserving acid mantle.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-forest-base/10 flex items-center justify-between">
+<span class="font-title-md text-base font-bold text-forest-deep">₹549 <span class="text-xs font-normal line-through text-on-surface-variant">₹649</span></span>
+<button class="bg-forest-base hover:bg-forest-deep text-ivory-canvas px-4 py-2 rounded text-xs uppercase tracking-wider font-label-md" onclick="addToCart('Wild Shikakai &amp; Amla Shampoo', 549)" type="button">Add to Sacred Bag</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. SOCIAL PROOF & CUSTOMER TESTIMONIALS -->
+<section class="w-full py-20 bg-surface">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">Transformative Testimonials</span>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif mt-1">Loved by Authentic Ritualists</h2>
+<p class="font-body-md text-sm text-on-surface-variant mt-2">Read real experiences from community members who reclaimed their crown wellness through HakkiVeda.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] text-herbal-jade bg-surface px-2 py-0.5 rounded font-semibold">
+<span class="material-symbols-outlined text-[13px]">verified</span> Verified Buyer
+            </span>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-charcoal-ink leading-relaxed mb-4">
+            "Hair fall reduced by 80% in 4 weeks. The texture is divine. After bi-weekly overnight champis, the density along my temples is visibly renewed."
+          </p>
+</div>
+<div class="pt-3 border-t border-forest-base/10 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-forest-base text-ivory-canvas flex items-center justify-center font-bold text-xs">MS</div>
+<div>
+<h4 class="font-title-md text-xs font-bold text-forest-deep">Meera S.</h4>
+<p class="text-[11px] text-on-surface-variant">Bengaluru • Maha Bhringraj Oil</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] text-herbal-jade bg-surface px-2 py-0.5 rounded font-semibold">
+<span class="material-symbols-outlined text-[13px]">verified</span> Verified Buyer
+            </span>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-charcoal-ink leading-relaxed mb-4">
+            "Cleared stubborn dandruff without drying my scalp. Within three applications, the flaking stopped and itching calmed down completely."
+          </p>
+</div>
+<div class="pt-3 border-t border-forest-base/10 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-forest-base text-ivory-canvas flex items-center justify-center font-bold text-xs">RV</div>
+<div>
+<h4 class="font-title-md text-xs font-bold text-forest-deep">Rohan V.</h4>
+<p class="text-[11px] text-on-surface-variant">Mumbai • Neem &amp; Methi Elixir</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex text-antique-gold text-xs">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] text-herbal-jade bg-surface px-2 py-0.5 rounded font-semibold">
+<span class="material-symbols-outlined text-[13px]">verified</span> Vaidya Certified
+            </span>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-charcoal-ink leading-relaxed mb-4">
+            "Rare to find truly classical kansa bronze prepared oils in modern D2C. HakkiVeda's 21-day method maintains therapeutic volatile components intact."
+          </p>
+</div>
+<div class="pt-3 border-t border-forest-base/10 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-antique-gold text-forest-deep flex items-center justify-center font-bold text-xs">PM</div>
+<div>
+<h4 class="font-title-md text-xs font-bold text-forest-deep">Dr. Priya Menon</h4>
+<p class="text-[11px] text-on-surface-variant">Kochi • Ayurvedic Physician</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. LIFESTYLE / COMMUNITY (#HakkiVedaRitual) -->
+<section class="w-full py-16 bg-ivory-canvas border-y border-forest-base/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+<div>
+<span class="font-label-sm text-xs uppercase tracking-widest text-antique-gold font-semibold">Community Sanctuary</span>
+<h3 class="font-headline-md text-2xl text-forest-deep font-serif mt-1">Loved by Our Community <span class="text-antique-gold">#HakkiVedaRitual</span></h3>
+</div>
+<a class="inline-flex items-center gap-1.5 font-label-md text-xs uppercase tracking-wider text-forest-base hover:text-antique-gold font-bold" href="#">
+<span>Follow on Instagram @HakkiVeda</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square rounded-xl overflow-hidden relative group border border-forest-base/10 shadow-sm">
+<img alt="Community Ayurvedic Champi ritual" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Ub301W2K1mmY5_CIBe4m2O8EMquLGXQ2Tc9GehiPP3Qedb87Mn8h4mpNZJfs-96XpE5tNfCb5kC4W0iNU8G8UqyDZtmWd4EWo-vIDw4XfBmpbtQqCHEH2IlK0eiQ6vTdWwYx9BDY_vcdI2nEAC9jtkqOfANlcsoJtdnT1k_wc4-k1AqjY1XBpNIE9wze-a9uPcqUTnOIiiehFfGwZCwXVxFcw9IN-o9XvtkQQ-llUHvKEkCMTcGD--N_s"/>
+<div class="absolute inset-0 bg-forest-deep/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-ivory-canvas">
+<span class="material-symbols-outlined text-[26px]">photo_camera</span>
+</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden relative group border border-forest-base/10 shadow-sm">
+<img alt="Ayurvedic oil texture and herbal macro details" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1XiZKCklgJC7rKSPIIkuYSxATHytkUIrBc10y-Tolyyog-nThKveFoLxQBpfYrdpzaxRx_Eq9E5Kvx81sRy8nOgGOHk2ByUX4mlHUAhJJRBUthMalbI7iEzPe4uMzUEBAxxs81JfbBNSYVOZ5rjYoDYJA0TFBovBtT1bpIIjtyBQB5ZloEgbm0rJi14bApwk70-rwN0WzUzar_pg3wX18esSSQRVSdTyXOTYaU_qh3YO1ih6NHH7CPMoZE"/>
+<div class="absolute inset-0 bg-forest-deep/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-ivory-canvas">
+<span class="material-symbols-outlined text-[26px]">photo_camera</span>
+</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden relative group border border-forest-base/10 shadow-sm">
+<img alt="HakkiVeda apothecary bottles and botanical harvest" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q"/>
+<div class="absolute inset-0 bg-forest-deep/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-ivory-canvas">
+<span class="material-symbols-outlined text-[26px]">photo_camera</span>
+</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden relative group border border-forest-base/10 shadow-sm">
+<img alt="Morning self-care hair ritual" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgHb_O1tOOC9YkZ-3GbbQ31AGEtcXLk3_H0zICWMDsGoVPT0WNTF6FoLemiWAi7rNnFaVohf7kdedM_KpCXv0Yge8RJiMTOpypDjL2ydkj1fH2i1SnMyN6_2LCetNkg7ZrwfB7UTtMye1Z-1aGP7ocxldK16C_hAc7d5snDfHTAufSOM8ZZBxrmIiQmX7-rFYvyfayMhlwUkqmf5HRGGqPv8ae9WImNnCF36QPOmop0Sb46UIVsdis"/>
+<div class="absolute inset-0 bg-forest-deep/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-ivory-canvas">
+<span class="material-symbols-outlined text-[26px]">photo_camera</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 11. BEFORE / AFTER & CLINICAL EXPERIENCE (Ritual Milestones) -->
+<section class="w-full py-16 bg-surface">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">Documented Results</span>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif mt-1">Customer Experience &amp; Ritual Milestones</h2>
+<p class="font-body-md text-sm text-on-surface-variant mt-2">Ayurveda works in synergy with your natural circadian cycles. Here is what consistent users observe.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 text-center flex flex-col items-center">
+<span class="w-12 h-12 rounded-full bg-forest-base/10 text-forest-deep flex items-center justify-center font-bold text-sm mb-3">W02</span>
+<h4 class="font-title-md text-base font-bold text-forest-deep mb-1">Week 2: Soothed Scalp &amp; Relief</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Itching calms immediately upon application. Saponins and cold-pressed sesamol dissolve flaky buildup without stripping natural lipids.
+        </p>
+</div>
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 text-center flex flex-col items-center">
+<span class="w-12 h-12 rounded-full bg-forest-base/10 text-forest-deep flex items-center justify-center font-bold text-sm mb-3">W06</span>
+<h4 class="font-title-md text-base font-bold text-forest-deep mb-1">Week 6: Noticeable Fall Reduction</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Follicles anchor into microcirculation beds. Comb fall and shower shedding significantly taper down as wedelolactones activate roots.
+        </p>
+</div>
+<div class="p-6 rounded-xl bg-ivory-surface border border-forest-base/10 text-center flex flex-col items-center">
+<span class="w-12 h-12 rounded-full bg-forest-base/10 text-forest-deep flex items-center justify-center font-bold text-sm mb-3">W12</span>
+<h4 class="font-title-md text-base font-bold text-forest-deep mb-1">Week 12: Visible Density &amp; Lustre</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Baby hairs emerge at the hairline and crown parting. Hair shaft develops radiant natural gloss and increased tensile elasticity.
+        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 12. FROM THE JOURNAL -->
+<section class="w-full py-20 bg-ivory-canvas" id="journal">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<span class="font-label-md text-xs uppercase tracking-widest text-antique-gold font-semibold">The Veda Journal</span>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif mt-1">Ancient Insights for Modern Scalps</h2>
+</div>
+<a class="inline-flex items-center gap-1.5 font-title-md text-xs uppercase tracking-wider font-bold text-forest-base hover:text-antique-gold" href="#">
+<span>Explore All Articles</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden border border-forest-base/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container">
+<img alt="Champi head massage ritual" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Ub301W2K1mmY5_CIBe4m2O8EMquLGXQ2Tc9GehiPP3Qedb87Mn8h4mpNZJfs-96XpE5tNfCb5kC4W0iNU8G8UqyDZtmWd4EWo-vIDw4XfBmpbtQqCHEH2IlK0eiQ6vTdWwYx9BDY_vcdI2nEAC9jtkqOfANlcsoJtdnT1k_wc4-k1AqjY1XBpNIE9wze-a9uPcqUTnOIiiehFfGwZCwXVxFcw9IN-o9XvtkQQ-llUHvKEkCMTcGD--N_s"/>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-antique-gold font-bold">Rituals • 5 min read</span>
+<h3 class="font-headline-sm text-base font-bold text-forest-deep mt-1.5 leading-snug">The 5,000-Year-Old Secret of Champi Head Massage</h3>
+<p class="text-xs text-on-surface-variant mt-2 line-clamp-2">
+              Unlocking marma vitality points through rhythmic warm-oil palm motions to flush cortisol and awaken sleeping scalp follicles.
+            </p>
+</div>
+<div class="pt-4 mt-3 border-t border-forest-base/10 flex items-center justify-between text-xs font-semibold text-forest-base">
+<span>Read Insight</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden border border-forest-base/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container">
+<img alt="Botanical chemistry and hair oil drop" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1XiZKCklgJC7rKSPIIkuYSxATHytkUIrBc10y-Tolyyog-nThKveFoLxQBpfYrdpzaxRx_Eq9E5Kvx81sRy8nOgGOHk2ByUX4mlHUAhJJRBUthMalbI7iEzPe4uMzUEBAxxs81JfbBNSYVOZ5rjYoDYJA0TFBovBtT1bpIIjtyBQB5ZloEgbm0rJi14bApwk70-rwN0WzUzar_pg3wX18esSSQRVSdTyXOTYaU_qh3YO1ih6NHH7CPMoZE"/>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-antique-gold font-bold">Botanicals • 7 min read</span>
+<h3 class="font-headline-sm text-base font-bold text-forest-deep mt-1.5 leading-snug">Why 28 Herbs Beat Single-Molecule Hair Serums</h3>
+<p class="text-xs text-on-surface-variant mt-2 line-clamp-2">
+              Demystifying the synthetic illusion of synthetic polymers versus bioactive whole-plant saponins that rebuild porous cuticles.
+            </p>
+</div>
+<div class="pt-4 mt-3 border-t border-forest-base/10 flex items-center justify-between text-xs font-semibold text-forest-base">
+<span>Read Insight</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden border border-forest-base/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container">
+<img alt="Ayurvedic Dosha and Pitta calendar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRVXHDqROFMkUtP1AVld-5f_hL0U22g8skImlBu3yJY5UaivGj-iuf-vw_K4nM40lAXBnDYzE_L5sSaLkj5tWSYl5p3Pf3jogKI-yVPWdglka669wBUy8l6pfJy7FIrW6i43BI1cs_YAIdIIa_kjnja2IVo1LJQAhyttkOfhOC7VKPOLtn4YOEQuYHGn89RJ9tINigYw11p1lTf5Uj1adrwOb6aw-ddpNMhGo-5lRYZE-jZ2twwy3"/>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-antique-gold font-bold">Ayurveda • 4 min read</span>
+<h3 class="font-headline-sm text-base font-bold text-forest-deep mt-1.5 leading-snug">Seasonal Hair Fall: What Your Pitta Dosha Is Telling You</h3>
+<p class="text-xs text-on-surface-variant mt-2 line-clamp-2">
+              How autumnal heat accumulation triggers follicular inflammation, and the precise cooling herbs to restore harmony.
+            </p>
+</div>
+<div class="pt-4 mt-3 border-t border-forest-base/10 flex items-center justify-between text-xs font-semibold text-forest-base">
+<span>Read Insight</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- 13. NEWSLETTER SUBSCRIPTION -->
+<section class="w-full py-16 bg-surface-container border-b border-forest-base/10">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="w-12 h-12 rounded-full bg-forest-base/10 text-forest-deep flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-[24px] text-antique-gold">mail</span>
+</div>
+<h2 class="font-headline-lg text-3xl text-forest-deep font-serif">Bring Nature Into Your Ritual.</h2>
+<p class="font-body-md text-sm text-on-surface-variant max-w-lg mx-auto mt-2 mb-6">
+      Join our community for herbal hair-care knowledge, seasonal Vaidya consultations, and exclusive private harvests.
+    </p>
+<form class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto" onsubmit="event.preventDefault();">
+<input class="bg-surface px-4 py-3 rounded-lg font-body-sm text-sm text-on-surface border border-forest-base/20 focus:border-forest-base focus:outline-none flex-1" placeholder="Enter your sacred email" required="" type="email"/>
+<button class="bg-forest-base hover:bg-forest-deep text-ivory-canvas px-6 py-3 rounded-lg font-label-md text-xs uppercase tracking-widest transition-colors font-bold shadow-sm" type="submit">Subscribe</button>
+</form>
+<p class="text-[11px] text-on-surface-variant/80 mt-3 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px]">lock</span> We honor your privacy. Unsubscribe anytime.
+    </p>
+</div>
+</section>
+</div></main>
+<!-- 14. GLOBAL FOOTER -->
+<footer class="w-full bg-surface-container-low text-on-surface-variant pt-16 pb-12 border-t border-forest-base/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-forest-base/10">
+<div class="lg:col-span-2 flex flex-col gap-3 pr-0 lg:pr-8">
+<div class="flex items-center gap-3">
+<img alt="HakkiVeda Emblem Logo" class="h-9 w-9 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida/AEtjO1XeJ_FVX9UdL0FKGRazwqH2HyDQitb0tk327cOTuYfRSAltWENI4zci--LiBjl1QJOQew5DB1g72SgOId5iRHWIHfe8teNttRjSYgjfUraGbLaZ0od7fKBC2XFmx-O7aiNvoCfVGUJr2IBpdh68Utg_qrUWQuCGlY4lFFYnZs7eHF9MdGPlFoC8EX_LiXw27dk4pexfDsk_mr8zmmVLK96VZ75XOjabMvw35J_zR61X0dAAcHo_kUwfSA"/>
+<span class="font-headline-md text-2xl font-serif font-bold text-forest-deep">HakkiVeda</span>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed max-w-md">
+          Reverently formulating botanical remedies through pristine Vedic traditions, time-honored distillation, and ethical cold-pressed alchemy. Preserving ancestral purity for contemporary vitality.
+        </p>
+<div class="flex items-center gap-2 pt-2">
+<span class="px-2.5 py-1 rounded bg-surface text-forest-deep text-[11px] font-semibold border border-forest-base/10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">verified</span> AYUSH Certified
+          </span>
+<span class="px-2.5 py-1 rounded bg-surface text-forest-deep text-[11px] font-semibold border border-forest-base/10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">eco</span> 100% Ahimsa
+          </span>
+</div>
+</div>
+<div class="flex flex-col gap-2.5">
+<span class="font-label-md text-xs uppercase text-forest-deep tracking-widest font-bold">Shop Collections</span>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Maha Bhringraj Oil</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Wild Shikakai Shampoo</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Neem Scalp Elixir</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">21-Day Intensive Oil</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Complete Ritual Ensembles</a>
+</div>
+<div class="flex flex-col gap-2.5">
+<span class="font-label-md text-xs uppercase text-forest-deep tracking-widest font-bold">Heritage &amp; Science</span>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Ancestral Sourcing</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Western Ghats Foraging</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Kansa 21-Day Alchemy</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Botanical Herbarium</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">HakkiVeda Foundation</a>
+</div>
+<div class="flex flex-col gap-2.5">
+<span class="font-label-md text-xs uppercase text-forest-deep tracking-widest font-bold">Customer Care</span>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Vaidya Consultation</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Order Tracking &amp; Dispatch</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Purity Guarantee &amp; Returns</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Apothecary FAQs</a>
+<a class="font-body-sm text-xs text-on-surface-variant hover:text-forest-deep transition-colors" href="#">Contact Sanctum</a>
+</div>
+</div>
+<!-- Security, Payment Icons & Copyright -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+<p>© 2025 HakkiVeda Botanical Laboratories Private Limited. All ancestral rights reserved.</p>
+<div class="flex items-center gap-3 text-xs font-semibold text-forest-deep">
+<span class="px-2 py-1 bg-surface rounded border border-forest-base/10">UPI</span>
+<span class="px-2 py-1 bg-surface rounded border border-forest-base/10">RuPay</span>
+<span class="px-2 py-1 bg-surface rounded border border-forest-base/10">Visa</span>
+<span class="px-2 py-1 bg-surface rounded border border-forest-base/10">Mastercard</span>
+<span class="px-2 py-1 bg-surface rounded border border-forest-base/10">NetBanking</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- 15. SLIDE-OVER SACRED CART MODAL & QUICK VIEW -->
+<div class="fixed inset-0 bg-forest-deep/60 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0" id="cart-drawer-backdrop" onclick="toggleCartDrawer()"></div>
+<aside class="fixed top-0 right-0 h-full w-full max-w-md bg-surface shadow-2xl z-50 translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between" id="cart-drawer-panel">
+<div class="p-6 bg-ivory-surface border-b border-forest-base/10">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-forest-base text-[24px]">shopping_bag</span>
+<h3 class="font-headline-sm text-lg text-forest-deep font-bold font-serif">Your Sacred Bag</h3>
+<span class="bg-forest-base text-ivory-canvas font-label-sm text-xs px-2 py-0.5 rounded-full" id="cart-count-badge">3</span>
+</div>
+<button class="text-on-surface-variant hover:text-forest-deep p-1 rounded" onclick="toggleCartDrawer()" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<div class="bg-surface p-3 rounded-lg shadow-sm border border-forest-base/10">
+<div class="flex items-center justify-between text-xs font-label-sm mb-1">
+<span class="text-forest-deep font-bold">Free Express Delivery</span>
+<span class="text-herbal-jade font-bold">Unlocked!</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-herbal-jade h-full w-[100%] rounded-full"></div>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1">Order exceeds ₹799. Qualified for fast temperature-controlled dispatch.</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-5 flex flex-col gap-3" id="cart-items-list">
+<div class="flex gap-3 p-3 bg-surface-container rounded-lg border border-forest-base/10">
+<div class="w-16 h-16 bg-surface rounded overflow-hidden shrink-0">
+<img alt="Maha Bhringraj Oil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<h4 class="text-xs font-bold text-forest-deep leading-tight">Maha Bhringraj Herbal Hair Oil</h4>
+<button class="text-on-surface-variant hover:text-error text-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+</button>
+</div>
+<span class="text-[11px] text-on-surface-variant">Size: 100ml</span>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs font-bold text-forest-deep">₹699</span>
+<div class="flex items-center bg-surface rounded px-2 py-0.5 gap-2 text-xs">
+<span>-</span><span>1</span><span>+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-ivory-surface border-t border-forest-base/10">
+<div class="flex flex-col gap-1.5 mb-5 text-xs">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>₹1,849</span>
+</div>
+<div class="flex justify-between text-herbal-jade font-medium">
+<span>Express Delivery</span>
+<span>FREE</span>
+</div>
+<div class="flex justify-between text-sm font-bold text-forest-deep pt-2 border-t border-forest-base/10">
+<span>Sacred Total</span>
+<span>₹1,849</span>
+</div>
+</div>
+<button class="w-full bg-antique-gold hover:bg-earth-sand text-forest-deep py-3.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all font-title-md" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span> Secure Sacred Checkout
+    </button>
+</div>
+</aside>
+<!-- QUICK VIEW MODAL -->
+<div class="fixed inset-0 bg-forest-deep/75 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0 flex items-center justify-center p-4" id="quickview-backdrop">
+<div class="bg-surface rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh] border border-antique-gold/30" onclick="event.stopPropagation()">
+<button class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-forest-base hover:bg-forest-base hover:text-ivory-canvas transition-colors" onclick="closeQuickView()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="md:w-1/2 aspect-square bg-surface-container relative">
+<img alt="Quick view product" class="w-full h-full object-cover" id="quickview-image" src="https://lh3.googleusercontent.com/aida/AEtjO1UkAV-Zb-HD7qu4Icnho13XZPHEpPxcpqOoOjZqHln-Syebfq5myXpk73ALgedD8C9gNGzXtWGLkTuJLRAoz_dzwgX1eDRWGhDhSvNsNQytUnAo_McrK3lVuEtuRZWMWfvkVF_hB4I0R2u3eVpxzTRNrAdPdty8XKDLN-uH7EWe8gk_2HuC3FI8vJuyM7183QmbA4yJd3MTeu9l2vnF4gvhabDOpQPfRO5I8i3kclWa6YXuYG9TGu912Q"/>
+</div>
+<div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-antique-gold">Classical Ayurvedic</span>
+<h3 class="font-headline-sm text-lg text-forest-deep font-bold font-serif leading-snug mt-1" id="quickview-title">Maha Bhringraj Botanical Herbal Hair Oil</h3>
+<p class="text-xs text-on-surface-variant mt-1" id="quickview-subtitle">Slow-cooked with 28 forest herbs</p>
+<div class="flex items-baseline gap-2 my-3">
+<span class="font-title-md text-lg text-forest-deep font-bold" id="quickview-price">₹699</span>
+<span class="text-xs text-on-surface-variant line-through" id="quickview-old-price">₹899</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4" id="quickview-desc">
+          An ancient formulation boiled down over copper and clay ovens with hand-plucked wild Bhringraj, Brahmi, and fresh cold-pressed sesame oil.
+        </p>
+</div>
+<button class="w-full bg-forest-base hover:bg-forest-deep text-ivory-canvas py-3 rounded-lg text-xs font-label-md uppercase tracking-wider flex items-center justify-center gap-2 transition-colors font-bold shadow-md" onclick="addToCartFromModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span> Add to Sacred Bag
+      </button>
+</div>
+</div>
+</div>
+<script>
+  function toggleCartDrawer() {
+    const backdrop = document.getElementById('cart-drawer-backdrop');
+    const panel = document.getElementById('cart-drawer-panel');
+    if (backdrop.classList.contains('hidden')) {
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('translate-x-full');
+      }, 10);
+    } else {
+      backdrop.classList.add('opacity-0');
+      panel.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 300);
+    }
+  }
+
+  function addToCart(title, price) {
+    toggleCartDrawer();
+  }
+
+  function openQuickView(title, price, oldPrice, subtitle, img, desc) {
+    const backdrop = document.getElementById('quickview-backdrop');
+    document.getElementById('quickview-title').innerText = title;
+    document.getElementById('quickview-subtitle').innerText = subtitle;
+    document.getElementById('quickview-price').innerText = price;
+    document.getElementById('quickview-old-price').innerText = oldPrice;
+    document.getElementById('quickview-desc').innerText = desc;
+    if (img) {
+      document.getElementById('quickview-image').src = img;
+    }
+    backdrop.classList.remove('hidden');
+    setTimeout(() => {
+      backdrop.classList.remove('opacity-0');
+    }, 10);
+  }
+
+  function closeQuickView() {
+    const backdrop = document.getElementById('quickview-backdrop');
+    backdrop.classList.add('opacity-0');
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+    }, 300);
+  }
+
+  function addToCartFromModal() {
+    closeQuickView();
+    setTimeout(toggleCartDrawer, 350);
+  }
+
+  function switchTab(btn, category) {
+    document.querySelectorAll('#product-category-tabs .tab-btn').forEach(t => {
+      t.classList.remove('bg-forest-base', 'text-ivory-canvas', 'shadow-sm');
+      t.classList.add('text-on-surface-variant');
+    });
+    btn.classList.add('bg-forest-base', 'text-ivory-canvas', 'shadow-sm');
+    btn.classList.remove('text-on-surface-variant');
+  }
+</script>
+</body></html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "inverse-primary": "#adcfb5",
+        "on-tertiary-fixed-variant": "#7d2c13",
+        "surface": "#fcf9f4",
+        "forest-base": "#1A3826",
+        "on-surface": "#1c1c19",
+        "surface-tint": "#466550",
+        "surface-dim": "#dcdad5",
+        "surface-container-highest": "#e5e2dd",
+        "on-surface-variant": "#424843",
+        "secondary-container": "#fcdc98",
+        "on-background": "#1c1c19",
+        "error-container": "#ffdad6",
+        "on-tertiary-container": "#e87c5d",
+        "primary-fixed-dim": "#adcfb5",
+        "on-primary-container": "#81a28a",
+        "on-primary-fixed-variant": "#2f4d3a",
+        "surface-container-lowest": "#ffffff",
+        "on-secondary-fixed": "#251a00",
+        "earth-sand": "#E8DEC8",
+        "primary": "#032212",
+        "error": "#ba1a1a",
+        "ivory-surface": "#F4EFE6",
+        "terracotta": "#C86446",
+        "on-primary-fixed": "#022111",
+        "on-secondary-fixed-variant": "#59440e",
+        "primary-container": "#1a3826",
+        "tertiary-fixed": "#ffdbd1",
+        "tertiary": "#3d0b00",
+        "inverse-on-surface": "#f3f0eb",
+        "surface-container-low": "#f6f3ee",
+        "forest-deep": "#0F2618",
+        "inverse-surface": "#31302d",
+        "tertiary-container": "#611802",
+        "ivory-canvas": "#FAF7F2",
+        "outline-variant": "#c2c8c1",
+        "antique-gold": "#C5A869",
+        "on-error": "#ffffff",
+        "secondary-fixed-dim": "#e2c381",
+        "surface-variant": "#e5e2dd",
+        "on-secondary-container": "#775f28",
+        "on-error-container": "#93000a",
+        "on-tertiary": "#ffffff",
+        "charcoal-ink": "#1B241E",
+        "surface-container": "#f0ede9",
+        "background": "#fcf9f4",
+        "secondary-fixed": "#ffdf9b",
+        "surface-container-high": "#ebe8e3",
+        "outline": "#727972",
+        "on-primary": "#ffffff",
+        "surface-bright": "#fcf9f4",
+        "on-secondary": "#ffffff",
+        "secondary": "#725b24",
+        "herbal-jade": "#2D5A3F",
+        "tertiary-fixed-dim": "#ffb59f",
+        "primary-fixed": "#c8ebd1",
+        "on-tertiary-fixed": "#3a0a00"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-xl": "2rem",
+        "space-xs": "0.5rem",
+        "space-2xs": "0.25rem",
+        "gutter-desktop": "2rem",
+        "space-lg": "1.5rem",
+        "gutter-mobile": "1rem",
+        "space-3xl": "4.5rem",
+        "space-4xl": "6rem",
+        "space-sm": "0.75rem",
+        "container-max": "1280px",
+        "space-md": "1rem",
+        "space-2xl": "3rem"
+      },
+      "fontFamily": {
+        "title-md": ["Plus Jakarta Sans"],
+        "headline-md": ["Playfair Display"],
+        "label-md": ["Plus Jakarta Sans"],
+        "body-md": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"],
+        "headline-lg": ["Playfair Display"],
+        "display-lg-mobile": ["Playfair Display"],
+        "headline-lg-mobile": ["Playfair Display"],
+        "headline-sm": ["Playfair Display"],
+        "body-sm": ["Plus Jakarta Sans"],
+        "display-lg": ["Playfair Display"],
+        "body-lg": ["Plus Jakarta Sans"]
+      },
+      "fontSize": {
+        "title-md": ["18px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+        "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" }],
+        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+        "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.1em", "fontWeight": "500" }],
+        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" }],
+        "headline-sm": ["22px", { "lineHeight": "30px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+        "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+        "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400" }]
+      }
+    }
+  }
+}</script></head><body class="bg-surface text-on-surface antialiased selection:bg-antique-gold selection:text-forest-deep"><div class="relative w-full bg-forest-base text-ivory-canvas px-4 py-2 text-center text-label-sm font-label-sm tracking-wider uppercase z-50 transition-all duration-300" id="top-announcement-bar"><div class="max-w-7xl mx-auto flex items-center justify-between"><div class="w-6 hidden md:block"></div><div class="flex-1 flex items-center justify-center gap-2"><span class="material-symbols-outlined text-[14px] text-antique-gold">eco</span><span class="">Rooted in Tradition • Crafted with Nature</span><span class="text-antique-gold mx-2">|</span><span class="text-earth-sand">Free Express Delivery across India on orders above ₹799</span><span class="material-symbols-outlined text-[14px] text-antique-gold">spa</span></div><button aria-label="Dismiss announcement" class="text-ivory-canvas/70 hover:text-ivory-canvas p-1 rounded transition-colors focus:outline-none" onclick="document.getElementById('top-announcement-bar').style.display='none'; document.getElementById('main-content-wrapper').classList.remove('pt-28'); document.getElementById('main-content-wrapper').classList.add('pt-20'); document.getElementById('site-header').classList.remove('top-[33px]'); document.getElementById('site-header').classList.add('top-0');"><span class="material-symbols-outlined text-[16px]">close</span></button></div></div><header class="fixed top-[33px] left-0 right-0 w-full z-40 bg-surface/90 backdrop-blur-md transition-all duration-200 shadow-[0_1px_8px_rgba(15,38,24,0.04)]" id="site-header"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-3 shrink-0"><img alt="Aadibasi Emblem Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtroW_wCiMXi9_ayYe8SPumTKTBNZaLt6tmOzcyqJlWhfRn2UUROpKdShuDfIRk5D0jVRAOC_eXzo4Et72ECk2AzsFwGsNjeu1h8S5wspPyGBZpXzUTLfe_0emnixfWLUclvheDKrKClDlOdQaV4WMrlQb_pX0ss7yxRTlLCwQPSNgiXLahgwxRqeHdpZ8skWwydi9hKWkrUt1Q79MoSQ9QULU96wh48pcKYjw682d9KPGGMZmuRNm"><div class="flex flex-col"><a class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight" data-path="home" href="#">Aadibasi</a><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">Ayurvedic Wellness</span></div></div><nav class="hidden lg:flex items-center gap-8" data-active-classes="bg-primary-container text-on-primary font-title-md rounded"><a aria-current="page" class="px-3 py-1.5 transition-colors bg-primary-container text-on-primary font-title-md rounded" data-path="home" href="#">Home</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 transition-colors" data-path="shop-all" href="#">Shop All</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 transition-colors" data-path="collections" href="#">Collections</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 transition-colors" data-path="our-story" href="#">Our Story</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 transition-colors" data-path="ingredients-library" href="#">Ingredients Library</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 transition-colors" data-path="journal" href="#">Journal</a></nav><div class="flex items-center gap-4 shrink-0"><button aria-label="Search Ayurvedic remedies" class="p-2 text-on-surface-variant hover:text-primary transition-colors focus:outline-none" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Customer Account" class="p-2 text-on-surface-variant hover:text-primary transition-colors hidden sm:inline-flex" data-path="login" href="#"><span class="material-symbols-outlined text-[22px]">manage_accounts</span></a><a aria-label="Wishlist" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors hidden sm:inline-flex" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-1 right-1 bg-terracotta text-on-tertiary font-label-sm text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span></a><button aria-label="Shopping Cart" class="flex items-center gap-2.5 bg-forest-base text-ivory-canvas px-3.5 py-2 rounded shadow-sm hover:bg-forest-deep transition-all duration-200 focus:outline-none" type="button"><span class="material-symbols-outlined text-[19px] text-antique-gold">shopping_bag</span><span class="hidden md:flex flex-col text-left"><span class="font-label-sm text-[10px] uppercase text-earth-sand tracking-wider leading-tight">Bag (3)</span><span class="font-title-md text-xs font-semibold leading-tight">₹1,849</span></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-28 bg-surface min-h-[calc(100vh-320px)]" id="main-content-wrapper"><div class="flex flex-col w-full">
+<!-- BREADCRUMBS & BATCH NOTICE BAR -->
+<section class="w-full bg-surface-container-low px-6 lg:px-12 py-3">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-body-sm">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant flex-wrap">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-antique-gold">/</span>
+<a class="hover:text-primary transition-colors" href="#">Shop All Formulations</a>
+<span class="text-antique-gold">/</span>
+<a class="hover:text-primary transition-colors" href="#">Hair Oils</a>
+<span class="text-antique-gold">/</span>
+<span class="text-primary font-medium">Aadibasi Maha Bhringraj Botanical Herbal Hair Oil</span>
+</nav>
+<div class="inline-flex items-center gap-2 bg-surface px-3.5 py-1 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
+<span class="font-label-sm uppercase tracking-widest text-on-surface-variant text-[11px]">
+          Batch No. 042 • Kansa Decoction • <strong class="text-forest-deep">18 Units Left</strong>
+</span>
+</div>
+</div>
+</section>
+<!-- PRODUCT HERO / PURCHASE SECTION -->
+<section class="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-8 pb-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+<!-- LEFT COLUMN: Interactive Media Gallery -->
+<div class="lg:col-span-7 flex flex-col gap-5 sticky top-28">
+<div class="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-surface-container rounded-xl overflow-hidden shadow-md group">
+<img alt="Aadibasi Maha Bhringraj Botanical Herbal Hair Oil bottle in sunlight with sacred herbs" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" id="main-product-display" src="https://lh3.googleusercontent.com/aida/AEtjO1U50fh7zuhzmBUhddlXsACJcNaLcGX8cE-Uenwz3yDrEgEAOKa4FkkVskQlA6huGrbKzyx7r6gY6YwXA1M4cU8oSBdJLvMtiS-finQ5ZE2EgHtEAE6OlbJvuyBoLEWPqAKIGTb9gnOeSxcyXgvRgLIlgA8ZQtU8t1qLnPOhTEDhveWrOZmKsGjIyfDdX7jeIdpwJmkgRDnD-sFmsIOblGl5TqWO0h0JfDvNZqf_9BsMU3UidZerc93eAA">
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<span class="bg-forest-base/90 backdrop-blur-sm text-ivory-canvas font-label-sm uppercase px-3 py-1.5 rounded text-[10px] tracking-widest shadow-sm">
+              21-Day Slow Decoction
+            </span>
+<span class="bg-antique-gold text-forest-deep font-label-sm uppercase px-3 py-1.5 rounded text-[10px] tracking-widest font-bold shadow-sm">
+              ★ Award Winner &amp; Bestseller
+            </span>
+</div>
+<button aria-label="Expand image" class="absolute bottom-4 right-4 bg-surface/80 hover:bg-surface text-forest-base p-2.5 rounded-full shadow transition-all">
+<span class="material-symbols-outlined text-[20px]">zoom_in</span>
+</button>
+</div>
+<!-- Thumbnails Strip -->
+<div class="grid grid-cols-4 gap-3 sm:gap-4">
+<button class="thumb-btn relative aspect-square rounded-lg overflow-hidden shadow-sm bg-surface-container transition-all ring-2 ring-antique-gold" onclick="switchImage('https://lh3.googleusercontent.com/aida/AEtjO1U50fh7zuhzmBUhddlXsACJcNaLcGX8cE-Uenwz3yDrEgEAOKa4FkkVskQlA6huGrbKzyx7r6gY6YwXA1M4cU8oSBdJLvMtiS-finQ5ZE2EgHtEAE6OlbJvuyBoLEWPqAKIGTb9gnOeSxcyXgvRgLIlgA8ZQtU8t1qLnPOhTEDhveWrOZmKsGjIyfDdX7jeIdpwJmkgRDnD-sFmsIOblGl5TqWO0h0JfDvNZqf_9BsMU3UidZerc93eAA', this)">
+<img alt="Aadibasi Hair Oil bottle presentation" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U50fh7zuhzmBUhddlXsACJcNaLcGX8cE-Uenwz3yDrEgEAOKa4FkkVskQlA6huGrbKzyx7r6gY6YwXA1M4cU8oSBdJLvMtiS-finQ5ZE2EgHtEAE6OlbJvuyBoLEWPqAKIGTb9gnOeSxcyXgvRgLIlgA8ZQtU8t1qLnPOhTEDhveWrOZmKsGjIyfDdX7jeIdpwJmkgRDnD-sFmsIOblGl5TqWO0h0JfDvNZqf_9BsMU3UidZerc93eAA">
+</button>
+<button class="thumb-btn relative aspect-square rounded-lg overflow-hidden shadow-sm bg-surface-container transition-all hover:opacity-90" onclick="switchImage('https://lh3.googleusercontent.com/aida-public/AB6AXuBd2gystwt9O2eamoWYBvG9g76R30b4TDeY9cDCkiG_FF0xC7S-Ck1vTDP5pFN5FU2rI4jyenMna8azHL-C0l4tHN5qftKW6YaIs8_R8kPLolx3TV-sWwU7pN0jku99oYPSZ5IO14l9TqzTMVTMfL9swtwJPahAa4Rz1Nc6jv5IEll5TNdmJCG_l57G4TVOQanSXWhU1dPpN6pcd8tmOcDJ2swVKHSsFtAbFpE0T6NM9_sWJRmspX3i', this)">
+<img alt="Pipette dropper extracting herbal oil with raw herbs" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd2gystwt9O2eamoWYBvG9g76R30b4TDeY9cDCkiG_FF0xC7S-Ck1vTDP5pFN5FU2rI4jyenMna8azHL-C0l4tHN5qftKW6YaIs8_R8kPLolx3TV-sWwU7pN0jku99oYPSZ5IO14l9TqzTMVTMfL9swtwJPahAa4Rz1Nc6jv5IEll5TNdmJCG_l57G4TVOQanSXWhU1dPpN6pcd8tmOcDJ2swVKHSsFtAbFpE0T6NM9_sWJRmspX3i">
+</button>
+<button class="thumb-btn relative aspect-square rounded-lg overflow-hidden shadow-sm bg-surface-container transition-all hover:opacity-90" onclick="switchImage('https://lh3.googleusercontent.com/aida-public/AB6AXuBOeDNit6fTpZxackb6ScfbekWmTak2G_W8IdCU3x6FH13S2PjnDkv-_uH-h6Va-oxh2UR422zT6iis5ASYmnfbBjL-tVNwM3SsCdSPdUTjHlV6QyLOhcjutda7xl4DuLbVG-ipB6_ewCMmlRsyjT-byB2VKorckg--ua9E2D8mHaIq9uiHh_jwJ-XnvSWO-DMFE_2kESu6QuyU9iX0iqnHpf6PR2dcFPwPMtj6Phy8xfNb9J9yhuIA', this)">
+<img alt="Ayurvedic Champi warm oil pouring on crown" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOeDNit6fTpZxackb6ScfbekWmTak2G_W8IdCU3x6FH13S2PjnDkv-_uH-h6Va-oxh2UR422zT6iis5ASYmnfbBjL-tVNwM3SsCdSPdUTjHlV6QyLOhcjutda7xl4DuLbVG-ipB6_ewCMmlRsyjT-byB2VKorckg--ua9E2D8mHaIq9uiHh_jwJ-XnvSWO-DMFE_2kESu6QuyU9iX0iqnHpf6PR2dcFPwPMtj6Phy8xfNb9J9yhuIA">
+</button>
+<button class="thumb-btn relative aspect-square rounded-lg overflow-hidden shadow-sm bg-surface-container transition-all hover:opacity-90" onclick="switchImage('placeholder', this)">
+<img class="w-full h-full object-cover" data-alt="Authentic flatlay arrangement of raw Ayurvedic herbs including sun-dried bhringraj leaves, whole wild amla fruit, and black sesame seeds arranged peacefully on antique parchment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj8U56dFp6h9M89AwNSFbh-ZR6go1aEGJQ3G9O_XNeEGH52fSHYYqqSGPO-xkOAvWWFEZC3c3z1H4zWOszj8WiWuiNN_c-Xx6xFAy1L7AJSPMPGyQZVCJkON_6s09iD_5mBS0rBgiQFOmKh38fdXhV-5qKyFLxoinztmDLtIPQZFKSQDOi2L35R9kRV9KAFRY96aCAH9Eh4DJBaofdwEYL05Dc41V4Rs00cjk0KdAmmGFS0FEDH7d9">
+</button>
+</div>
+<!-- Trust Badges Bar -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2.5 rounded">
+<span class="material-symbols-outlined text-herbal-jade text-[20px]">psychiatry</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">100% Wildcrafted</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2.5 rounded">
+<span class="material-symbols-outlined text-herbal-jade text-[20px]">water_drop</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Zero Synthetics</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2.5 rounded">
+<span class="material-symbols-outlined text-herbal-jade text-[20px]">verified</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">AYUSH Certified</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2.5 rounded">
+<span class="material-symbols-outlined text-herbal-jade text-[20px]">cruelty_free</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Ahimsa &amp; Pure</span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Conversion & Details Panel -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Header & Category -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-[11px] uppercase tracking-widest text-secondary font-bold">
+            Ancient Keshya Pharmacopoeia • Intensive Hair Fall Defense
+          </span>
+<h1 class="font-headline-lg text-headline-md sm:text-headline-lg text-primary leading-tight">Aadibasi Maha Bhringraj Botanical Herbal Hair Oil</h1>
+<!-- Rating & Observation Strip -->
+<div class="flex items-center gap-3 pt-1 flex-wrap">
+<div class="flex items-center text-antique-gold">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<span class="font-title-md text-xs font-bold text-on-surface">4.9 / 5.0</span>
+<span class="text-on-surface-variant font-body-sm text-xs">(1,842 verified ritualists)</span>
+<span class="bg-forest-base/10 text-forest-deep px-2.5 py-0.5 rounded text-label-sm text-[10px] font-semibold">
+              98% Hair Fall Reduction
+            </span>
+</div>
+</div>
+<!-- Pricing Card -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-baseline gap-3">
+<span class="font-headline-md text-3xl font-semibold text-primary" id="price-display">₹699</span>
+<span class="font-body-md text-on-surface-variant line-through text-sm" id="mrp-display">₹899</span>
+<span class="bg-terracotta/15 text-terracotta font-label-sm px-2 py-0.5 rounded text-[11px] font-bold">22% OFF</span>
+<span class="text-on-surface-variant font-body-sm text-xs ml-auto hidden sm:inline">Taxes included</span>
+</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+          Slow-brewed over 21 consecutive sun cycles in copper and kansa bronze cauldrons with 28 potent forest herbs, cold-pressed black sesame, and nutrient-dense Amla. Stimulates dormant follicles, calms pitta heat at the roots, and arrests premature thinning.
+        </p>
+<!-- Size Options -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-xs uppercase tracking-wider text-forest-deep font-bold">Select Elixir Volume</span>
+<span class="text-secondary font-label-sm text-[11px] underline cursor-pointer">Dosage &amp; Usage Guide</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="size-selector">
+<label class="size-card cursor-pointer relative bg-surface-container p-3 rounded-lg shadow-sm flex flex-col justify-between transition-all ring-2 ring-forest-base">
+<input checked="" class="sr-only" name="size" onchange="updateSize(699, 899, '100ml / 3.4 fl oz')" type="radio" value="100">
+<span class="font-title-md text-xs font-bold text-on-surface">100ml (3.4 fl oz)</span>
+<span class="text-forest-deep font-body-sm font-semibold text-xs mt-1">₹699</span>
+<span class="text-on-surface-variant font-label-sm text-[10px] mt-0.5">30-Day Ritual</span>
+</label>
+<label class="size-card cursor-pointer relative bg-surface-container-low p-3 rounded-lg shadow-sm flex flex-col justify-between transition-all hover:bg-surface-container">
+<span class="absolute -top-2 right-2 bg-antique-gold text-forest-deep font-label-sm text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">Popular</span>
+<input class="sr-only" name="size" onchange="updateSize(1199, 1499, '200ml / 6.8 fl oz')" type="radio" value="200">
+<span class="font-title-md text-xs font-bold text-on-surface">200ml (6.8 fl oz)</span>
+<span class="text-forest-deep font-body-sm font-semibold text-xs mt-1">₹1,199</span>
+<span class="text-terracotta font-label-sm text-[10px] mt-0.5 font-bold">Save ₹300</span>
+</label>
+<label class="size-card cursor-pointer relative bg-surface-container-low p-3 rounded-lg shadow-sm flex flex-col justify-between transition-all hover:bg-surface-container">
+<span class="absolute -top-2 right-2 bg-earth-sand text-forest-deep font-label-sm text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">+ Comb</span>
+<input class="sr-only" name="size" onchange="updateSize(2499, 3200, '500ml Salon Decanter')" type="radio" value="500">
+<span class="font-title-md text-xs font-bold text-on-surface">500ml Decanter</span>
+<span class="text-forest-deep font-body-sm font-semibold text-xs mt-1">₹2,499</span>
+<span class="text-on-surface-variant font-label-sm text-[10px] mt-0.5">Free Kansa Comb</span>
+</label>
+</div>
+</div>
+<!-- Quantity & Stock Pulse -->
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container rounded-lg p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-forest-deep hover:bg-surface-container-high rounded transition-colors" onclick="adjustQty(-1)">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-10 text-center font-title-md text-sm font-bold text-forest-deep" id="quantity-val">1</span>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-forest-deep hover:bg-surface-container-high rounded transition-colors" onclick="adjustQty(1)">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-herbal-jade"></span>
+<span class="font-body-sm text-xs text-on-surface-variant">In Stock • Dispatched in 24 Hours</span>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="flex flex-col gap-3">
+<div class="flex gap-2">
+<button class="flex-1 bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-md text-xs uppercase tracking-widest py-4 px-6 rounded shadow-md flex items-center justify-center gap-3 transition-all duration-200" id="add-bag-btn">
+<span class="material-symbols-outlined text-antique-gold text-[20px]">local_mall</span>
+<span id="cta-label" class="">Add to Sacred Bag • ₹699</span>
+</button>
+<button aria-label="Add to Wishlist" class="w-12 h-12 flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-forest-deep rounded transition-colors">
+<span class="material-symbols-outlined text-[22px]">favorite</span>
+</button>
+<button aria-label="Share Ritual" class="w-12 h-12 flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-forest-deep rounded transition-colors">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</div>
+<button class="w-full bg-ivory-surface hover:bg-earth-sand text-forest-deep font-label-md text-xs uppercase tracking-widest py-3.5 px-6 rounded transition-all shadow-sm">
+            Buy with 1-Click Instant Checkout
+          </button>
+</div>
+<!-- Pincode Checker -->
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col gap-2">
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-antique-gold text-[18px]">local_shipping</span>
+            Botanical Dispatch Verification
+          </span>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface px-3 py-2 rounded text-body-sm text-on-surface focus:outline-none shadow-sm text-xs" id="pincode-input" maxlength="6" placeholder="Enter Pincode (e.g. 560001)" type="text">
+<button class="bg-forest-base hover:bg-forest-deep text-ivory-canvas font-label-sm text-xs px-4 py-2 rounded uppercase tracking-wider" onclick="checkPincode()">
+              Check
+            </button>
+</div>
+<span class="text-herbal-jade font-body-sm text-[11px] hidden font-medium" id="pincode-msg">
+            ✓ Eligible for Free 48-Hr Delivery to Bangalore Hub
+          </span>
+</div>
+<!-- 3 Pillars Guarantee -->
+<div class="grid grid-cols-3 gap-2 pt-1 text-center">
+<div class="p-2.5 bg-surface-container rounded flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-antique-gold text-[20px]">hourglass_top</span>
+<span class="font-title-md text-[11px] text-primary font-semibold">30-Day Ritual</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Visible growth or refund</span>
+</div>
+<div class="p-2.5 bg-surface-container rounded flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-antique-gold text-[20px]">compost</span>
+<span class="font-title-md text-[11px] text-primary font-semibold">Tribal Harvest</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Ethical wildcrafted herbs</span>
+</div>
+<div class="p-2.5 bg-surface-container rounded flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-antique-gold text-[20px]">security</span>
+<span class="font-title-md text-[11px] text-primary font-semibold">Sealed Purity</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Authentic hologram stamp</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AYURVEDIC DOSHA & PHARMACOLOGICAL PROFILE -->
+<section class="w-full bg-forest-deep text-ivory-canvas py-12 px-6 lg:px-12">
+
+</section>
+<!-- INTERACTIVE TABS & DETAILED BREAKDOWN -->
+
+<!-- WHAT'S INSIDE: 6 SACRED ACTIVES -->
+
+<!-- HOW TO PRACTICE THE RITUAL: Split Layout -->
+<section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-16">
+
+</section>
+<!-- CLINICAL & ANCESTRAL PROOF METRICS -->
+
+<!-- FREQUENTLY BOUGHT TOGETHER / 3-STEP RITUAL BUNDLE -->
+<section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-16">
+
+</section>
+<!-- VERIFIED REVIEWS & RITUALIST TESTIMONIALS -->
+
+<!-- INLINE CLIENT SCRIPT -->
+<script>
+    function switchImage(src, btn) {
+      const display = document.getElementById('main-product-display');
+      if (src === 'placeholder') {
+        display.src = 'placeholder';
+        display.setAttribute('data-alt', 'Authentic flatlay arrangement of raw Ayurvedic herbs including sun-dried bhringraj leaves, whole wild amla fruit, and black sesame seeds arranged peacefully on antique parchment');
+      } else {
+        display.src = src;
+        display.removeAttribute('data-alt');
+      }
+      document.querySelectorAll('.thumb-btn').forEach(b => {
+        b.classList.remove('ring-2', 'ring-antique-gold');
+      });
+      btn.classList.add('ring-2', 'ring-antique-gold');
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('bg-forest-base', 'text-ivory-canvas');
+        b.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      btn.classList.add('bg-forest-base', 'text-ivory-canvas');
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    }
+
+    let currentQty = 1;
+    let unitPrice = 699;
+
+    function adjustQty(delta) {
+      currentQty = Math.max(1, currentQty + delta);
+      document.getElementById('quantity-val').textContent = currentQty;
+      updateCTAPrice();
+    }
+
+    function updateSize(price, mrp, label) {
+      unitPrice = price;
+      document.getElementById('price-display').textContent = '₹' + price.toLocaleString('en-IN');
+      document.getElementById('mrp-display').textContent = '₹' + mrp.toLocaleString('en-IN');
+      updateCTAPrice();
+
+      document.querySelectorAll('#size-selector .size-card').forEach(card => {
+        card.classList.remove('ring-2', 'ring-forest-base', 'bg-surface-container');
+        card.classList.add('bg-surface-container-low');
+      });
+      const activeRadio = document.querySelector('input[name="size"]:checked');
+      if (activeRadio) {
+        const parentCard = activeRadio.closest('.size-card');
+        parentCard.classList.add('ring-2', 'ring-forest-base', 'bg-surface-container');
+        parentCard.classList.remove('bg-surface-container-low');
+      }
+    }
+
+    function updateCTAPrice() {
+      const total = unitPrice * currentQty;
+      document.getElementById('cta-label').textContent = 'Add to Sacred Bag • ₹' + total.toLocaleString('en-IN');
+    }
+
+    function checkPincode() {
+      const pin = document.getElementById('pincode-input').value.trim();
+      const msg = document.getElementById('pincode-msg');
+      if (pin.length === 6 && !isNaN(pin)) {
+        msg.classList.remove('hidden');
+        msg.textContent = '✓ Express Botanical Dispatch available to Pincode ' + pin + ' (Delivery in 48 Hrs)';
+      } else {
+        msg.classList.remove('hidden');
+        msg.textContent = 'Please enter a valid 6-digit Indian pincode.';
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface-variant pt-space-3xl pb-space-xl mt-space-3xl"><div class="max-w-7xl mx-auto px-6 lg:px-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-sm pr-0 lg:pr-8"><div class="flex items-center gap-3"><img alt="Aadibasi Emblem Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtroW_wCiMXi9_ayYe8SPumTKTBNZaLt6tmOzcyqJlWhfRn2UUROpKdShuDfIRk5D0jVRAOC_eXzo4Et72ECk2AzsFwGsNjeu1h8S5wspPyGBZpXzUTLfe_0emnixfWLUclvheDKrKClDlOdQaV4WMrlQb_pX0ss7yxRTlLCwQPSNgiXLahgwxRqeHdpZ8skWwydi9hKWkrUt1Q79MoSQ9QULU96wh48pcKYjw682d9KPGGMZmuRNm"><span class="font-headline-md text-headline-md text-primary">Aadibasi</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-md">Reverently formulating botanical remedies through pristine Vedic traditions, time-honored distillation, and ethical cold-pressed alchemy. Preserving ancestral purity for contemporary vitality.</p><div class="flex items-center gap-3 pt-2"><a aria-label="Purity Herbarium" class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-forest-base hover:bg-forest-base hover:text-ivory-canvas transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">nature_people</span></a><a aria-label="Ayurvedic Research" class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-forest-base hover:bg-forest-base hover:text-ivory-canvas transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">menu_book</span></a><a aria-label="Sanctuary Community" class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-forest-base hover:bg-forest-base hover:text-ivory-canvas transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">forum</span></a><a aria-label="Global Botanicals" class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-forest-base hover:bg-forest-base hover:text-ivory-canvas transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">public</span></a></div></div><div class="flex flex-col gap-3"><span class="font-label-md text-label-md uppercase text-primary tracking-widest font-semibold">Shop Collections</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Keshya Hair Elixirs</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Rasayana Immunity Teas</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Mukha Lepa Face Care</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Abhyanga Body Oils</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Herbal Single Herbs</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ritual Gift Ensembles</a></div><div class="flex flex-col gap-3"><span class="font-label-md text-label-md uppercase text-primary tracking-widest font-semibold">Heritage &amp; Science</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ancestral Sourcing</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Wildcrafted Botanicals</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Extraction Protocols</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Dosha Diagnostics</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Aadibasi Foundation</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ethical Harvesters Collective</a></div><div class="flex flex-col gap-3"><span class="font-label-md text-label-md uppercase text-primary tracking-widest font-semibold">Care &amp; Guidance</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Vaidya Consultation</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Order Tracking &amp; Dispatch</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Purity Guarantee &amp; Returns</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Apothecary FAQs</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Ritual</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Corporate Gifting</a></div></div><div class="bg-surface-container p-6 rounded mb-space-2xl flex flex-col md:flex-row items-center justify-between gap-6"><div class="flex flex-col gap-1 text-center md:text-left"><span class="font-headline-sm text-headline-sm text-primary">Subscribe to The Botanical Dispatch</span><span class="font-body-sm text-body-sm text-on-surface-variant">Receive seasonal Ayurvedic seasonal regimen guides and exclusive apothecary launches.</span></div><form class="flex w-full md:w-auto gap-2" onsubmit="event.preventDefault();"><input class="bg-surface px-4 py-2.5 rounded font-body-sm text-body-sm text-on-surface border border-earth-sand focus:border-primary focus:outline-none w-full sm:w-72" placeholder="Enter your sacred email" required="" type="email"><button class="bg-forest-base hover:bg-forest-deep text-ivory-canvas px-6 py-2.5 rounded font-label-md text-label-md uppercase tracking-widest whitespace-nowrap transition-colors" type="submit">Join Circle</button></form></div><div class="py-6 flex flex-wrap items-center justify-between gap-6"><div class="flex flex-wrap items-center gap-6"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-forest-base text-[20px]">verified</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-forest-deep">AYUSH Certified</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-forest-base text-[20px]">health_and_safety</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-forest-deep">GMP Standard Lab</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-forest-base text-[20px]">workspace_premium</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-forest-deep">ISO 9001:2015</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-forest-base text-[20px]">lock</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-forest-deep">256-Bit SSL Encrypted</span></div></div><div class="flex items-center gap-4"><div class="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">language</span><span class="">India (INR ₹)</span></div><div class="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">local_shipping</span><span class="">Bluedart Express</span></div></div></div><div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-on-surface-variant/80"><p class="">© 2025 Aadibasi Botanical Laboratories Private Limited. All ancestral rights reserved.</p><div class="flex items-center gap-6"><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">Terms of Service</a><a class="hover:text-primary transition-colors" href="#">Security Protocols</a></div></div></div></footer>
+
+
+</body></html>
