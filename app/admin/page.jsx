@@ -12,7 +12,7 @@ export const metadata = { title: "Admin Dashboard" };
 const sidebar = [
   { label: "Overview", href: "/admin", icon: "dashboard", active: true },
   { label: "Users", href: "/admin/users", icon: "group" },
-  { label: "Vendors", href: "/admin/vendors", icon: "storefront", badge: 3 },
+  { label: "B2B Businesses", href: "/admin/vendors", icon: "storefront", badge: 3 },
   { label: "Products", href: "/admin/products", icon: "inventory_2" },
   { label: "Categories", href: "/admin/categories", icon: "category" },
   { label: "Brands", href: "/admin/brands", icon: "loyalty" },
@@ -33,15 +33,15 @@ const recentTx = [
   { id: "TX-2988", user: "Prakash Adhikari", type: "Order Payment", method: "eSewa", amount: 3480, when: "5m ago" },
   { id: "TX-2987", user: "Anita Shrestha", type: "Refund", method: "Khalti", amount: -890, when: "12m ago" },
   { id: "TX-2986", user: "Bishal Rai", type: "Order Payment", method: "COD", amount: 4497, when: "26m ago" },
-  { id: "TX-2985", user: "Sita Magar", type: "Vendor Payout", method: "Bank", amount: -12200, when: "1h ago" },
+  { id: "TX-2985", user: "Sita Magar", type: "B2B Business Payout", method: "Bank", amount: -12200, when: "1h ago" },
 ];
 
 export default function AdminDashboard() {
   return (
     <DashboardShell
-      brand={{ title: "Aadibasi", subtitle: "Admin Console" }}
+      brand={{ title: "Hakkiveda", subtitle: "Admin Console" }}
       sidebar={sidebar}
-      user={{ name: "Admin Anisha", email: "admin@aadibasi.com", role: "Super Admin" }}
+      user={{ name: "Admin Anisha", email: "admin@hakkiveda.com", role: "Super Admin" }}
     >
       <div className="flex items-end justify-between gap-4 flex-wrap">
         <div>
@@ -62,14 +62,14 @@ export default function AdminDashboard() {
       <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Gross Revenue" value={formatNPR(4820000)} delta="+22.4%" icon="payments" accent="jade" />
         <StatCard label="Platform Commission" value={formatNPR(482000)} delta="+22.4%" icon="percent" accent="gold" />
-        <StatCard label="Vendor Payouts" value={formatNPR(4338000)} delta="+18.1%" icon="account_balance" accent="forest" />
+        <StatCard label="B2B Payouts" value={formatNPR(4338000)} delta="+18.1%" icon="account_balance" accent="forest" />
         <StatCard label="Refunds" value={formatNPR(28400)} delta="+3.2%" deltaTone="down" icon="undo" accent="terracotta" />
       </div>
 
       <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Orders (30d)" value="2,184" delta="+128" icon="receipt_long" />
         <StatCard label="New Customers" value="612" delta="+47" icon="person_add" accent="jade" />
-        <StatCard label="Active Vendors" value="128" delta="+6" icon="storefront" accent="gold" />
+        <StatCard label="Active B2B Businesses" value="128" delta="+6" icon="storefront" accent="gold" />
         <StatCard label="Pending Approvals" value="3" icon="pending_actions" accent="terracotta" />
       </div>
 
@@ -92,7 +92,7 @@ export default function AdminDashboard() {
 
         <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-headline text-xl text-forest-deep">Pending vendors</h2>
+            <h2 className="font-headline text-xl text-forest-deep">Pending B2B businesses</h2>
             <Link href="/admin/vendors?status=pending" className="text-sm font-semibold text-forest-deep hover:text-antique-gold">All →</Link>
           </div>
           <ul className="divide-y divide-outline-variant/50">
@@ -148,7 +148,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6">
-          <h2 className="font-headline text-xl text-forest-deep">Top vendors</h2>
+          <h2 className="font-headline text-xl text-forest-deep">Top B2B businesses</h2>
           <ul className="mt-4 space-y-4">
             {vendors.slice(0, 4).map((v, i) => (
               <li key={v.slug} className="flex items-center gap-3">

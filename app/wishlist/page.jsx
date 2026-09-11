@@ -25,7 +25,7 @@ export default function WishlistPage() {
             <p className="text-sm text-on-surface-variant mt-1">{items.length} items saved</p>
           </div>
           <button className="text-sm font-semibold text-forest-deep hover:text-antique-gold inline-flex items-center gap-1">
-            <Icon name="add_shopping_bag" size={16} /> Add all to cart
+            <Icon name="add_shopping_cart" size={16} /> Add all to cart
           </button>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">

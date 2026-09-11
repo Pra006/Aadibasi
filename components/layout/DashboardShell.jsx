@@ -7,10 +7,10 @@ import Icon from "@/components/ui/Icon";
  * `sidebar` is an array of { label, href, icon, badge? }.
  */
 export default function DashboardShell({
-  brand = { title: "Aadibasi", subtitle: "Dashboard" },
+  brand = { title: "Hakkiveda", subtitle: "Workspace" },
   variant = "forest",
   sidebar = [],
-  user = { name: "Prakash Adhikari", email: "prakash@aadibasi.com", role: "Customer" },
+  user = { name: "Prakash Adhikari", email: "prakash@hakkiveda.com", role: "Customer" },
   children,
 }) {
   return (
@@ -58,7 +58,7 @@ export default function DashboardShell({
           </div>
           <div className="flex-1 min-w-0">
             <div className="text-sm font-semibold truncate">{user.name}</div>
-            <div className="text-[10px] uppercase tracking-widest text-antique-gold">{user.role}</div>
+            {user.role && <div className="text-[10px] uppercase tracking-widest text-antique-gold">{user.role}</div>}
           </div>
           <button className="text-earth-sand/70 hover:text-antique-gold"><Icon name="logout" size={18} /></button>
         </div>
@@ -70,7 +70,7 @@ export default function DashboardShell({
           <button className="lg:hidden p-1 text-forest-deep" aria-label="Menu"><Icon name="menu" size={24}/></button>
           <div className="flex-1 flex items-center gap-2 max-w-md bg-surface-container-low border border-outline-variant rounded px-3 py-2">
             <Icon name="search" size={18} className="text-on-surface-variant" />
-            <input className="flex-1 bg-transparent outline-none text-sm" placeholder="Search dashboard…" />
+            <input className="flex-1 bg-transparent outline-none text-sm" placeholder="Search…" />
           </div>
           <button className="relative p-2 text-forest-deep hover:text-antique-gold">
             <Icon name="notifications" size={20} />

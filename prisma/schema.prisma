@@ -1,0 +1,1028 @@
+// Hakkiveda — Prisma Schema (Phase 3: Separated Customer + B2B Domains)
+//
+// Architecture:
+//                     USER (auth only)
+//                      |
+//           ┌──────────┴──────────┐
+//           |                     |
+//        CUSTOMER              B2B
+//           |                     |
+//    CustomerAddress        B2BApplication
+//    CustomerCart                  |
+//    CustomerOrder          B2BOrganization
+//    CustomerPayment              |
+//    CustomerWishlist       B2BOrganizationMember
+//                                 |
+//                    ┌────────────┼────────────┐
+//                    ↓            ↓            ↓
+//                 B2BCart      B2BRFQ      B2BPrice
+//                                |
+//                          B2BQuotation
+//                                |
+//                        B2BPurchaseOrder
+//                                |
+//                            B2BOrder
+//                                |
+//                          B2BInvoice
+//                                |
+//                          B2BPayment
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ENUMS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Customer Enums ─────────────────────────────────────────────────────────
+
+enum CustomerOrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+  REFUNDED
+}
+
+enum CustomerPaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum CustomerPaymentMethod {
+  ESEWA
+  KHALTI
+  BANK_TRANSFER
+  COD
+  CARD
+}
+
+enum AddressType {
+  HOME
+  OFFICE
+  OTHER
+}
+
+// ─── B2B Enums ──────────────────────────────────────────────────────────────
+
+enum B2BApplicationStatus {
+  PENDING
+  UNDER_REVIEW
+  CONTACT_REQUIRED
+  APPROVED
+  REJECTED
+}
+
+enum B2BBusinessType {
+  DISTRIBUTOR
+  WHOLESALER
+  RETAILER
+  IMPORTER
+  ONLINE_SELLER
+  PRIVATE_LABEL_BUYER
+  CORPORATE_BUYER
+  INSTITUTIONAL_BUYER
+  SALON_SPA
+  OTHER
+}
+
+enum B2BOrderVolume {
+  LESS_THAN_100
+  FROM_100_TO_500
+  FROM_500_TO_1000
+  FROM_1000_TO_5000
+  MORE_THAN_5000
+  CUSTOM_PROJECT
+}
+
+enum B2BCommunicationChannel {
+  WHATSAPP
+  PHONE
+  EMAIL
+  WHATSAPP_EMAIL
+}
+
+enum B2BOrgMemberRole {
+  ORGANIZATION_OWNER
+  PURCHASER
+  APPROVER
+  ACCOUNTANT
+  EMPLOYEE
+}
+
+enum B2BOrgMemberStatus {
+  ACTIVE
+  SUSPENDED
+  REMOVED
+}
+
+enum B2BAddressType {
+  BILLING
+  SHIPPING
+  WAREHOUSE
+  OFFICE
+}
+
+enum B2BRFQStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  QUOTED
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  CANCELLED
+}
+
+enum B2BQuotationStatus {
+  DRAFT
+  SENT
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  CANCELLED
+}
+
+enum B2BPOStatus {
+  DRAFT
+  SUBMITTED
+  CONFIRMED
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+enum B2BOrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+}
+
+enum B2BPaymentTermType {
+  PREPAID
+  BANK_TRANSFER
+  COD
+  CREDIT
+  NET_7
+  NET_15
+  NET_30
+  NET_60
+}
+
+enum B2BInvoicePaymentStatus {
+  PENDING
+  PARTIALLY_PAID
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum B2BOrgStatus {
+  ACTIVE
+  SUSPENDED
+  INACTIVE
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SHARED MODELS (Authentication + Catalog)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── User (authentication & identity only) ──────────────────────────────────
+
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  hashedPassword String?
+  firstName      String?
+  lastName       String?
+  phone          String?   @unique
+  image          String?
+  emailVerified  DateTime?
+  isActive       Boolean   @default(true)
+
+  // Auth adapters
+  accounts Account[]
+  sessions Session[]
+
+  // Domain relationships (a user can be a customer AND/OR a B2B member)
+  customer       Customer?
+  b2bApplication B2BApplication?
+  orgMemberships B2BOrganizationMember[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// ─── Product (shared catalog) ───────────────────────────────────────────────
+
+model Product {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  sku         String? @unique
+  description String? @db.Text
+  categoryId  String?
+  brand       String?
+  retailPrice Float
+  compareAt   Float?
+  images      String[]
+  stock       Int     @default(0)
+  moq         Int     @default(1)
+  isB2B       Boolean @default(false)
+  isActive    Boolean @default(true)
+
+  category Category? @relation(fields: [categoryId], references: [id])
+
+  // Customer domain
+  customerOrderItems CustomerOrderItem[]
+  customerCartItems  CustomerCartItem[]
+  customerWishlistItems CustomerWishlistItem[]
+
+  // B2B domain
+  b2bPriceTiers B2BPriceTier[]
+  b2bPrices     B2BPrice[]
+  b2bRFQItems   B2BRFQItem[]
+  b2bQuotationItems B2BQuotationItem[]
+  b2bPOItems    B2BPurchaseOrderItem[]
+  b2bOrderItems B2BOrderItem[]
+  b2bInvoiceItems B2BInvoiceItem[]
+  b2bCartItems  B2BCartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([slug])
+  @@index([sku])
+  @@index([isB2B])
+  @@map("products")
+}
+
+// ─── Category ───────────────────────────────────────────────────────────────
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String?
+  image       String?
+  parentId    String?
+  sortOrder   Int     @default(0)
+  isActive    Boolean @default(true)
+
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryTree")
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slug])
+  @@index([parentId])
+  @@map("categories")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// CUSTOMER DOMAIN
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Customer ───────────────────────────────────────────────────────────────
+
+model Customer {
+  id             String  @id @default(cuid())
+  userId         String  @unique
+  customerNumber String  @unique
+  isActive       Boolean @default(true)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  addresses  CustomerAddress[]
+  cart       CustomerCart?
+  orders     CustomerOrder[]
+  payments   CustomerPayment[]
+  wishlist   CustomerWishlist?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([customerNumber])
+  @@map("customers")
+}
+
+// ─── Customer Address ───────────────────────────────────────────────────────
+
+model CustomerAddress {
+  id          String      @id @default(cuid())
+  customerId  String
+  label       String      @default("Home")
+  type        AddressType @default(HOME)
+  fullName    String
+  phone       String
+  province    String
+  district    String?
+  city        String
+  streetAddress String?
+  landmark    String?
+  postalCode  String?
+  isDefault   Boolean     @default(false)
+
+  customer       Customer        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  billingOrders  CustomerOrder[] @relation("CustomerBillingAddress")
+  shippingOrders CustomerOrder[] @relation("CustomerShippingAddress")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([customerId])
+  @@map("customer_addresses")
+}
+
+// ─── Customer Cart ──────────────────────────────────────────────────────────
+
+model CustomerCart {
+  id         String @id @default(cuid())
+  customerId String @unique
+
+  customer Customer         @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  items    CustomerCartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("customer_carts")
+}
+
+model CustomerCartItem {
+  id        String @id @default(cuid())
+  cartId    String
+  productId String
+  quantity  Int    @default(1)
+
+  cart    CustomerCart @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product     @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId])
+  @@map("customer_cart_items")
+}
+
+// ─── Customer Order ─────────────────────────────────────────────────────────
+
+model CustomerOrder {
+  id                String              @id @default(cuid())
+  orderNumber       String              @unique
+  customerId        String
+  billingAddressId  String?
+  shippingAddressId String?
+  status            CustomerOrderStatus @default(PENDING)
+
+  subtotal     Float @default(0)
+  discount     Float @default(0)
+  tax          Float @default(0)
+  shippingCost Float @default(0)
+  total        Float @default(0)
+
+  notes String? @db.Text
+
+  customer        Customer         @relation(fields: [customerId], references: [id])
+  billingAddress  CustomerAddress? @relation("CustomerBillingAddress", fields: [billingAddressId], references: [id])
+  shippingAddress CustomerAddress? @relation("CustomerShippingAddress", fields: [shippingAddressId], references: [id])
+  items           CustomerOrderItem[]
+  payments        CustomerPayment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([customerId])
+  @@index([orderNumber])
+  @@index([status])
+  @@index([createdAt])
+  @@map("customer_orders")
+}
+
+model CustomerOrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  unitPrice Float
+  discount  Float  @default(0)
+  tax       Float  @default(0)
+  total     Float  @default(0)
+
+  order   CustomerOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product       @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@map("customer_order_items")
+}
+
+// ─── Customer Payment ───────────────────────────────────────────────────────
+
+model CustomerPayment {
+  id         String                @id @default(cuid())
+  customerId String
+  orderId    String
+  amount     Float
+  method     CustomerPaymentMethod
+  status     CustomerPaymentStatus @default(PENDING)
+  reference  String?
+  notes      String?               @db.Text
+
+  customer Customer      @relation(fields: [customerId], references: [id])
+  order    CustomerOrder @relation(fields: [orderId], references: [id])
+
+  paidAt    DateTime  @default(now())
+  createdAt DateTime  @default(now())
+
+  @@index([customerId])
+  @@index([orderId])
+  @@map("customer_payments")
+}
+
+// ─── Customer Wishlist ──────────────────────────────────────────────────────
+
+model CustomerWishlist {
+  id         String @id @default(cuid())
+  customerId String @unique
+
+  customer Customer              @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  items    CustomerWishlistItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("customer_wishlists")
+}
+
+model CustomerWishlistItem {
+  id         String @id @default(cuid())
+  wishlistId String
+  productId  String
+
+  wishlist CustomerWishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  product  Product          @relation(fields: [productId], references: [id])
+
+  addedAt DateTime @default(now())
+
+  @@unique([wishlistId, productId])
+  @@map("customer_wishlist_items")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// B2B DOMAIN
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── B2B Application ────────────────────────────────────────────────────────
+
+model B2BApplication {
+  id                String               @id @default(cuid())
+  applicationNumber String               @unique
+  userId            String               @unique
+  status            B2BApplicationStatus @default(PENDING)
+
+  // Business identification
+  contactPersonName String
+  companyName       String
+  country           String
+  businessType      B2BBusinessType
+  phone             String
+  whatsapp          String?
+  businessEmail     String
+
+  // Products & requirements
+  productsOfInterest String[]
+  customProductNote  String?  @db.Text
+
+  // Order volume
+  estimatedOrderVolume  B2BOrderVolume?
+  estimatedPurchaseValue String?
+
+  // Target market
+  targetMarket    String?
+  targetCountry   String?
+  targetProvince  String?
+  targetCity      String?
+  customMessage   String? @db.Text
+
+  // Communication
+  preferredCommunication B2BCommunicationChannel @default(EMAIL)
+
+  // Review
+  reviewedAt      DateTime?
+  rejectionReason String?   @db.Text
+  internalNotes   String?   @db.Text
+
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization B2BOrganization?
+
+  submittedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status])
+  @@index([applicationNumber])
+  @@map("b2b_applications")
+}
+
+// ─── B2B Organization ───────────────────────────────────────────────────────
+
+model B2BOrganization {
+  id                 String        @id @default(cuid())
+  organizationNumber String        @unique
+  b2bApplicationId   String        @unique
+  companyName        String
+  businessType       B2BBusinessType
+  country            String
+  businessEmail      String
+  phone              String
+  whatsapp           String?
+  website            String?
+  taxNumber          String?
+  status             B2BOrgStatus  @default(ACTIVE)
+
+  defaultPaymentTerm B2BPaymentTermType @default(PREPAID)
+  creditLimit        Float?
+
+  b2bApplication B2BApplication @relation(fields: [b2bApplicationId], references: [id])
+
+  members        B2BOrganizationMember[]
+  addresses      B2BAddress[]
+  prices         B2BPrice[]
+  carts          B2BCart[]
+  rfqs           B2BRFQ[]
+  quotations     B2BQuotation[]
+  purchaseOrders B2BPurchaseOrder[]
+  orders         B2BOrder[]
+  invoices       B2BInvoice[]
+  payments       B2BPayment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyName])
+  @@index([organizationNumber])
+  @@index([status])
+  @@map("b2b_organizations")
+}
+
+// ─── B2B Organization Member ────────────────────────────────────────────────
+
+model B2BOrganizationMember {
+  id             String              @id @default(cuid())
+  organizationId String
+  userId         String
+  role           B2BOrgMemberRole    @default(EMPLOYEE)
+  status         B2BOrgMemberStatus  @default(ACTIVE)
+
+  organization B2BOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // B2B actions by this member
+  placedOrders B2BOrder[] @relation("B2BPlacedByMember")
+  placedRFQs   B2BRFQ[]  @relation("B2BRFQRequestedBy")
+
+  joinedAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([organizationId, userId])
+  @@index([userId])
+  @@index([organizationId])
+  @@map("b2b_organization_members")
+}
+
+// ─── B2B Address ────────────────────────────────────────────────────────────
+
+model B2BAddress {
+  id             String         @id @default(cuid())
+  organizationId String
+  type           B2BAddressType @default(OFFICE)
+  label          String         @default("Default")
+  contactName    String
+  phone          String
+  country        String
+  province       String?
+  city           String?
+  streetAddress  String
+  postalCode     String?
+  isDefault      Boolean        @default(false)
+
+  organization   B2BOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  billingOrders  B2BOrder[]      @relation("B2BBillingAddress")
+  shippingOrders B2BOrder[]      @relation("B2BShippingAddress")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@map("b2b_addresses")
+}
+
+// ─── B2B Pricing ────────────────────────────────────────────────────────────
+
+model B2BPriceTier {
+  id        String @id @default(cuid())
+  productId String
+  minQty    Int
+  maxQty    Int?
+  unitPrice Float
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("b2b_price_tiers")
+}
+
+model B2BPrice {
+  id             String  @id @default(cuid())
+  productId      String
+  organizationId String
+  unitPrice      Float
+  minQty         Int?
+  maxQty         Int?
+  notes          String?
+
+  product      Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  organization B2BOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, organizationId])
+  @@index([organizationId])
+  @@map("b2b_prices")
+}
+
+// ─── B2B Cart ───────────────────────────────────────────────────────────────
+
+model B2BCart {
+  id             String @id @default(cuid())
+  organizationId String
+
+  organization B2BOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  items        B2BCartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@map("b2b_carts")
+}
+
+model B2BCartItem {
+  id        String @id @default(cuid())
+  cartId    String
+  productId String
+  quantity  Int    @default(1)
+  notes     String?
+
+  cart    B2BCart  @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId])
+  @@map("b2b_cart_items")
+}
+
+// ─── B2B RFQ ────────────────────────────────────────────────────────────────
+
+model B2BRFQ {
+  id             String       @id @default(cuid())
+  rfqNumber      String       @unique
+  organizationId String
+  requestedById  String
+  status         B2BRFQStatus @default(DRAFT)
+
+  message               String?   @db.Text
+  requestedDeliveryDate DateTime?
+  shippingCountry       String?
+  shippingCity          String?
+  shippingAddress       String?   @db.Text
+  internalNotes         String?   @db.Text
+
+  organization B2BOrganization       @relation(fields: [organizationId], references: [id])
+  requestedBy  B2BOrganizationMember @relation("B2BRFQRequestedBy", fields: [requestedById], references: [id])
+  items        B2BRFQItem[]
+  quotation    B2BQuotation?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([requestedById])
+  @@index([status])
+  @@index([rfqNumber])
+  @@map("b2b_rfqs")
+}
+
+model B2BRFQItem {
+  id          String  @id @default(cuid())
+  rfqId       String
+  productId   String
+  quantity    Int
+  targetPrice Float?
+  notes       String?
+
+  rfq     B2BRFQ  @relation(fields: [rfqId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@index([rfqId])
+  @@map("b2b_rfq_items")
+}
+
+// ─── B2B Quotation ──────────────────────────────────────────────────────────
+
+model B2BQuotation {
+  id             String             @id @default(cuid())
+  quoteNumber    String             @unique
+  organizationId String
+  rfqId          String?            @unique
+  status         B2BQuotationStatus @default(DRAFT)
+
+  paymentTerms  B2BPaymentTermType?
+  deliveryTerms String?
+  validUntil    DateTime?
+  notes         String? @db.Text
+
+  subtotal     Float @default(0)
+  discount     Float @default(0)
+  tax          Float @default(0)
+  shippingCost Float @default(0)
+  total        Float @default(0)
+
+  organization  B2BOrganization   @relation(fields: [organizationId], references: [id])
+  rfq           B2BRFQ?           @relation(fields: [rfqId], references: [id])
+  items         B2BQuotationItem[]
+  purchaseOrder B2BPurchaseOrder?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([quoteNumber])
+  @@map("b2b_quotations")
+}
+
+model B2BQuotationItem {
+  id          String @id @default(cuid())
+  quotationId String
+  productId   String
+  quantity    Int
+  unitPrice   Float
+  discount    Float  @default(0)
+  tax         Float  @default(0)
+  total       Float  @default(0)
+
+  quotation B2BQuotation @relation(fields: [quotationId], references: [id], onDelete: Cascade)
+  product   Product      @relation(fields: [productId], references: [id])
+
+  @@index([quotationId])
+  @@map("b2b_quotation_items")
+}
+
+// ─── B2B Purchase Order ─────────────────────────────────────────────────────
+
+model B2BPurchaseOrder {
+  id             String     @id @default(cuid())
+  poNumber       String     @unique
+  organizationId String
+  quotationId    String?    @unique
+  status         B2BPOStatus @default(DRAFT)
+
+  billingAddress  String? @db.Text
+  shippingAddress String? @db.Text
+  paymentTerms    B2BPaymentTermType?
+  deliveryNotes   String? @db.Text
+  notes           String? @db.Text
+
+  subtotal     Float @default(0)
+  discount     Float @default(0)
+  tax          Float @default(0)
+  shippingCost Float @default(0)
+  total        Float @default(0)
+
+  organization B2BOrganization @relation(fields: [organizationId], references: [id])
+  quotation    B2BQuotation?   @relation(fields: [quotationId], references: [id])
+  items        B2BPurchaseOrderItem[]
+  order        B2BOrder?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([poNumber])
+  @@map("b2b_purchase_orders")
+}
+
+model B2BPurchaseOrderItem {
+  id              String @id @default(cuid())
+  purchaseOrderId String
+  productId       String
+  quantity        Int
+  unitPrice       Float
+  discount        Float  @default(0)
+  tax             Float  @default(0)
+  total           Float  @default(0)
+
+  purchaseOrder B2BPurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  product       Product          @relation(fields: [productId], references: [id])
+
+  @@index([purchaseOrderId])
+  @@map("b2b_purchase_order_items")
+}
+
+// ─── B2B Order ──────────────────────────────────────────────────────────────
+
+model B2BOrder {
+  id                String        @id @default(cuid())
+  orderNumber       String        @unique
+  organizationId    String
+  placedByMemberId  String
+  purchaseOrderId   String?       @unique
+  billingAddressId  String?
+  shippingAddressId String?
+  status            B2BOrderStatus @default(PENDING)
+
+  paymentTerms B2BPaymentTermType?
+  notes        String? @db.Text
+
+  subtotal     Float @default(0)
+  discount     Float @default(0)
+  tax          Float @default(0)
+  shippingCost Float @default(0)
+  total        Float @default(0)
+
+  organization   B2BOrganization       @relation(fields: [organizationId], references: [id])
+  placedBy       B2BOrganizationMember @relation("B2BPlacedByMember", fields: [placedByMemberId], references: [id])
+  purchaseOrder  B2BPurchaseOrder?     @relation(fields: [purchaseOrderId], references: [id])
+  billingAddress B2BAddress?           @relation("B2BBillingAddress", fields: [billingAddressId], references: [id])
+  shippingAddress B2BAddress?          @relation("B2BShippingAddress", fields: [shippingAddressId], references: [id])
+  items          B2BOrderItem[]
+  invoice        B2BInvoice?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([placedByMemberId])
+  @@index([status])
+  @@index([orderNumber])
+  @@index([createdAt])
+  @@map("b2b_orders")
+}
+
+model B2BOrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  unitPrice Float
+  discount  Float  @default(0)
+  tax       Float  @default(0)
+  total     Float  @default(0)
+
+  order   B2BOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@map("b2b_order_items")
+}
+
+// ─── B2B Invoice ────────────────────────────────────────────────────────────
+
+model B2BInvoice {
+  id             String                  @id @default(cuid())
+  invoiceNumber  String                  @unique
+  organizationId String
+  orderId        String?                 @unique
+  paymentStatus  B2BInvoicePaymentStatus @default(PENDING)
+
+  billingAddress  String? @db.Text
+  shippingAddress String? @db.Text
+  paymentTerms    B2BPaymentTermType?
+  dueDate         DateTime?
+
+  subtotal     Float @default(0)
+  discount     Float @default(0)
+  tax          Float @default(0)
+  shippingCost Float @default(0)
+  total        Float @default(0)
+
+  organization B2BOrganization @relation(fields: [organizationId], references: [id])
+  order        B2BOrder?       @relation(fields: [orderId], references: [id])
+  items        B2BInvoiceItem[]
+  payments     B2BPayment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([paymentStatus])
+  @@index([invoiceNumber])
+  @@map("b2b_invoices")
+}
+
+model B2BInvoiceItem {
+  id        String @id @default(cuid())
+  invoiceId String
+  productId String
+  quantity  Int
+  unitPrice Float
+  discount  Float  @default(0)
+  tax       Float  @default(0)
+  total     Float  @default(0)
+
+  invoice B2BInvoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  product Product    @relation(fields: [productId], references: [id])
+
+  @@index([invoiceId])
+  @@map("b2b_invoice_items")
+}
+
+// ─── B2B Payment ────────────────────────────────────────────────────────────
+
+model B2BPayment {
+  id             String             @id @default(cuid())
+  invoiceId      String
+  organizationId String
+  amount         Float
+  method         B2BPaymentTermType
+  reference      String?
+  notes          String?            @db.Text
+
+  invoice      B2BInvoice      @relation(fields: [invoiceId], references: [id])
+  organization B2BOrganization @relation(fields: [organizationId], references: [id])
+
+  paidAt    DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  @@index([invoiceId])
+  @@index([organizationId])
+  @@map("b2b_payments")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// NEXTAUTH ADAPTER MODELS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}

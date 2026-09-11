@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 import { formatNPR } from "@/lib/utils";
 import { products } from "@/lib/data";
 
-export const metadata = { title: "Vendor Dashboard" };
+export const metadata = { title: "B2B Business Dashboard" };
 
 const sidebar = [
   { label: "Overview", href: "/vendor", icon: "dashboard", active: true },
@@ -35,7 +35,7 @@ export default function VendorDashboard() {
     <DashboardShell
       brand={{ title: "Himalayan Roots", subtitle: "Seller Central" }}
       sidebar={sidebar}
-      user={{ name: "Ram Bahadur", email: "ram@himalayanroots.np", role: "Vendor" }}
+      user={{ name: "Ram Bahadur", email: "ram@himalayanroots.np", role: "B2B Business" }}
     >
       <div className="flex items-end justify-between gap-4 flex-wrap">
         <div>

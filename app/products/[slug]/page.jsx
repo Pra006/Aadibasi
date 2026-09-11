@@ -80,7 +80,7 @@ export default async function ProductPage({ params }) {
                 ["local_shipping", "Free delivery above NPR 2,999"],
                 ["undo", "7-day easy returns"],
                 ["encrypted", "Secure checkout"],
-                ["verified", "Vendor-verified authentic"],
+                ["verified", "B2B Business-verified authentic"],
               ].map(([icon, label]) => (
                 <div key={label} className="flex items-center gap-2 text-forest-deep">
                   <Icon name={icon} size={18} className="text-antique-gold" />
@@ -127,7 +127,7 @@ export default async function ProductPage({ params }) {
                 {[
                   ["Brand", product.brand],
                   ["Category", product.category.replace(/-/g, " ")],
-                  ["Vendor", vendor?.name],
+                  ["B2B Business", vendor?.name],
                   ["Country of Origin", "Nepal"],
                   ["Storage", "Cool, dry place away from sunlight"],
                   ["Shelf Life", "24 months from date of manufacture"],

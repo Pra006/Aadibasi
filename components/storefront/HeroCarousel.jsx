@@ -92,7 +92,7 @@ export default function HeroCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
-      aria-label="Aadibasi featured collections"
+      aria-label="Hakkiveda featured collections"
     >
       {/* Slides */}
       <div className="relative h-[520px] sm:h-[560px] lg:h-[620px]">

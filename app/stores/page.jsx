@@ -20,8 +20,8 @@ export default function StoresPage() {
       <Section className="pb-16">
         <SectionHeader
           eyebrow="Meet the Makers"
-          title="Verified vendors of Aadibasi."
-          description="Every store on Aadibasi is manually vetted for craft authenticity and fair pay."
+          title="Verified B2B businesses of Hakkiveda."
+          description="Every store on Hakkiveda is manually vetted for craft authenticity and fair pay."
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {vendors.map((v) => <VendorCard key={v.slug} vendor={v} />)}

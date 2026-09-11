@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <StorefrontShell>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32 text-center">
-        <div className="text-antique-gold text-xs uppercase tracking-widest font-bold">Aadibasi</div>
+        <div className="text-antique-gold text-xs uppercase tracking-widest font-bold">Hakkiveda</div>
         <h1 className="font-headline text-6xl sm:text-7xl text-forest-deep mt-3">404</h1>
         <p className="mt-3 text-on-surface-variant max-w-md mx-auto">
           The page you're looking for has wandered off the trail. Let's take you back to the marketplace.

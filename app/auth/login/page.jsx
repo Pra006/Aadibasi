@@ -1,10 +1,44 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import Button from "@/components/ui/Button";
-
-export const metadata = { title: "Sign In" };
+import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const registered = searchParams.get("registered") === "true";
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setError("");
+    setLoading(true);
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      setError("Invalid email or password.");
+      setLoading(false);
+      return;
+    }
+
+    const callbackUrl = searchParams.get("callbackUrl");
+    const destination = callbackUrl?.startsWith("/") ? callbackUrl : "/";
+    router.push(destination);
+    router.refresh();
+  }
+
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
       <div className="relative hidden lg:block bg-forest-deep">
@@ -15,7 +49,7 @@ export default function LoginPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/40 to-transparent" />
         <div className="absolute bottom-10 left-10 right-10 text-ivory-canvas">
-          <div className="text-xs uppercase tracking-widest text-antique-gold font-bold mb-3">Aadibasi</div>
+          <div className="text-xs uppercase tracking-widest text-antique-gold font-bold mb-3">Hakkiveda</div>
           <h2 className="font-headline text-4xl leading-tight">
             Ancient wisdom.<br /><span className="italic text-antique-gold font-normal">Rooted in Nature.</span>
           </h2>
@@ -31,27 +65,40 @@ export default function LoginPage() {
             <div className="h-10 w-10 rounded-md border border-antique-gold/40 bg-forest-base flex items-center justify-center">
               <span className="font-headline text-antique-gold text-lg font-bold">आ</span>
             </div>
-            <span className="font-headline text-2xl text-forest-deep">Aadibasi</span>
+            <span className="font-headline text-2xl text-forest-deep">Hakkiveda</span>
           </Link>
           <h1 className="font-headline text-3xl text-forest-deep">Welcome back</h1>
-          <p className="text-sm text-on-surface-variant mt-1">Sign in to your Aadibasi account.</p>
+          <p className="text-sm text-on-surface-variant mt-1">Sign in to your Hakkiveda account.</p>
 
-          <form className="mt-8 space-y-4">
+          {registered && (
+            <p className="mt-4 rounded border border-herbal-jade/30 bg-herbal-jade/10 px-3 py-2 text-sm text-forest-deep" role="status">
+              Account created successfully. Please sign in.
+            </p>
+          )}
+          {error && (
+            <p className="mt-4 rounded border border-terracotta/30 bg-terracotta/10 px-3 py-2 text-sm text-terracotta" role="alert">
+              {error}
+            </p>
+          )}
+
+          <form onSubmit={handleSubmit} className="mt-8 space-y-4">
             <label className="flex flex-col gap-1.5">
               <span className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Email</span>
-              <input type="email" required className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold" placeholder="you@example.com" />
+              <input type="email" required value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold" placeholder="you@example.com" />
             </label>
             <label className="flex flex-col gap-1.5">
               <div className="flex justify-between items-center">
                 <span className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Password</span>
                 <Link href="/auth/forgot" className="text-xs text-antique-gold hover:underline">Forgot?</Link>
               </div>
-              <input type="password" required className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold" placeholder="••••••••" />
+              <input type="password" required value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold" placeholder="••••••••" />
             </label>
             <label className="flex items-center gap-2 text-sm text-on-surface-variant">
               <input type="checkbox" className="rounded border-outline text-forest-base" /> Keep me signed in
             </label>
-            <Button size="lg" className="w-full">Sign In</Button>
+            <Button type="submit" size="lg" className="w-full" disabled={loading}>
+              {loading ? "Signing in..." : "Sign In"}
+            </Button>
           </form>
 
           <div className="my-6 flex items-center gap-3 text-xs text-on-surface-variant">
@@ -70,7 +117,7 @@ export default function LoginPage() {
           </div>
 
           <p className="mt-8 text-center text-sm text-on-surface-variant">
-            New to Aadibasi?{" "}
+            New to Hakkiveda?{" "}
             <Link href="/auth/register" className="text-forest-deep font-semibold hover:text-antique-gold">
               Create an account
             </Link>

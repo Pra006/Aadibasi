@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
 import Icon from "@/components/ui/Icon";
 
 const nav = [
@@ -14,6 +15,9 @@ const nav = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const { data: session, status } = useSession();
+  const user = session?.user ?? null;
 
   return (
     <>
@@ -30,7 +34,7 @@ export default function Header() {
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-headline text-[22px] font-semibold text-forest-deep tracking-tight group-hover:text-forest-base">
-                  Aadibasi
+                  Hakkiveda
                 </span>
                 <span className="text-[10px] text-antique-gold tracking-widest uppercase mt-1 font-bold">
                   Nepal Marketplace
@@ -61,20 +65,106 @@ export default function Header() {
             >
               <Icon name="search" size={22} />
             </button>
+
             <Link
-              href="/vendor/register"
+              href="/b2b/apply"
               className="hidden md:inline-flex text-xs font-semibold uppercase tracking-widest text-forest-deep hover:text-antique-gold px-3 py-2 border border-forest-base/20 rounded"
             >
-              Sell on Aadibasi
+              B2B Exp/Imp
             </Link>
-            <Link href="/account" aria-label="Account" className="hidden sm:inline-flex p-2 text-forest-deep hover:text-antique-gold">
-              <Icon name="manage_accounts" size={22} />
-            </Link>
-            <Link href="/wishlist" aria-label="Wishlist" className="relative hidden sm:inline-flex p-2 text-forest-deep hover:text-antique-gold">
+
+            {/* AUTH */}
+            {status === "loading" ? (
+              <div className="w-8 h-8 rounded-full bg-surface-container animate-pulse" />
+            ) : user ? (
+              <div className="relative">
+                <button
+                  onClick={() => setAccountOpen((v) => !v)}
+                  className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full border border-outline-variant hover:border-antique-gold bg-surface-container-lowest transition"
+                  aria-haspopup="menu"
+                  aria-expanded={accountOpen}
+                >
+                  <span className="w-7 h-7 rounded-full bg-forest-base text-antique-gold flex items-center justify-center text-xs font-bold">
+                    {user.name?.[0] || "A"}
+                  </span>
+                  <span className="hidden md:inline text-sm font-semibold text-forest-deep">
+                    {user.name?.split(" ")[0] || "Account"}
+                  </span>
+                  <Icon name="expand_more" size={16} className="text-on-surface-variant" />
+                </button>
+                {accountOpen && (
+                  <div
+                    role="menu"
+                    onMouseLeave={() => setAccountOpen(false)}
+                    className="absolute right-0 mt-2 w-56 bg-surface-container-lowest border border-outline-variant rounded-lg shadow-lg overflow-hidden"
+                  >
+                    <div className="px-4 py-3 bg-forest-base/5 border-b border-outline-variant">
+                      <div className="text-sm font-semibold text-forest-deep">{user.name}</div>
+                      <div className="text-xs text-on-surface-variant truncate">{user.email}</div>
+                    </div>
+                    {[
+                      ["My Orders", "/account/orders", "receipt_long"],
+                      ["Wishlist", "/wishlist", "favorite"],
+                      ["Addresses", "/account/addresses", "location_on"],
+                      ["Settings", "/account/settings", "settings"],
+                    ].map(([label, href, icon]) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        onClick={() => setAccountOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-forest-deep hover:bg-forest-base/5"
+                      >
+                        <Icon name={icon} size={16} className="text-antique-gold" />
+                        {label}
+                      </Link>
+                    ))}
+                    <div className="border-t border-outline-variant">
+                      <button
+                        onClick={() => {
+                          signOut({ callbackUrl: "/" });
+                          setAccountOpen(false);
+                        }}
+                        className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-terracotta hover:bg-terracotta/5 text-left"
+                      >
+                        <Icon name="logout" size={16} />
+                        Sign out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Link
+                  href="/auth/login"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded text-xs font-semibold uppercase tracking-widest text-forest-deep hover:text-antique-gold"
+                >
+                  <Icon name="login" size={16} />
+                  Sign In
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded text-xs font-semibold uppercase tracking-widest bg-antique-gold text-forest-deep hover:brightness-95 shadow-sm"
+                >
+                  <Icon name="person_add" size={16} />
+                  Register
+                </Link>
+                <Link
+                  href="/auth/login"
+                  aria-label="Sign in"
+                  className="sm:hidden p-2 text-forest-deep hover:text-antique-gold"
+                >
+                  <Icon name="account_circle" size={24} />
+                </Link>
+              </>
+            )}
+
+            <Link
+              href="/wishlist"
+              aria-label="Wishlist"
+              className="relative hidden sm:inline-flex p-2 text-forest-deep hover:text-antique-gold"
+            >
               <Icon name="favorite" size={22} />
-              <span className="absolute top-1 right-1 bg-terracotta text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                2
-              </span>
             </Link>
             <Link
               href="/cart"
@@ -83,8 +173,8 @@ export default function Header() {
             >
               <Icon name="shopping_bag" size={20} className="text-antique-gold" />
               <span className="hidden md:flex flex-col text-left leading-tight">
-                <span className="text-[10px] uppercase text-earth-sand tracking-wider font-semibold">Bag (3)</span>
-                <span className="text-xs font-semibold text-ivory-canvas">NPR 6,850</span>
+                <span className="text-[10px] uppercase text-earth-sand tracking-wider font-semibold">Bag</span>
+                <span className="text-xs font-semibold text-ivory-canvas">Cart</span>
               </span>
             </Link>
           </div>
@@ -134,6 +224,38 @@ export default function Header() {
                 <Icon name="close" size={22} />
               </button>
             </div>
+
+            {user ? (
+              <div className="mb-5 p-4 rounded-lg bg-forest-base/5 border border-outline-variant flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-forest-base text-antique-gold flex items-center justify-center font-bold">
+                  {user.name?.[0] || "A"}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-semibold text-forest-deep truncate">{user.name}</div>
+                  <div className="text-xs text-on-surface-variant truncate">{user.email}</div>
+                </div>
+              </div>
+            ) : (
+              <div className="mb-5 grid grid-cols-2 gap-2">
+                <Link
+                  href="/auth/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded text-xs font-semibold uppercase tracking-widest border border-forest-base/20 text-forest-deep hover:bg-forest-base/5"
+                >
+                  <Icon name="login" size={14} />
+                  Sign In
+                </Link>
+                <Link
+                  href="/auth/register"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded text-xs font-semibold uppercase tracking-widest bg-antique-gold text-forest-deep hover:brightness-95"
+                >
+                  <Icon name="person_add" size={14} />
+                  Register
+                </Link>
+              </div>
+            )}
+
             <nav className="flex flex-col gap-1">
               {nav.map((n) => (
                 <Link
@@ -146,12 +268,33 @@ export default function Header() {
                 </Link>
               ))}
               <div className="border-t border-outline-variant my-3" />
-              <Link href="/account" className="px-3 py-3 rounded-lg text-forest-deep hover:bg-forest-base/5">
-                My Account
+              {user && (
+                <Link
+                  href="/account"
+                  onClick={() => setMenuOpen(false)}
+                  className="px-3 py-3 rounded-lg text-forest-deep hover:bg-forest-base/5"
+                >
+                  My Account
+                </Link>
+              )}
+              <Link
+                href="/b2b/apply"
+                onClick={() => setMenuOpen(false)}
+                className="px-3 py-3 rounded-lg text-forest-deep hover:bg-forest-base/5"
+              >
+                B2B Exp/Imp
               </Link>
-              <Link href="/vendor/register" className="px-3 py-3 rounded-lg text-forest-deep hover:bg-forest-base/5">
-                Sell on Aadibasi
-              </Link>
+              {user && (
+                <button
+                  onClick={() => {
+                    signOut({ callbackUrl: "/" });
+                    setMenuOpen(false);
+                  }}
+                  className="px-3 py-3 rounded-lg text-terracotta hover:bg-terracotta/5 text-left"
+                >
+                  Sign out
+                </button>
+              )}
             </nav>
           </aside>
         </div>

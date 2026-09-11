@@ -1,5 +1,5 @@
 {
-  "name": "aadibasi",
+  "name": "hakkiveda",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.3",
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^3.0.3",
     "next": "16.3.4",
+    "next-auth": "^5.0.0-beta.32",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
@@ -17,6 +21,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "prisma": "^5.22.0",
     "tailwindcss": "^4"
   }
 }

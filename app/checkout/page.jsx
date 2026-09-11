@@ -155,7 +155,7 @@ export default function CheckoutPage() {
             </dl>
             <Button size="lg" className="w-full mt-6">Place Order</Button>
             <p className="mt-3 text-[11px] text-on-surface-variant text-center">
-              By placing your order, you agree to Aadibasi's Terms and acknowledge the Privacy Policy.
+              By placing your order, you agree to Hakkiveda's Terms and acknowledge the Privacy Policy.
             </p>
           </aside>
         </div>

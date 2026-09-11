@@ -103,8 +103,8 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="Meet the Makers"
-            title="Verified vendors, real stories."
-            description="Every product on Aadibasi carries the name of its maker. Read their story before you buy."
+            title="Verified B2B businesses, real stories."
+            description="Every product on Hakkiveda carries the name of its maker. Read their story before you buy."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {vendors.map((v) => (
@@ -130,15 +130,15 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-2xl min-h-[220px] bg-terracotta text-ivory-canvas p-8 flex flex-col justify-between">
             <div>
               <Badge tone="gold" className="text-terracotta bg-ivory-canvas border-ivory-canvas">
-                Vendor Programme
+                B2B Business Programme
               </Badge>
-              <h3 className="font-headline text-3xl mt-4 max-w-sm">Are you a maker? Sell on Aadibasi.</h3>
+              <h3 className="font-headline text-3xl mt-4 max-w-sm">Are you a maker? Sell on Hakkiveda.</h3>
               <p className="text-sm mt-2 max-w-md opacity-90">
-                Low commission. Fair payouts. Free vendor onboarding for the first 100 stores.
+                Low commission. Fair payouts. Free B2B business onboarding for the first 100 stores.
               </p>
             </div>
             <div>
-              <Button as={Link} href="/vendor/register" variant="gold">
+              <Button as={Link} href="/b2b/apply" variant="gold">
                 Start Selling
               </Button>
             </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
               c: "Pokhara",
             },
             {
-              q: "Aadibasi is the first marketplace where I actually know who I'm buying from. That trust is rare.",
+              q: "Hakkiveda is the first marketplace where I actually know who I'm buying from. That trust is rare.",
               n: "Sita R.",
               c: "Biratnagar",
             },

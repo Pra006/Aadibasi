@@ -103,7 +103,7 @@ export default function CartPage() {
           <div>
             <h1 className="font-headline text-3xl sm:text-4xl text-forest-deep">Your Bag</h1>
             <p className="text-sm text-on-surface-variant mt-1">
-              {cartItems.length} items from {byVendor.size} vendor{byVendor.size > 1 ? "s" : ""}
+              {cartItems.length} items from {byVendor.size} B2B business{byVendor.size > 1 ? "es" : ""}
             </p>
           </div>
           <Link href="/shop" className="text-sm font-semibold text-forest-deep hover:text-antique-gold inline-flex items-center gap-1">
@@ -167,7 +167,7 @@ export default function CartPage() {
               <div className="flex items-center gap-1.5"><Icon name="encrypted" size={14} className="text-antique-gold"/> Secure checkout</div>
               <div className="flex items-center gap-1.5"><Icon name="local_shipping" size={14} className="text-antique-gold"/> Nepal-wide delivery</div>
               <div className="flex items-center gap-1.5"><Icon name="undo" size={14} className="text-antique-gold"/> 7-day returns</div>
-              <div className="flex items-center gap-1.5"><Icon name="verified" size={14} className="text-antique-gold"/> Verified vendors</div>
+              <div className="flex items-center gap-1.5"><Icon name="verified" size={14} className="text-antique-gold"/> Verified B2B businesses</div>
             </div>
           </aside>
         </div>
