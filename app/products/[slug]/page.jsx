@@ -11,21 +11,26 @@ import ProductCard from "@/components/storefront/ProductCard";
 import ProductGallery from "@/components/product/ProductGallery";
 import VariantAndCart from "@/components/product/VariantAndCart";
 import ReviewList from "@/components/product/ReviewList";
-import { getProduct, getVendor, productsByCategory, products } from "@/lib/data";
+import { getVendor } from "@/lib/data";
+import { getStoreProduct, listStoreProducts, listStoreProductsByCategory } from "@/lib/catalog";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const p = getProduct(slug);
+  const p = await getStoreProduct(slug);
   return { title: p ? p.name : "Product" };
 }
 
 export default async function ProductPage({ params }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getStoreProduct(slug);
   if (!product) return notFound();
   const vendor = getVendor(product.vendor);
-  const related = productsByCategory(product.category).filter((p) => p.id !== product.id);
-  const froths = products.filter((p) => p.id !== product.id).slice(0, 3);
+  const [categoryProducts, allProducts] = await Promise.all([
+    product.category ? listStoreProductsByCategory(product.category) : Promise.resolve([]),
+    listStoreProducts(),
+  ]);
+  const related = categoryProducts.filter((p) => p.id !== product.id);
+  const froths = allProducts.filter((p) => p.id !== product.id).slice(0, 3);
 
   return (
     <StorefrontShell>
@@ -170,7 +175,7 @@ export default async function ProductPage({ params }) {
       <Section className="pb-16">
         <SectionHeader eyebrow="Related" title="You may also like." />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {(related.length ? related : products).slice(0, 4).map((p) => (
+          {(related.length ? related : allProducts).slice(0, 4).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

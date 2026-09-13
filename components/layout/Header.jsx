@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Icon from "@/components/ui/Icon";
+import { useCart } from "@/components/providers/CartProvider";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -17,6 +18,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const { data: session, status } = useSession();
+  const { count: cartCount } = useCart();
   const user = session?.user ?? null;
 
   return (
@@ -169,12 +171,19 @@ export default function Header() {
             <Link
               href="/cart"
               aria-label="Cart"
-              className="flex items-center gap-2.5 bg-forest-base text-ivory-canvas px-3.5 py-2 rounded-lg shadow-sm hover:bg-forest-deep"
+              className="relative flex items-center gap-2.5 bg-forest-base text-ivory-canvas px-3.5 py-2 rounded-lg shadow-sm hover:bg-forest-deep"
             >
               <Icon name="shopping_bag" size={20} className="text-antique-gold" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 rounded-full bg-antique-gold text-forest-deep text-[10px] font-bold flex items-center justify-center">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
               <span className="hidden md:flex flex-col text-left leading-tight">
                 <span className="text-[10px] uppercase text-earth-sand tracking-wider font-semibold">Bag</span>
-                <span className="text-xs font-semibold text-ivory-canvas">Cart</span>
+                <span className="text-xs font-semibold text-ivory-canvas">
+                  {cartCount > 0 ? `${cartCount} item${cartCount === 1 ? "" : "s"}` : "Cart"}
+                </span>
               </span>
             </Link>
           </div>

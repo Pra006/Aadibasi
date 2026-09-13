@@ -1,26 +1,68 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Icon from "@/components/ui/Icon";
 import Button from "@/components/ui/Button";
 import { formatNPR } from "@/lib/utils";
+import { useCart } from "@/components/providers/CartProvider";
 
 export default function VariantAndCart({ product }) {
-  const [variantId, setVariantId] = useState(product.variants?.[1]?.id || product.variants?.[0]?.id);
+  // Default to the first option that can actually be bought.
+  const [variantId, setVariantId] = useState(
+    () => (product.variants?.find((v) => v.stock > 0) || product.variants?.[0])?.id ?? null
+  );
   const [qty, setQty] = useState(1);
+  const [added, setAdded] = useState(false);
   const variant = product.variants?.find((v) => v.id === variantId);
   const outOfStock = !variant || variant.stock <= 0;
 
+  const router = useRouter();
+  const { addItem, pending, signedIn, sessionStatus, error } = useCart();
+
+  function requireLogin() {
+    router.push(`/auth/login?callbackUrl=${encodeURIComponent(`/products/${product.slug}`)}`);
+  }
+
+  async function handleAdd() {
+    if (sessionStatus === "loading") return;
+    if (!signedIn) return requireLogin();
+    try {
+      await addItem({ slug: product.slug, variantId, quantity: qty });
+      setAdded(true);
+      setTimeout(() => setAdded(false), 2500);
+    } catch {
+      /* error surfaced below via cart context */
+    }
+  }
+
+  async function handleBuyNow() {
+    if (sessionStatus === "loading") return;
+    if (!signedIn) return requireLogin();
+    try {
+      await addItem({ slug: product.slug, variantId, quantity: qty });
+      router.push("/checkout");
+    } catch {
+      /* error surfaced below via cart context */
+    }
+  }
+
   return (
     <div className="mt-6">
-      {product.variants?.length > 1 && (
+      {product.hasVariants && (
         <div className="mb-5">
-          <label className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Size</label>
+          <div className="flex items-baseline justify-between gap-3">
+            <label className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Option</label>
+            {variant && (
+              <span className="font-headline text-xl text-forest-deep">{formatNPR(variant.price)}</span>
+            )}
+          </div>
           <div className="mt-2 flex flex-wrap gap-2">
             {product.variants.map((v) => (
               <button
                 key={v.id}
                 onClick={() => setVariantId(v.id)}
-                className={`px-4 py-2 rounded border text-sm font-semibold ${
+                disabled={v.stock <= 0}
+                className={`px-4 py-2 rounded border text-sm font-semibold disabled:opacity-40 disabled:line-through ${
                   variantId === v.id
                     ? "border-forest-base bg-forest-base text-ivory-canvas"
                     : "border-outline-variant text-forest-deep hover:border-forest-base"
@@ -61,11 +103,11 @@ export default function VariantAndCart({ product }) {
       </div>
 
       <div className="mt-5 flex flex-col sm:flex-row gap-3">
-        <Button size="lg" className="flex-1" disabled={outOfStock}>
-          <Icon name="add_shopping_cart" size={18} className="text-antique-gold" />
-          Add to Cart
+        <Button size="lg" className="flex-1" disabled={outOfStock || pending} onClick={handleAdd}>
+          <Icon name={added ? "check_circle" : "add_shopping_cart"} size={18} className="text-antique-gold" />
+          {added ? "Added to Cart" : pending ? "Adding…" : "Add to Cart"}
         </Button>
-        <Button size="lg" variant="gold" className="flex-1" disabled={outOfStock}>
+        <Button size="lg" variant="gold" className="flex-1" disabled={outOfStock || pending} onClick={handleBuyNow}>
           Buy Now
         </Button>
         <button
@@ -75,6 +117,8 @@ export default function VariantAndCart({ product }) {
           <Icon name="favorite" size={20} />
         </button>
       </div>
+
+      {error && <p className="mt-3 text-xs text-terracotta font-semibold">{error}</p>}
     </div>
   );
 }

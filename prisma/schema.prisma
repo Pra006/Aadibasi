@@ -68,6 +68,19 @@ enum CustomerPaymentMethod {
   CARD
 }
 
+enum CustomerOrderFulfillmentStatus {
+  UNFULFILLED
+  PARTIALLY_FULFILLED
+  FULFILLED
+  RETURNED
+}
+
+enum CustomerOrderEventActor {
+  SYSTEM
+  ADMIN
+  CUSTOMER
+}
+
 enum AddressType {
   HOME
   OFFICE
@@ -213,7 +226,9 @@ model User {
   phone          String?   @unique
   image          String?
   emailVerified  DateTime?
+  phoneVerified  DateTime?
   isActive       Boolean   @default(true)
+  lastLoginAt    DateTime?
 
   // Auth adapters
   accounts Account[]
@@ -223,6 +238,7 @@ model User {
   customer       Customer?
   b2bApplication B2BApplication?
   orgMemberships B2BOrganizationMember[]
+  adminUser      AdminUser?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -233,37 +249,38 @@ model User {
 // ─── Product (shared catalog) ───────────────────────────────────────────────
 
 model Product {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
-  slug        String  @unique
-  sku         String? @unique
-  description String? @db.Text
+  slug        String   @unique
+  sku         String?  @unique
+  description String?  @db.Text
   categoryId  String?
   brand       String?
   retailPrice Float
   compareAt   Float?
   images      String[]
-  stock       Int     @default(0)
-  moq         Int     @default(1)
-  isB2B       Boolean @default(false)
-  isActive    Boolean @default(true)
+  stock       Int      @default(0)
+  moq         Int      @default(1)
+  isB2B       Boolean  @default(false)
+  isActive    Boolean  @default(true)
 
   category Category? @relation(fields: [categoryId], references: [id])
 
   // Customer domain
-  customerOrderItems CustomerOrderItem[]
-  customerCartItems  CustomerCartItem[]
+  customerOrderItems    CustomerOrderItem[]
+  variants              ProductVariant[]
+  customerCartItems     CustomerCartItem[]
   customerWishlistItems CustomerWishlistItem[]
 
   // B2B domain
-  b2bPriceTiers B2BPriceTier[]
-  b2bPrices     B2BPrice[]
-  b2bRFQItems   B2BRFQItem[]
+  b2bPriceTiers     B2BPriceTier[]
+  b2bPrices         B2BPrice[]
+  b2bRFQItems       B2BRFQItem[]
   b2bQuotationItems B2BQuotationItem[]
-  b2bPOItems    B2BPurchaseOrderItem[]
-  b2bOrderItems B2BOrderItem[]
-  b2bInvoiceItems B2BInvoiceItem[]
-  b2bCartItems  B2BCartItem[]
+  b2bPOItems        B2BPurchaseOrderItem[]
+  b2bOrderItems     B2BOrderItem[]
+  b2bInvoiceItems   B2BInvoiceItem[]
+  b2bCartItems      B2BCartItem[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -273,6 +290,36 @@ model Product {
   @@index([sku])
   @@index([isB2B])
   @@map("products")
+}
+
+// ─── Product Variant ────────────────────────────────────────────────────────
+
+// A purchasable option of a product (size, weight, finish…). When a product has
+// variants, price and stock are held per variant; Product.stock is kept in sync
+// as the sum so existing catalog filters and sorts stay correct.
+model ProductVariant {
+  id        String   @id @default(cuid())
+  productId String
+  name      String
+  sku       String?  @unique
+  price     Float
+  compareAt Float?
+  stock     Int      @default(0)
+  images    String[]
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+
+  product            Product             @relation(fields: [productId], references: [id], onDelete: Cascade)
+  customerCartItems  CustomerCartItem[]
+  customerOrderItems CustomerOrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, name])
+  @@index([productId])
+  @@index([sku])
+  @@map("product_variants")
 }
 
 // ─── Category ───────────────────────────────────────────────────────────────
@@ -313,11 +360,11 @@ model Customer {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  addresses  CustomerAddress[]
-  cart       CustomerCart?
-  orders     CustomerOrder[]
-  payments   CustomerPayment[]
-  wishlist   CustomerWishlist?
+  addresses CustomerAddress[]
+  cart      CustomerCart?
+  orders    CustomerOrder[]
+  payments  CustomerPayment[]
+  wishlist  CustomerWishlist?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -329,19 +376,19 @@ model Customer {
 // ─── Customer Address ───────────────────────────────────────────────────────
 
 model CustomerAddress {
-  id          String      @id @default(cuid())
-  customerId  String
-  label       String      @default("Home")
-  type        AddressType @default(HOME)
-  fullName    String
-  phone       String
-  province    String
-  district    String?
-  city        String
+  id            String      @id @default(cuid())
+  customerId    String
+  label         String      @default("Home")
+  type          AddressType @default(HOME)
+  fullName      String
+  phone         String
+  province      String
+  district      String?
+  city          String
   streetAddress String?
-  landmark    String?
-  postalCode  String?
-  isDefault   Boolean     @default(false)
+  landmark      String?
+  postalCode    String?
+  isDefault     Boolean     @default(false)
 
   customer       Customer        @relation(fields: [customerId], references: [id], onDelete: Cascade)
   billingOrders  CustomerOrder[] @relation("CustomerBillingAddress")
@@ -360,7 +407,7 @@ model CustomerCart {
   id         String @id @default(cuid())
   customerId String @unique
 
-  customer Customer         @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customer Customer           @relation(fields: [customerId], references: [id], onDelete: Cascade)
   items    CustomerCartItem[]
 
   createdAt DateTime @default(now())
@@ -370,44 +417,71 @@ model CustomerCart {
 }
 
 model CustomerCartItem {
-  id        String @id @default(cuid())
+  id        String  @id @default(cuid())
   cartId    String
   productId String
-  quantity  Int    @default(1)
+  variantId String?
+  quantity  Int     @default(1)
 
-  cart    CustomerCart @relation(fields: [cartId], references: [id], onDelete: Cascade)
-  product Product     @relation(fields: [productId], references: [id])
+  cart    CustomerCart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product         @relation(fields: [productId], references: [id])
+  variant ProductVariant? @relation(fields: [variantId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([cartId, productId])
+  // NULL variantId means the product has no variants. Postgres treats NULLs as
+  // distinct here, so the application also de-duplicates on (cart, product, variant).
+  @@unique([cartId, productId, variantId])
+  @@index([variantId])
   @@map("customer_cart_items")
 }
 
 // ─── Customer Order ─────────────────────────────────────────────────────────
 
 model CustomerOrder {
-  id                String              @id @default(cuid())
-  orderNumber       String              @unique
+  id                String                         @id @default(cuid())
+  orderNumber       String                         @unique
   customerId        String
   billingAddressId  String?
   shippingAddressId String?
-  status            CustomerOrderStatus @default(PENDING)
+  status            CustomerOrderStatus            @default(PENDING)
+  paymentStatus     CustomerPaymentStatus          @default(PENDING)
+  fulfillmentStatus CustomerOrderFulfillmentStatus @default(UNFULFILLED)
 
-  subtotal     Float @default(0)
-  discount     Float @default(0)
-  tax          Float @default(0)
-  shippingCost Float @default(0)
-  total        Float @default(0)
+  subtotal     Float   @default(0)
+  discount     Float   @default(0)
+  tax          Float   @default(0)
+  shippingCost Float   @default(0)
+  total        Float   @default(0)
+  couponCode   String?
+  currency     String  @default("NPR")
+
+  // Shipping-address snapshot (preserved at purchase time)
+  shippingFullName   String?
+  shippingPhone      String?
+  shippingStreet     String?
+  shippingCity       String?
+  shippingState      String?
+  shippingPostalCode String?
+  shippingCountry    String?
+
+  // Delivery / tracking
+  shippingMethod        String?
+  courier               String?
+  trackingNumber        String?
+  shippedAt             DateTime?
+  deliveredAt           DateTime?
+  estimatedDeliveryDate DateTime?
 
   notes String? @db.Text
 
-  customer        Customer         @relation(fields: [customerId], references: [id])
-  billingAddress  CustomerAddress? @relation("CustomerBillingAddress", fields: [billingAddressId], references: [id])
-  shippingAddress CustomerAddress? @relation("CustomerShippingAddress", fields: [shippingAddressId], references: [id])
+  customer        Customer             @relation(fields: [customerId], references: [id])
+  billingAddress  CustomerAddress?     @relation("CustomerBillingAddress", fields: [billingAddressId], references: [id])
+  shippingAddress CustomerAddress?     @relation("CustomerShippingAddress", fields: [shippingAddressId], references: [id])
   items           CustomerOrderItem[]
   payments        CustomerPayment[]
+  events          CustomerOrderEvent[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -415,44 +489,77 @@ model CustomerOrder {
   @@index([customerId])
   @@index([orderNumber])
   @@index([status])
+  @@index([paymentStatus])
+  @@index([fulfillmentStatus])
   @@index([createdAt])
   @@map("customer_orders")
 }
 
-model CustomerOrderItem {
-  id        String @id @default(cuid())
-  orderId   String
-  productId String
-  quantity  Int
-  unitPrice Float
-  discount  Float  @default(0)
-  tax       Float  @default(0)
-  total     Float  @default(0)
+model CustomerOrderEvent {
+  id       String                  @id @default(cuid())
+  orderId  String
+  status   CustomerOrderStatus?
+  message  String                  @db.Text
+  actor    CustomerOrderEventActor @default(SYSTEM)
+  actorId  String?
+  metadata Json?
 
-  order   CustomerOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product Product       @relation(fields: [productId], references: [id])
+  order CustomerOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
 
   @@index([orderId])
+  @@index([createdAt])
+  @@map("customer_order_events")
+}
+
+model CustomerOrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  variantId String?
+  quantity  Int
+  unitPrice Float
+  discount  Float   @default(0)
+  tax       Float   @default(0)
+  total     Float   @default(0)
+
+  // Product snapshot at time of purchase (protects historical orders from
+  // future product/price/image edits)
+  productName  String?
+  productSku   String?
+  productImage String?
+  variantName  String?
+  variantSku   String?
+
+  order   CustomerOrder   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product         @relation(fields: [productId], references: [id])
+  variant ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+  @@index([variantId])
   @@map("customer_order_items")
 }
 
 // ─── Customer Payment ───────────────────────────────────────────────────────
 
 model CustomerPayment {
-  id         String                @id @default(cuid())
-  customerId String
-  orderId    String
-  amount     Float
-  method     CustomerPaymentMethod
-  status     CustomerPaymentStatus @default(PENDING)
-  reference  String?
-  notes      String?               @db.Text
+  id            String                @id @default(cuid())
+  customerId    String
+  orderId       String
+  amount        Float
+  currency      String                @default("NPR")
+  method        CustomerPaymentMethod
+  status        CustomerPaymentStatus @default(PENDING)
+  transactionId String?
+  reference     String?
+  notes         String?               @db.Text
 
   customer Customer      @relation(fields: [customerId], references: [id])
   order    CustomerOrder @relation(fields: [orderId], references: [id])
 
-  paidAt    DateTime  @default(now())
-  createdAt DateTime  @default(now())
+  paidAt    DateTime @default(now())
+  createdAt DateTime @default(now())
 
   @@index([customerId])
   @@index([orderId])
@@ -465,7 +572,7 @@ model CustomerWishlist {
   id         String @id @default(cuid())
   customerId String @unique
 
-  customer Customer              @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customer Customer               @relation(fields: [customerId], references: [id], onDelete: Cascade)
   items    CustomerWishlistItem[]
 
   createdAt DateTime @default(now())
@@ -514,15 +621,15 @@ model B2BApplication {
   customProductNote  String?  @db.Text
 
   // Order volume
-  estimatedOrderVolume  B2BOrderVolume?
+  estimatedOrderVolume   B2BOrderVolume?
   estimatedPurchaseValue String?
 
   // Target market
-  targetMarket    String?
-  targetCountry   String?
-  targetProvince  String?
-  targetCity      String?
-  customMessage   String? @db.Text
+  targetMarket   String?
+  targetCountry  String?
+  targetProvince String?
+  targetCity     String?
+  customMessage  String? @db.Text
 
   // Communication
   preferredCommunication B2BCommunicationChannel @default(EMAIL)
@@ -532,7 +639,7 @@ model B2BApplication {
   rejectionReason String?   @db.Text
   internalNotes   String?   @db.Text
 
-  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   organization B2BOrganization?
 
   submittedAt DateTime @default(now())
@@ -546,9 +653,9 @@ model B2BApplication {
 // ─── B2B Organization ───────────────────────────────────────────────────────
 
 model B2BOrganization {
-  id                 String        @id @default(cuid())
-  organizationNumber String        @unique
-  b2bApplicationId   String        @unique
+  id                 String          @id @default(cuid())
+  organizationNumber String          @unique
+  b2bApplicationId   String          @unique
   companyName        String
   businessType       B2BBusinessType
   country            String
@@ -557,7 +664,7 @@ model B2BOrganization {
   whatsapp           String?
   website            String?
   taxNumber          String?
-  status             B2BOrgStatus  @default(ACTIVE)
+  status             B2BOrgStatus    @default(ACTIVE)
 
   defaultPaymentTerm B2BPaymentTermType @default(PREPAID)
   creditLimit        Float?
@@ -587,18 +694,18 @@ model B2BOrganization {
 // ─── B2B Organization Member ────────────────────────────────────────────────
 
 model B2BOrganizationMember {
-  id             String              @id @default(cuid())
+  id             String             @id @default(cuid())
   organizationId String
   userId         String
-  role           B2BOrgMemberRole    @default(EMPLOYEE)
-  status         B2BOrgMemberStatus  @default(ACTIVE)
+  role           B2BOrgMemberRole   @default(EMPLOYEE)
+  status         B2BOrgMemberStatus @default(ACTIVE)
 
   organization B2BOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // B2B actions by this member
   placedOrders B2BOrder[] @relation("B2BPlacedByMember")
-  placedRFQs   B2BRFQ[]  @relation("B2BRFQRequestedBy")
+  placedRFQs   B2BRFQ[]   @relation("B2BRFQRequestedBy")
 
   joinedAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -688,13 +795,13 @@ model B2BCart {
 }
 
 model B2BCartItem {
-  id        String @id @default(cuid())
+  id        String  @id @default(cuid())
   cartId    String
   productId String
-  quantity  Int    @default(1)
+  quantity  Int     @default(1)
   notes     String?
 
-  cart    B2BCart  @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cart    B2BCart @relation(fields: [cartId], references: [id], onDelete: Cascade)
   product Product @relation(fields: [productId], references: [id])
 
   createdAt DateTime @default(now())
@@ -762,7 +869,7 @@ model B2BQuotation {
   paymentTerms  B2BPaymentTermType?
   deliveryTerms String?
   validUntil    DateTime?
-  notes         String? @db.Text
+  notes         String?             @db.Text
 
   subtotal     Float @default(0)
   discount     Float @default(0)
@@ -770,8 +877,8 @@ model B2BQuotation {
   shippingCost Float @default(0)
   total        Float @default(0)
 
-  organization  B2BOrganization   @relation(fields: [organizationId], references: [id])
-  rfq           B2BRFQ?           @relation(fields: [rfqId], references: [id])
+  organization  B2BOrganization    @relation(fields: [organizationId], references: [id])
+  rfq           B2BRFQ?            @relation(fields: [rfqId], references: [id])
   items         B2BQuotationItem[]
   purchaseOrder B2BPurchaseOrder?
 
@@ -804,17 +911,17 @@ model B2BQuotationItem {
 // ─── B2B Purchase Order ─────────────────────────────────────────────────────
 
 model B2BPurchaseOrder {
-  id             String     @id @default(cuid())
-  poNumber       String     @unique
+  id             String      @id @default(cuid())
+  poNumber       String      @unique
   organizationId String
-  quotationId    String?    @unique
+  quotationId    String?     @unique
   status         B2BPOStatus @default(DRAFT)
 
-  billingAddress  String? @db.Text
-  shippingAddress String? @db.Text
+  billingAddress  String?             @db.Text
+  shippingAddress String?             @db.Text
   paymentTerms    B2BPaymentTermType?
-  deliveryNotes   String? @db.Text
-  notes           String? @db.Text
+  deliveryNotes   String?             @db.Text
+  notes           String?             @db.Text
 
   subtotal     Float @default(0)
   discount     Float @default(0)
@@ -822,8 +929,8 @@ model B2BPurchaseOrder {
   shippingCost Float @default(0)
   total        Float @default(0)
 
-  organization B2BOrganization @relation(fields: [organizationId], references: [id])
-  quotation    B2BQuotation?   @relation(fields: [quotationId], references: [id])
+  organization B2BOrganization        @relation(fields: [organizationId], references: [id])
+  quotation    B2BQuotation?          @relation(fields: [quotationId], references: [id])
   items        B2BPurchaseOrderItem[]
   order        B2BOrder?
 
@@ -856,17 +963,17 @@ model B2BPurchaseOrderItem {
 // ─── B2B Order ──────────────────────────────────────────────────────────────
 
 model B2BOrder {
-  id                String        @id @default(cuid())
-  orderNumber       String        @unique
+  id                String         @id @default(cuid())
+  orderNumber       String         @unique
   organizationId    String
   placedByMemberId  String
-  purchaseOrderId   String?       @unique
+  purchaseOrderId   String?        @unique
   billingAddressId  String?
   shippingAddressId String?
   status            B2BOrderStatus @default(PENDING)
 
   paymentTerms B2BPaymentTermType?
-  notes        String? @db.Text
+  notes        String?             @db.Text
 
   subtotal     Float @default(0)
   discount     Float @default(0)
@@ -874,13 +981,13 @@ model B2BOrder {
   shippingCost Float @default(0)
   total        Float @default(0)
 
-  organization   B2BOrganization       @relation(fields: [organizationId], references: [id])
-  placedBy       B2BOrganizationMember @relation("B2BPlacedByMember", fields: [placedByMemberId], references: [id])
-  purchaseOrder  B2BPurchaseOrder?     @relation(fields: [purchaseOrderId], references: [id])
-  billingAddress B2BAddress?           @relation("B2BBillingAddress", fields: [billingAddressId], references: [id])
-  shippingAddress B2BAddress?          @relation("B2BShippingAddress", fields: [shippingAddressId], references: [id])
-  items          B2BOrderItem[]
-  invoice        B2BInvoice?
+  organization    B2BOrganization       @relation(fields: [organizationId], references: [id])
+  placedBy        B2BOrganizationMember @relation("B2BPlacedByMember", fields: [placedByMemberId], references: [id])
+  purchaseOrder   B2BPurchaseOrder?     @relation(fields: [purchaseOrderId], references: [id])
+  billingAddress  B2BAddress?           @relation("B2BBillingAddress", fields: [billingAddressId], references: [id])
+  shippingAddress B2BAddress?           @relation("B2BShippingAddress", fields: [shippingAddressId], references: [id])
+  items           B2BOrderItem[]
+  invoice         B2BInvoice?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -919,8 +1026,8 @@ model B2BInvoice {
   orderId        String?                 @unique
   paymentStatus  B2BInvoicePaymentStatus @default(PENDING)
 
-  billingAddress  String? @db.Text
-  shippingAddress String? @db.Text
+  billingAddress  String?             @db.Text
+  shippingAddress String?             @db.Text
   paymentTerms    B2BPaymentTermType?
   dueDate         DateTime?
 
@@ -930,8 +1037,8 @@ model B2BInvoice {
   shippingCost Float @default(0)
   total        Float @default(0)
 
-  organization B2BOrganization @relation(fields: [organizationId], references: [id])
-  order        B2BOrder?       @relation(fields: [orderId], references: [id])
+  organization B2BOrganization  @relation(fields: [organizationId], references: [id])
+  order        B2BOrder?        @relation(fields: [orderId], references: [id])
   items        B2BInvoiceItem[]
   payments     B2BPayment[]
 
@@ -983,6 +1090,89 @@ model B2BPayment {
   @@map("b2b_payments")
 }
 
+// ─── Admin Enums ──────────────────────────────────────────────────────────
+
+enum AdminRole {
+  ADMIN
+  ORDER_MANAGER
+  PRODUCT_MANAGER
+  B2B_MANAGER
+  FINANCE_MANAGER
+  SUPPORT_MANAGER
+}
+
+enum AdminAuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  APPROVE
+  REJECT
+  SUSPEND
+  ACTIVATE
+  LOGIN
+  LOGOUT
+  EXPORT
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ADMIN DOMAIN
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Admin User ─────────────────────────────────────────────────────────────
+
+model AdminUser {
+  id       String    @id @default(cuid())
+  userId   String    @unique
+  role     AdminRole @default(ADMIN)
+  isActive Boolean   @default(true)
+
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  auditLogs AdminAuditLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([role])
+  @@map("admin_users")
+}
+
+// ─── Admin Audit Log ────────────────────────────────────────────────────────
+
+model AdminAuditLog {
+  id          String           @id @default(cuid())
+  adminId     String
+  action      AdminAuditAction
+  entityType  String
+  entityId    String?
+  description String           @db.Text
+  metadata    Json?
+  ipAddress   String?
+
+  admin AdminUser @relation(fields: [adminId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
+  @@index([entityType])
+  @@index([action])
+  @@index([createdAt])
+  @@map("admin_audit_logs")
+}
+
+// ─── Admin Settings ─────────────────────────────────────────────────────────
+
+model AdminSetting {
+  id       String @id @default(cuid())
+  key      String @unique
+  value    Json
+  category String @default("general")
+
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@map("admin_settings")
+}
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // NEXTAUTH ADAPTER MODELS
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -1020,7 +1210,7 @@ model Session {
 
 model VerificationToken {
   identifier String
-  token      String @unique
+  token      String   @unique
   expires    DateTime
 
   @@unique([identifier, token])

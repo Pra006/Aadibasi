@@ -3,11 +3,17 @@ import StorefrontShell from "@/components/layout/StorefrontShell";
 import { Section } from "@/components/ui/Section";
 import ShopBrowser from "@/components/storefront/ShopBrowser";
 import Icon from "@/components/ui/Icon";
-import { products, categories, vendors } from "@/lib/data";
+import { vendors } from "@/lib/data";
+import { listStoreProducts, listStoreCategories } from "@/lib/catalog";
 
 export const metadata = { title: "Shop All" };
 
-export default function ShopPage() {
+// The catalog is admin-managed, so this listing must reflect the database on
+// every request rather than being frozen at build time.
+export const dynamic = "force-dynamic";
+
+export default async function ShopPage() {
+  const [products, categories] = await Promise.all([listStoreProducts(), listStoreCategories()]);
   return (
     <StorefrontShell>
       <Section className="py-6">

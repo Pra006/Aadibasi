@@ -9,8 +9,6 @@ const authRoutes = ["/auth/login", "/auth/register"];
 export default auth((req) => {
   const { pathname } = req.nextUrl;
   const isLoggedIn = !!req.auth;
-  const userRole = req.auth?.user?.role;
-
   // Redirect logged-in users away from auth pages
   if (isLoggedIn && authRoutes.some((r) => pathname.startsWith(r))) {
     return NextResponse.redirect(new URL("/", req.url));
@@ -30,19 +28,19 @@ export default auth((req) => {
       loginUrl.searchParams.set("callbackUrl", pathname);
       return NextResponse.redirect(loginUrl);
     }
-    if (userRole !== "VENDOR" && userRole !== "ADMIN") {
+    if (!req.auth?.user?.adminRole) {
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
 
-  // Protect admin routes
+  // Protect admin routes — check adminRole from JWT
   if (adminRoutes.some((r) => pathname.startsWith(r))) {
     if (!isLoggedIn) {
       const loginUrl = new URL("/auth/login", req.url);
       loginUrl.searchParams.set("callbackUrl", pathname);
       return NextResponse.redirect(loginUrl);
     }
-    if (userRole !== "ADMIN") {
+    if (!req.auth?.user?.adminRole) {
       return NextResponse.redirect(new URL("/", req.url));
     }
   }

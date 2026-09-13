@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
-import { generateRefNumber } from "@/lib/b2b";
+import { generateRefNumber } from "@/lib/ref-number";
 
 export async function POST(request) {
   try {

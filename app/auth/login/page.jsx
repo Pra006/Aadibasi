@@ -1,42 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import Button from "@/components/ui/Button";
-import { signIn } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
-  const router = useRouter();
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const registered = searchParams.get("registered") === "true";
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
     setError("");
     setLoading(true);
-
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-
-    if (result?.error) {
-      setError("Invalid email or password.");
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (res?.error) {
+        setError("Invalid email or password.");
+      } else {
+        window.location.href = callbackUrl;
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    const callbackUrl = searchParams.get("callbackUrl");
-    const destination = callbackUrl?.startsWith("/") ? callbackUrl : "/";
-    router.push(destination);
-    router.refresh();
   }
 
   return (
@@ -63,41 +69,51 @@ export default function LoginPage() {
         <div className="w-full max-w-md">
           <Link href="/" className="inline-flex items-center gap-3 mb-8">
             <div className="h-10 w-10 rounded-md border border-antique-gold/40 bg-forest-base flex items-center justify-center">
-              <span className="font-headline text-antique-gold text-lg font-bold">आ</span>
+              <span className="font-headline text-antique-gold text-lg font-bold">{"आ"}</span>
             </div>
             <span className="font-headline text-2xl text-forest-deep">Hakkiveda</span>
           </Link>
           <h1 className="font-headline text-3xl text-forest-deep">Welcome back</h1>
           <p className="text-sm text-on-surface-variant mt-1">Sign in to your Hakkiveda account.</p>
 
-          {registered && (
-            <p className="mt-4 rounded border border-herbal-jade/30 bg-herbal-jade/10 px-3 py-2 text-sm text-forest-deep" role="status">
-              Account created successfully. Please sign in.
-            </p>
-          )}
           {error && (
-            <p className="mt-4 rounded border border-terracotta/30 bg-terracotta/10 px-3 py-2 text-sm text-terracotta" role="alert">
+            <div className="mt-4 flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg">
+              <Icon name="error" size={18} />
               {error}
-            </p>
+            </div>
           )}
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-4">
             <label className="flex flex-col gap-1.5">
               <span className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Email</span>
-              <input type="email" required value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold" placeholder="you@example.com" />
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold"
+                placeholder="you@example.com"
+              />
             </label>
             <label className="flex flex-col gap-1.5">
               <div className="flex justify-between items-center">
                 <span className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Password</span>
                 <Link href="/auth/forgot" className="text-xs text-antique-gold hover:underline">Forgot?</Link>
               </div>
-              <input type="password" required value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold" placeholder="••••••••" />
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="bg-surface-container-low border border-outline-variant rounded px-3 py-3 text-sm outline-none focus:border-antique-gold"
+                placeholder="••••••••"
+              />
             </label>
             <label className="flex items-center gap-2 text-sm text-on-surface-variant">
               <input type="checkbox" className="rounded border-outline text-forest-base" /> Keep me signed in
             </label>
             <Button type="submit" size="lg" className="w-full" disabled={loading}>
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? "Signing in…" : "Sign In"}
             </Button>
           </form>
 
@@ -108,10 +124,17 @@ export default function LoginPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <button className="flex items-center justify-center gap-2 border border-outline-variant rounded py-2.5 text-sm hover:bg-surface-container">
+            <button
+              type="button"
+              onClick={() => signIn("google", { callbackUrl })}
+              className="flex items-center justify-center gap-2 border border-outline-variant rounded py-2.5 text-sm hover:bg-surface-container"
+            >
               <Icon name="public" size={16} /> Google
             </button>
-            <button className="flex items-center justify-center gap-2 border border-outline-variant rounded py-2.5 text-sm hover:bg-surface-container">
+            <button
+              type="button"
+              className="flex items-center justify-center gap-2 border border-outline-variant rounded py-2.5 text-sm hover:bg-surface-container"
+            >
               <Icon name="smartphone" size={16} /> Phone OTP
             </button>
           </div>

@@ -1,15 +1,37 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Icon from "@/components/ui/Icon";
 import Rating from "@/components/ui/Rating";
 import Price from "@/components/ui/Price";
 import Badge from "@/components/ui/Badge";
 import { discountPercent } from "@/lib/utils";
 import { getVendor } from "@/lib/data";
+import { useCart } from "@/components/providers/CartProvider";
 
 export default function ProductCard({ product, compact = false }) {
   const vendor = getVendor(product.vendor);
   const pct = discountPercent(product.compareAt, product.price);
+  const [added, setAdded] = useState(false);
+  const router = useRouter();
+  const { addItem, pending, signedIn, sessionStatus } = useCart();
+
+  async function handleAdd(e) {
+    e.preventDefault();
+    if (sessionStatus === "loading") return;
+    if (!signedIn) {
+      router.push(`/auth/login?callbackUrl=${encodeURIComponent(`/products/${product.slug}`)}`);
+      return;
+    }
+    try {
+      await addItem({ slug: product.slug, quantity: 1 });
+      setAdded(true);
+      setTimeout(() => setAdded(false), 2000);
+    } catch {
+      /* error surfaced on the cart page */
+    }
+  }
 
   return (
     <article className="group relative flex flex-col bg-surface-container-lowest border border-outline-variant/60 rounded-xl overflow-hidden hover:shadow-lg hover:border-antique-gold/40 transition-all">
@@ -55,9 +77,11 @@ export default function ProductCard({ product, compact = false }) {
           <Price price={product.price} compareAt={product.compareAt} size="sm" />
           <button
             aria-label="Add to cart"
-            className="w-9 h-9 rounded-full bg-forest-base text-antique-gold flex items-center justify-center hover:bg-forest-deep shrink-0"
+            onClick={handleAdd}
+            disabled={pending}
+            className="w-9 h-9 rounded-full bg-forest-base text-antique-gold flex items-center justify-center hover:bg-forest-deep shrink-0 disabled:opacity-60"
           >
-            <Icon name="add_shopping_cart" size={16} />
+            <Icon name={added ? "check" : "add_shopping_cart"} size={16} />
           </button>
         </div>
       </div>

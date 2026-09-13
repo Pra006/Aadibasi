@@ -1,169 +1,129 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import DashboardShell from "@/components/layout/DashboardShell";
-import StatCard from "@/components/admin/StatCard";
-import MiniChart from "@/components/admin/MiniChart";
 import Icon from "@/components/ui/Icon";
-import Button from "@/components/ui/Button";
-import { formatNPR } from "@/lib/utils";
-import { vendors, products } from "@/lib/data";
+import AdminStatCard from "@/components/admin/ui/AdminStatCard";
+import AdminPageHeader from "@/components/admin/ui/AdminPageHeader";
 
-export const metadata = { title: "Admin Dashboard" };
-
-const sidebar = [
-  { label: "Overview", href: "/admin", icon: "dashboard", active: true },
-  { label: "Users", href: "/admin/users", icon: "group" },
-  { label: "B2B Businesses", href: "/admin/vendors", icon: "storefront", badge: 3 },
-  { label: "Products", href: "/admin/products", icon: "inventory_2" },
-  { label: "Categories", href: "/admin/categories", icon: "category" },
-  { label: "Brands", href: "/admin/brands", icon: "loyalty" },
-  { label: "Orders", href: "/admin/orders", icon: "receipt_long" },
-  { label: "Payments", href: "/admin/payments", icon: "payments" },
-  { label: "Commissions", href: "/admin/commissions", icon: "percent" },
-  { label: "Withdrawals", href: "/admin/withdrawals", icon: "account_balance", badge: 5 },
-  { label: "Coupons", href: "/admin/coupons", icon: "sell" },
-  { label: "Reviews", href: "/admin/reviews", icon: "reviews" },
-  { label: "Reports", href: "/admin/reports", icon: "insert_chart" },
-  { label: "Settings", href: "/admin/settings", icon: "settings" },
-  { label: "Audit Logs", href: "/admin/audit-logs", icon: "history" },
-];
-
-const pendingVendors = vendors.slice(0, 3);
-
-const recentTx = [
-  { id: "TX-2988", user: "Prakash Adhikari", type: "Order Payment", method: "eSewa", amount: 3480, when: "5m ago" },
-  { id: "TX-2987", user: "Anita Shrestha", type: "Refund", method: "Khalti", amount: -890, when: "12m ago" },
-  { id: "TX-2986", user: "Bishal Rai", type: "Order Payment", method: "COD", amount: 4497, when: "26m ago" },
-  { id: "TX-2985", user: "Sita Magar", type: "B2B Business Payout", method: "Bank", amount: -12200, when: "1h ago" },
-];
+const formatNPR = (v) => `NPR ${(v || 0).toLocaleString("en-IN")}`;
 
 export default function AdminDashboard() {
+  const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [days, setDays] = useState(30);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/admin/dashboard?days=${days}`)
+      .then((r) => r.json())
+      .then(setStats)
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [days]);
+
+  if (loading) {
+    return (
+      <div>
+        <AdminPageHeader title="Dashboard" description="Platform overview" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="h-28 bg-white rounded-xl border border-slate-200 animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (!stats) {
+    return (
+      <div>
+        <AdminPageHeader title="Dashboard" />
+        <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
+          <Icon name="error_outline" size={40} className="text-slate-300 mx-auto mb-3" />
+          <p className="text-sm text-slate-500">Failed to load dashboard data</p>
+        </div>
+      </div>
+    );
+  }
+
+  const quickLinks = [
+    { label: "Pending Applications", value: stats.b2b.pendingApplications, href: "/admin/b2b/applications", icon: "description", accent: "amber" },
+    { label: "Pending RFQs", value: stats.b2bWorkflow.pendingRFQs, href: "/admin/b2b/rfqs", icon: "request_quote", accent: "blue" },
+    { label: "Pending Customer Orders", value: stats.orders.pendingCustomerOrders, href: "/admin/customer-orders", icon: "receipt_long", accent: "purple" },
+    { label: "Outstanding Invoices", value: stats.b2bWorkflow.outstandingInvoices, href: "/admin/b2b/invoices", icon: "receipt", accent: "red" },
+  ];
+
   return (
-    <DashboardShell
-      brand={{ title: "Hakkiveda", subtitle: "Admin Console" }}
-      sidebar={sidebar}
-      user={{ name: "Admin Anisha", email: "admin@hakkiveda.com", role: "Super Admin" }}
-    >
-      <div className="flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <div className="text-xs font-semibold uppercase tracking-widest text-antique-gold">Platform · 9 Sept 2026</div>
-          <h1 className="font-headline text-3xl text-forest-deep mt-1">Marketplace Overview</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <select className="bg-surface border border-outline-variant rounded px-3 py-2 text-sm">
-            <option>Last 30 days</option>
-            <option>Today</option>
-            <option>Last 7 days</option>
-            <option>This year</option>
-          </select>
-          <Button variant="secondary"><Icon name="download" size={16}/> Export</Button>
-        </div>
+    <div>
+      <AdminPageHeader title="Dashboard" description="Platform overview">
+        <select
+          value={days}
+          onChange={(e) => setDays(Number(e.target.value))}
+          className="text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white focus:border-blue-300 focus:ring-1 focus:ring-blue-200 outline-none"
+        >
+          <option value={1}>Today</option>
+          <option value={7}>7 Days</option>
+          <option value={30}>30 Days</option>
+          <option value={90}>3 Months</option>
+          <option value={180}>6 Months</option>
+          <option value={365}>1 Year</option>
+        </select>
+      </AdminPageHeader>
+
+      {/* Customer Stats */}
+      <div className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-400">Customers</div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <AdminStatCard label="Total Customers" value={stats.customers.total} icon="people" accent="blue" />
+        <AdminStatCard label="New Customers" value={stats.customers.new} icon="person_add" accent="green" />
+        <AdminStatCard label="Customer Orders" value={stats.orders.customerOrders} icon="receipt_long" accent="purple" />
+        <AdminStatCard label="Customer Revenue" value={formatNPR(stats.revenue.customer)} icon="account_balance_wallet" accent="amber" />
       </div>
 
-      <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Gross Revenue" value={formatNPR(4820000)} delta="+22.4%" icon="payments" accent="jade" />
-        <StatCard label="Platform Commission" value={formatNPR(482000)} delta="+22.4%" icon="percent" accent="gold" />
-        <StatCard label="B2B Payouts" value={formatNPR(4338000)} delta="+18.1%" icon="account_balance" accent="forest" />
-        <StatCard label="Refunds" value={formatNPR(28400)} delta="+3.2%" deltaTone="down" icon="undo" accent="terracotta" />
+      {/* B2B Stats */}
+      <div className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-400">B2B Business</div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <AdminStatCard label="B2B Organizations" value={stats.b2b.totalOrgs} icon="corporate_fare" accent="blue" />
+        <AdminStatCard label="Active Organizations" value={stats.b2b.activeOrgs} icon="verified" accent="green" />
+        <AdminStatCard label="B2B Orders" value={stats.orders.b2bOrders} icon="local_shipping" accent="purple" />
+        <AdminStatCard label="B2B Revenue" value={formatNPR(stats.revenue.b2b)} icon="payments" accent="amber" />
       </div>
 
-      <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Orders (30d)" value="2,184" delta="+128" icon="receipt_long" />
-        <StatCard label="New Customers" value="612" delta="+47" icon="person_add" accent="jade" />
-        <StatCard label="Active B2B Businesses" value="128" delta="+6" icon="storefront" accent="gold" />
-        <StatCard label="Pending Approvals" value="3" icon="pending_actions" accent="terracotta" />
+      {/* Revenue + B2B Workflow */}
+      <div className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-400">Revenue & Workflow</div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <AdminStatCard label="Total Revenue" value={formatNPR(stats.revenue.total)} icon="trending_up" accent="green" />
+        <AdminStatCard label="Active Quotations" value={stats.b2bWorkflow.activeQuotations} icon="calculate" accent="blue" />
+        <AdminStatCard label="Pending POs" value={stats.b2bWorkflow.pendingPOs} icon="assignment" accent="amber" />
+        <AdminStatCard label="Outstanding Invoices" value={stats.b2bWorkflow.outstandingInvoices} icon="receipt" accent="red" />
       </div>
 
-      <div className="mt-8 grid lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6">
-          <div className="flex items-center justify-between mb-4">
+      {/* Quick Action Links */}
+      <div className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-400">Requires Attention</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {quickLinks.filter((q) => q.value > 0).map((q) => (
+          <Link
+            key={q.href}
+            href={q.href}
+            className="flex items-center gap-3 bg-white rounded-xl border border-slate-200 p-4 hover:shadow-sm hover:border-slate-300 transition group"
+          >
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${q.accent}-50 text-${q.accent}-600`}>
+              <Icon name={q.icon} size={20} />
+            </div>
             <div>
-              <h2 className="font-headline text-xl text-forest-deep">Revenue vs commission</h2>
-              <p className="text-xs text-on-surface-variant">Last 12 weeks</p>
+              <div className="text-lg font-bold text-slate-900">{q.value}</div>
+              <div className="text-xs text-slate-500">{q.label}</div>
             </div>
-            <div className="flex items-center gap-4 text-xs">
-              <span className="inline-flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-antique-gold"/> Revenue</span>
-              <span className="inline-flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-forest-base"/> Commission</span>
-            </div>
+            <Icon name="chevron_right" size={18} className="ml-auto text-slate-300 group-hover:text-slate-500" />
+          </Link>
+        ))}
+        {quickLinks.filter((q) => q.value > 0).length === 0 && (
+          <div className="col-span-full bg-white rounded-xl border border-slate-200 p-8 text-center">
+            <Icon name="check_circle" size={32} className="text-emerald-400 mx-auto mb-2" />
+            <p className="text-sm text-slate-500">All caught up! No items require attention.</p>
           </div>
-          <div className="h-52">
-            <MiniChart />
-          </div>
-        </div>
-
-        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-headline text-xl text-forest-deep">Pending B2B businesses</h2>
-            <Link href="/admin/vendors?status=pending" className="text-sm font-semibold text-forest-deep hover:text-antique-gold">All →</Link>
-          </div>
-          <ul className="divide-y divide-outline-variant/50">
-            {pendingVendors.map((v) => (
-              <li key={v.slug} className="py-3 flex items-center gap-3">
-                <img src={v.logo} alt="" className="w-10 h-10 rounded-full object-cover border border-antique-gold/40" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold text-forest-deep line-clamp-1">{v.name}</div>
-                  <div className="text-xs text-on-surface-variant">{v.location}</div>
-                </div>
-                <button className="text-xs font-semibold text-herbal-jade hover:underline mr-2">Approve</button>
-                <button className="text-xs font-semibold text-terracotta hover:underline">Reject</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
       </div>
-
-      <div className="mt-8 grid lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-headline text-xl text-forest-deep">Recent transactions</h2>
-            <Link href="/admin/payments" className="text-sm font-semibold text-forest-deep hover:text-antique-gold">All →</Link>
-          </div>
-          <div className="overflow-x-auto -mx-6">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left text-xs uppercase tracking-widest text-on-surface-variant">
-                  <th className="px-6 py-2 font-semibold">ID</th>
-                  <th className="px-6 py-2 font-semibold">User</th>
-                  <th className="px-6 py-2 font-semibold">Type</th>
-                  <th className="px-6 py-2 font-semibold">Method</th>
-                  <th className="px-6 py-2 font-semibold text-right">Amount</th>
-                  <th className="px-6 py-2 font-semibold text-right">When</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-outline-variant/50">
-                {recentTx.map((t) => (
-                  <tr key={t.id} className="hover:bg-surface-container-low">
-                    <td className="px-6 py-3 font-semibold text-forest-deep">{t.id}</td>
-                    <td className="px-6 py-3 text-on-surface-variant">{t.user}</td>
-                    <td className="px-6 py-3 text-on-surface-variant">{t.type}</td>
-                    <td className="px-6 py-3 text-on-surface-variant">{t.method}</td>
-                    <td className={`px-6 py-3 text-right font-semibold ${t.amount < 0 ? "text-terracotta" : "text-forest-deep"}`}>
-                      {t.amount < 0 ? "−" : ""}{formatNPR(Math.abs(t.amount))}
-                    </td>
-                    <td className="px-6 py-3 text-right text-xs text-on-surface-variant">{t.when}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6">
-          <h2 className="font-headline text-xl text-forest-deep">Top B2B businesses</h2>
-          <ul className="mt-4 space-y-4">
-            {vendors.slice(0, 4).map((v, i) => (
-              <li key={v.slug} className="flex items-center gap-3">
-                <span className="font-headline text-forest-deep w-5">{i + 1}</span>
-                <img src={v.logo} alt="" className="w-9 h-9 rounded-full object-cover" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold text-forest-deep line-clamp-1">{v.name}</div>
-                  <div className="text-xs text-on-surface-variant">{v.productCount} products</div>
-                </div>
-                <span className="text-sm font-semibold text-forest-deep">{formatNPR(180000 - i * 24000)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </DashboardShell>
+    </div>
   );
 }
